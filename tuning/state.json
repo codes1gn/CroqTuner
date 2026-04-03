@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 6,
+      "current_iter": 7,
       "best_iter": 6,
       "best_tflops": 42.9866,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter006_stages4.co",
-      "consecutive_discards": 0,
+      "consecutive_discards": 1,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 6: SPMM_STAGES=4, 42.99 TFLOPS (+3.3%)"
+      "note": "From-scratch iter 7: SPMM_STAGES=5 DISCARD (42.64 vs best 42.99)"
     }
   }
 }
