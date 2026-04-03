@@ -20,3 +20,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 14	iter010_ws1p2c_stmatrix.co	45.8018	3.03	DISCARD	occupancy_limited	Warp-spec 1p2c --stmatrix	bash /tmp/f16_768x768x768_fs_iter014.cute.result --execute
 15	iter010_ws1p2c_nortc.co	45.9496	3.04	KEEP	occupancy_limited	Warp-spec 1p2c --disable-runtime-check	bash /tmp/f16_768x768x768_fs_iter015.cute.result --execute
 16	iter015_ws1p2c_hoistscale.co	46.1094	3.05	KEEP	occupancy_limited	Warp-spec 1p2c --hoist-scale	bash /tmp/f16_768x768x768_fs_iter016.cute.result --execute
+17	iter016_ws1p2c_nativef16.co	46.1539	3.05	KEEP	occupancy_limited	Warp-spec 1p2c --native-f16	bash /tmp/f16_768x768x768_fs_iter017.cute.result --execute
