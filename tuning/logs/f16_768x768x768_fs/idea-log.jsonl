@@ -78,3 +78,5 @@
 {"iter":40,"category":"choreo","idea":"Warp-spec 1p2c STAGES=3 with best flags","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.43,"tflops_delta":-1.89}
 {"iter":41,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier + best flags","bottleneck":"occupancy_limited","result":null}
 {"iter":41,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier+best flags","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8366,"tflops_delta":-1.4834}
+{"iter":42,"category":"choreo","idea":"Warp-spec 1p2c: try --apprx-div with different precision flags","bottleneck":"occupancy_limited","result":null}
+{"iter":42,"category":"choreo","idea":"Warp-spec 1p2c without --apprx-div (just stp)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.2146,"tflops_delta":-1.1054}
