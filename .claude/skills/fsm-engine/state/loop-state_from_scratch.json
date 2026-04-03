@@ -2,7 +2,7 @@
   "schema_version": 1,
   "fsm": {
     "current_state": "IMPLEMENT",
-    "iteration": 31,
+    "iteration": 32,
     "max_iteration": 150,
     "shape_key": "f16_768x768x768_fs",
     "dtype": "f16",
@@ -32,9 +32,9 @@
     "current_best_tflops": 46.9681,
     "current_best_iter": 30,
     "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter025_ws1p2c_stmatrix.co",
-    "this_iter_tflops": 46.0547,
+    "this_iter_tflops": 46.2572,
     "this_iter_decision": "DISCARD",
-    "consecutive_discards": 1,
+    "consecutive_discards": 2,
     "last_bottleneck": "occupancy_limited",
     "last_idea_category": "choreo"
   },
@@ -46,5 +46,5 @@
     "idea_log": "tuning/logs/f16_768x768x768_fs/idea-log.jsonl"
   },
   "completion_promise": "iteration >= max_iteration AND best kernel registered AND state.json updated",
-  "last_updated": "2026-04-03T19:43:47Z"
+  "last_updated": "2026-04-03T19:44:26Z"
 }
