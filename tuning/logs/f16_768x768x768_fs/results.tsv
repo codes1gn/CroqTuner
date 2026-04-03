@@ -7,3 +7,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 1	iter001_wn128.co	42.0946	2.78	KEEP	grid_too_small	WARP_N=128 to double grid from 36 to 72 CTAs	bash /tmp/f16_768x768x768_fs_iter001.cute.result --execute
 2	iter002_wn64.co	41.5839	2.75	KEEP	occupancy_limited	WARP_N=64 to 4x grid from 36 to 144 CTAs (12x12)	bash /tmp/f16_768x768x768_fs_iter002.cute.result --execute
 3	iter003_wn128.co	41.1806	2.72	DISCARD	occupancy_limited	WARP_N=128 (from 64), grid 12x6=72 CTAs	bash /tmp/f16_768x768x768_fs_iter003.cute.result --execute
+4	iter004_stages2.co	41.5967	2.75	KEEP	occupancy_limited	SPMM_STAGES=2 double-buffering pipeline	bash /tmp/f16_768x768x768_fs_iter004.cute.result --execute
