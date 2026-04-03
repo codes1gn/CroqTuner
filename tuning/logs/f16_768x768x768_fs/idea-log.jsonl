@@ -50,3 +50,5 @@
 {"iter":26,"category":"structural","idea":"Warp-spec 1p2c with --single-thread-producer flag","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8463,"tflops_delta":-0.3753}
 {"iter":27,"category":"choreo","idea":"Warp-spec 1p2c with --runtime-check=none --hoist-scale --native-f16 -f16n --stmatrix (current best)","bottleneck":"occupancy_limited","result":null}
 {"iter":27,"category":"choreo","idea":"Warp-spec 1p2c with --stmatrix + --apprx-div","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.962,"tflops_delta":-0.2596}
+{"iter":28,"category":"structural","idea":"Warp-spec 1p2c: try different MMA load pattern","bottleneck":"occupancy_limited","result":null}
+{"iter":28,"category":"structural","idea":"Warp-spec 1p2c with --disable-runtime-check instead of --runtime-check=none","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.9669,"tflops_delta":-0.2547}
