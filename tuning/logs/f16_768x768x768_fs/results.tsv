@@ -39,3 +39,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 33	iter025_ws1p2c_stp_full.co	47.0913	3.11	KEEP	occupancy_limited	Warp-spec 1p2c --single-thread-producer+best	bash /tmp/f16_768x768x768_fs_iter033.cute.result --execute
 34	iter033_ws1p2c_apprx_stp.co	46.2528	3.06	DISCARD	occupancy_limited	Warp-spec 1p2c --apprx-div+stp+best	bash /tmp/f16_768x768x768_fs_iter034.cute.result --execute
 35	iter033_ws1p2c_apprx_stp.co	47.32	3.13	KEEP	occupancy_limited	Warp-spec 1p2c --apprx-div+stp (no stmatrix)	bash /tmp/f16_768x768x768_fs_iter035.cute.result --execute
+36	iter035_ws1p2c_all.co	46.124	3.05	DISCARD	occupancy_limited	Warp-spec 1p2c --apprx-div+stp+stmatrix	bash /tmp/f16_768x768x768_fs_iter036.cute.result --execute

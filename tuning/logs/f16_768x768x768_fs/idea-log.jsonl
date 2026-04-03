@@ -66,3 +66,5 @@
 {"iter":34,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div+stp+best flags","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.2528,"tflops_delta":-0.8385}
 {"iter":35,"category":"choreo","idea":"Warp-spec 1p2c: try --apprx-div without --stmatrix","bottleneck":"occupancy_limited","result":null}
 {"iter":35,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div+stp (no stmatrix)","bottleneck":"occupancy_limited","result":"KEEP","tflops":47.32,"tflops_delta":0.2287}
+{"iter":36,"category":"choreo","idea":"Warp-spec 1p2c with all best flags + --stmatrix (try again with apprx-div)","bottleneck":"occupancy_limited","result":null}
+{"iter":36,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div+stp+stmatrix","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.124,"tflops_delta":-1.196}
