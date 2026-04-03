@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 14,
-      "best_iter": 10,
-      "best_tflops": 45.8831,
+      "current_iter": 15,
+      "best_iter": 15,
+      "best_tflops": 45.9496,
       "baseline_tflops": 34.92,
-      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter010_ws1p2c.co",
-      "consecutive_discards": 4,
+      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter015_ws1p2c_nortc.co",
+      "consecutive_discards": 0,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 14: ws1p2c --stmatrix DISCARD (45.80 vs best 45.88)"
+      "note": "From-scratch iter 15: ws1p2c --disable-runtime-check, 45.95 TFLOPS"
     }
   }
 }
