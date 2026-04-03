@@ -1,0 +1,3329 @@
+{
+  "version": 3,
+  "description": "Global tuning state — tracks per-shape kernel status across all scenarios and dtypes. All work on main branch. v3: 134 unique shapes x 2 dtypes = 268 entries.",
+  "shapes": {
+    "f16_4096x8192x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_tflops": 671,
+      "baseline_tflops": 671,
+      "best_kernel": "tuning/srcs/f16_4096x8192x8192/seed.cu",
+      "note": "Reference shape — no tuning needed, counts as 30",
+      "scenarios": [
+        "sweep_k",
+        "sweep_m",
+        "sweep_n",
+        "sweep_nk_fixM4096",
+        "sweep_nk_fixNK8192"
+      ]
+    },
+    "f16_4096x4096x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 18,
+      "best_tflops": 697.91,
+      "baseline_tflops": 665.76,
+      "best_kernel": "kernels/gemm_sp_f16/f16_4096x4096x8192_best.cu",
+      "consecutive_discards": 12,
+      "note": "COMPLETED 30 iters. WN128+PAD0+L2_256B+ns200. +4.8%",
+      "scenarios": [
+        "sweep_mn_fixK8192",
+        "sweep_mn_fixMN4096",
+        "sweep_n"
+      ]
+    },
+    "f16_512x8192x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 0,
+      "best_tflops": 443.18,
+      "baseline_tflops": 443.18,
+      "best_kernel": "kernels/gemm_sp_f16/f16_512x8192x8192_best.cu",
+      "consecutive_discards": 30,
+      "note": "COMPLETED 30 iters. 1 block/SM bottleneck. Needs from-scratch.",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ]
+    },
+    "f16_4096x4096x4096": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 26,
+      "best_tflops": 671.04,
+      "baseline_tflops": 660.95,
+      "best_kernel": "kernels/gemm_sp_f16/f16_4096x4096x4096_best.cu",
+      "consecutive_discards": 4,
+      "note": "COMPLETED 30 iters. WN128 + META=8 + double nanosleep. +1.5%",
+      "scenarios": [
+        "square",
+        "sweep_mk_fixMK4096",
+        "sweep_mk_fixN4096",
+        "sweep_mn_fixK4096",
+        "sweep_mn_fixMN4096",
+        "sweep_nk_fixM4096",
+        "sweep_nk_fixNK4096"
+      ]
+    },
+    "f16_8192x8192x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 5,
+      "best_tflops": 651.67,
+      "baseline_tflops": 650.11,
+      "best_kernel": "kernels/gemm_sp_f16/f16_8192x8192x8192_best.cu",
+      "consecutive_discards": 25,
+      "note": "COMPLETED 30 iters. META=8 (+0.2%). DRAM bandwidth limited.",
+      "scenarios": [
+        "square",
+        "sweep_m",
+        "sweep_mk_fixMK8192",
+        "sweep_mk_fixN8192",
+        "sweep_mn_fixK8192",
+        "sweep_mn_fixMN8192",
+        "sweep_nk_fixM8192",
+        "sweep_nk_fixNK8192"
+      ]
+    },
+    "f16_2048x8192x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 0,
+      "best_tflops": 694.43,
+      "baseline_tflops": 694.43,
+      "best_kernel": "kernels/gemm_sp_f16/f16_2048x8192x8192_best.cu",
+      "consecutive_discards": 30,
+      "note": "COMPLETED 30 iters. Baseline already optimal. All ideas DISCARD.",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ]
+    },
+    "f16_4096x16384x16384": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 0,
+      "best_tflops": 643.61,
+      "baseline_tflops": 643.61,
+      "best_kernel": "kernels/gemm_sp_f16/f16_4096x16384x16384_best.cu",
+      "consecutive_discards": 30,
+      "note": "COMPLETED 30 iters. DRAM limited. Baseline at ceiling.",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ]
+    },
+    "f16_1024x8192x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 7,
+      "best_tflops": 608.53,
+      "baseline_tflops": 593.23,
+      "best_kernel": "kernels/gemm_sp_f16/f16_1024x8192x8192_best.cu",
+      "consecutive_discards": 23,
+      "note": "COMPLETED 30 iters. WN128+L2_256B+ns200. +2.6%",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ]
+    },
+    "f16_128x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "f16_128x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "f16_256x256x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "f16_256x256x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "f16_256x256x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "f16_256x4096x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "f16_256x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "f16_256x8192x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "f16_256x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "f16_384x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m"
+      ],
+      "region": "far"
+    },
+    "f16_512x512x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "f16_512x512x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "f16_512x512x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "f16_512x4096x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "f16_512x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "f16_512x8192x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "f16_768x768x768": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "f16_768x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m"
+      ],
+      "region": "far"
+    },
+    "f16_1024x1024x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "f16_1024x1024x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "f16_1024x1024x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "f16_1024x4096x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "f16_1024x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "f16_1024x8192x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "f16_2048x2048x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "f16_2048x2048x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "f16_2048x2048x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "f16_2048x4096x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "f16_2048x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "near"
+    },
+    "f16_2048x8192x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "f16_3072x3072x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "f16_3072x3072x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "f16_3072x3072x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "f16_3072x4096x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "f16_3072x8192x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "f16_3072x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m"
+      ],
+      "region": "near"
+    },
+    "f16_4096x256x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x256x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x256x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "f16_4096x512x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x512x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x512x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "f16_4096x1024x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x1024x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x1024x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "f16_4096x2048x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x2048x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x2048x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "f16_4096x3072x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x3072x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "f16_4096x4096x128": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x4096x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x4096x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x4096x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x4096x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x4096x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "near"
+    },
+    "f16_4096x4096x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "near"
+    },
+    "f16_4096x4096x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "near"
+    },
+    "f16_4096x6144x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "near"
+    },
+    "f16_4096x6144x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "near"
+    },
+    "f16_4096x6144x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 15,
+      "best_tflops": 695.95,
+      "baseline_tflops": 663.34,
+      "best_kernel": "kernels/gemm_sp_f16/f16_4096x6144x8192_best.cu",
+      "consecutive_discards": 15,
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "near",
+      "note": "COMPLETED 30 iters. maxreg128 (+4.9%). SMEM throughput bottleneck, 1 block/SM occupancy limit."
+    },
+    "f16_4096x8192x128": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "f16_4096x8192x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "f16_4096x8192x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "f16_4096x8192x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "f16_4096x8192x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "f16_4096x8192x4096": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 11,
+      "best_tflops": 98.86,
+      "baseline_tflops": 98.7,
+      "best_kernel": "kernels/gemm_sp_f16/f16_4096x8192x4096_best.cu",
+      "consecutive_discards": 19,
+      "scenarios": [
+        "sweep_k",
+        "sweep_mk_fixMK4096",
+        "sweep_mk_fixN8192"
+      ],
+      "region": "near",
+      "note": "COMPLETED 30 iters. K=4096 too small, all within noise. Needs from-scratch."
+    },
+    "f16_4096x8192x6144": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 16,
+      "best_tflops": 650.43,
+      "baseline_tflops": 575.22,
+      "best_kernel": "kernels/gemm_sp_f16/f16_4096x8192x6144_best.cu",
+      "consecutive_discards": 14,
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "near",
+      "note": "COMPLETED 30 iters. META8+maxreg160 (+13.1%). K=6144 benefits from different register/meta balance."
+    },
+    "f16_4096x8192x12288": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_iter": 0,
+      "best_tflops": 237.31,
+      "baseline_tflops": 237.31,
+      "best_kernel": "kernels/gemm_sp_f16/f16_4096x8192x12288_best.cu",
+      "consecutive_discards": 30,
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "near",
+      "note": "COMPLETED 30 iters. DRAM limited, all within noise. Needs from-scratch."
+    },
+    "f16_4096x8192x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "near"
+    },
+    "f16_4096x8192x32768": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "f16_4096x12288x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "near"
+    },
+    "f16_4096x12288x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "near"
+    },
+    "f16_4096x12288x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "near"
+    },
+    "f16_4096x16384x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "near"
+    },
+    "f16_4096x16384x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "near"
+    },
+    "f16_4096x32768x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "f16_4096x32768x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "f16_6144x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "near"
+    },
+    "f16_6144x4096x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "near"
+    },
+    "f16_6144x6144x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "near"
+    },
+    "f16_6144x6144x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "near"
+    },
+    "f16_6144x6144x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "near"
+    },
+    "f16_6144x8192x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "near"
+    },
+    "f16_6144x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x256x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x256x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x512x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x512x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x1024x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x1024x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x2048x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x2048x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x3072x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192",
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "near"
+    },
+    "f16_8192x4096x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192",
+        "sweep_mk_fixN4096"
+      ],
+      "region": "near"
+    },
+    "f16_8192x6144x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x6144x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x8192x128": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x8192x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x8192x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x8192x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x8192x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "f16_8192x8192x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096",
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x8192x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x8192x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x8192x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x12288x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x12288x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x16384x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x16384x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "near"
+    },
+    "f16_8192x32768x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "f16_12288x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "f16_12288x4096x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "f16_12288x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "f16_12288x8192x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "f16_12288x12288x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "f16_12288x12288x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "f16_12288x12288x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "f16_16384x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "f16_16384x4096x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "f16_16384x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "f16_16384x8192x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "f16_16384x16384x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "f16_16384x16384x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "f16_16384x16384x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "e4m3_128x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_128x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_256x256x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "e4m3_256x256x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_256x256x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_256x4096x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_256x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_256x8192x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_256x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_384x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m"
+      ],
+      "region": "far"
+    },
+    "e4m3_512x512x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "e4m3_512x512x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_512x512x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_512x4096x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_512x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_512x8192x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_512x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_768x768x768": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "e4m3_768x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m"
+      ],
+      "region": "far"
+    },
+    "e4m3_1024x1024x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "e4m3_1024x1024x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_1024x1024x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_1024x4096x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_1024x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_1024x8192x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_1024x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_2048x2048x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "e4m3_2048x2048x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_2048x2048x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_2048x4096x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_2048x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_2048x8192x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_2048x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_3072x3072x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "e4m3_3072x3072x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_3072x3072x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_3072x4096x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_3072x8192x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_3072x8192x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_tflops": 1286.01,
+      "baseline_tflops": 1281.59,
+      "best_kernel": "kernels/gemm_sp_e4m3/e4m3_3072x8192x8192_best.cu",
+      "scenarios": [
+        "sweep_m"
+      ],
+      "region": "near",
+      "consecutive_discards": 13,
+      "best_iter": 17,
+      "note": "COMPLETED 30 iters. WN128+O3+ftz (+0.3%). Latency-bound, baseline well-optimized."
+    },
+    "e4m3_4096x256x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x256x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x256x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x512x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x512x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x512x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x1024x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x1024x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x1024x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x2048x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x2048x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x2048x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x3072x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x3072x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x4096x128": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x4096x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x4096x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x4096x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x4096x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square",
+        "sweep_mk_fixMK4096",
+        "sweep_mk_fixN4096",
+        "sweep_mn_fixK4096",
+        "sweep_mn_fixMN4096",
+        "sweep_nk_fixM4096",
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x4096x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x4096x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192",
+        "sweep_mn_fixMN4096",
+        "sweep_n"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x4096x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x4096x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x6144x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x6144x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x6144x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x8192x128": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x8192x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x8192x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x8192x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x8192x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x8192x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k",
+        "sweep_mk_fixMK4096",
+        "sweep_mk_fixN8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x8192x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x8192x8192": {
+      "status": "done",
+      "mode": "from_current_best",
+      "current_iter": 30,
+      "best_tflops": 1215.31,
+      "baseline_tflops": 1215.31,
+      "best_kernel": "tuning/srcs/e4m3_4096x8192x8192/seed.cu",
+      "note": "Reference shape — no tuning needed, counts as 30",
+      "scenarios": [
+        "sweep_k",
+        "sweep_m",
+        "sweep_n",
+        "sweep_nk_fixM4096",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x8192x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x8192x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x8192x32768": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_k"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x12288x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x12288x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x12288x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x16384x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x16384x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x16384x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_4096x32768x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_4096x32768x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_n"
+      ],
+      "region": "far"
+    },
+    "e4m3_6144x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_6144x4096x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_6144x6144x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_6144x6144x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "near"
+    },
+    "e4m3_6144x6144x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_6144x8192x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_6144x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x256x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x256x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x512x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x512x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x1024x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x1024x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x2048x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x2048x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x3072x3072": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192",
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x4096x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192",
+        "sweep_mk_fixN4096"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x6144x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x6144x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x8192x128": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x8192x256": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x8192x512": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x8192x1024": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x8192x2048": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_8192x8192x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096",
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x8192x6144": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square",
+        "sweep_m",
+        "sweep_mk_fixMK8192",
+        "sweep_mk_fixN8192",
+        "sweep_mn_fixK8192",
+        "sweep_mn_fixMN8192",
+        "sweep_nk_fixM8192",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x8192x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x8192x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixMN8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x12288x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x12288x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x16384x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x16384x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixM8192"
+      ],
+      "region": "near"
+    },
+    "e4m3_8192x32768x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixMK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_12288x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_12288x4096x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_12288x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_12288x8192x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_12288x12288x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_12288x12288x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_12288x12288x12288": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "e4m3_16384x4096x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_nk_fixNK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_16384x4096x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_16384x8192x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_m",
+        "sweep_nk_fixNK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_16384x8192x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mk_fixN8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_16384x16384x4096": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK4096"
+      ],
+      "region": "far"
+    },
+    "e4m3_16384x16384x8192": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "sweep_mn_fixK8192"
+      ],
+      "region": "far"
+    },
+    "e4m3_16384x16384x16384": {
+      "status": "pending",
+      "mode": "from_current_best",
+      "current_iter": 0,
+      "best_tflops": 0,
+      "baseline_tflops": 0,
+      "best_kernel": "",
+      "scenarios": [
+        "square"
+      ],
+      "region": "far"
+    },
+    "f16_768x768x768_fs": {
+      "status": "active",
+      "mode": "from_scratch",
+      "current_iter": 2,
+      "best_iter": 2,
+      "best_tflops": 41.5839,
+      "baseline_tflops": 34.92,
+      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter002_wn64.co",
+      "consecutive_discards": 0,
+      "scenarios": [
+        "square"
+      ],
+      "region": "far",
+      "note": "From-scratch iter 2: WARP_N=64, 41.58 TFLOPS (+19.1%)"
+    }
+  }
+}

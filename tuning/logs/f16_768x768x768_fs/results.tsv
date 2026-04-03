@@ -1,0 +1,8 @@
+# CrokTile from-scratch: f16_768x768x768_fs
+# Baseline: gemm_sp_f16.co (WARP_M=64, WARP_N=256, TILE_K=64, WARP_K=32)
+# Shape: M=768 N=768 K=768  Dtype: f16  Max iter: 150
+# Note: --use-prepack crashes on this shape (OOB in TMA). Baseline compiled with --use-warpspec only.
+iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_command
+0	baseline.co	34.92	2.31	BASELINE	-	Baseline (WN256, no prepack)	bash /tmp/f16_768x768x768_fs_baseline_nopp.cute.result --execute
+1	iter001_wn128.co	42.0946	2.78	KEEP	grid_too_small	WARP_N=128 to double grid from 36 to 72 CTAs	bash /tmp/f16_768x768x768_fs_iter001.cute.result --execute
+2	iter002_wn64.co	41.5839	2.75	KEEP	occupancy_limited	WARP_N=64 to 4x grid from 36 to 144 CTAs (12x12)	bash /tmp/f16_768x768x768_fs_iter002.cute.result --execute

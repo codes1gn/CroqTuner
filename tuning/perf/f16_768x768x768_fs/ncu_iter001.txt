@@ -1,0 +1,150 @@
+[323801] __choreo_cute_baseline.exe@127.0.0.1
+  __choreo_device_matmul_sp_f16(__half *, unsigned char *, __half *, __half *, CUtensorMap_st, CUtensorMap_st, CUtensorMap_st) (12, 3, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 9.0
+    Section: GPU Speed Of Light Throughput
+    ----------------------- ----------- ------------
+    Metric Name             Metric Unit Metric Value
+    ----------------------- ----------- ------------
+    DRAM Frequency                  Ghz         1.59
+    SM Frequency                    Mhz       965.37
+    Elapsed Cycles                cycle       38,007
+    Memory Throughput                 %         5.08
+    DRAM Throughput                   %         2.32
+    Duration                         us        39.26
+    L1/TEX Cache Throughput           %        17.53
+    Waves Per SM                                0.06
+    L2 Cache Throughput               %         6.30
+    SM Active Cycles              cycle    11,044.88
+    Compute (SM) Throughput           %         2.74
+    ----------------------- ----------- ------------
+
+    GPU Throughput Chart
+    Table Name : GPU Throughput
+    ---------------- ----------- ------------
+    Metric Name      Metric Unit Metric Value
+    ---------------- ----------- ------------
+    Memory [%]                 %         5.08
+    Compute (SM) [%]           %         2.74
+    ---------------- ----------- ------------
+
+    GPU Throughput Breakdown
+    Table Name : Compute Throughput Breakdown
+    ------------------------------------------------------------------------- ----------- ------------
+    Metric Name                                                               Metric Unit Metric Value
+    ------------------------------------------------------------------------- ----------- ------------
+    SM: Mio2rf Writeback Active                                                         %         2.74
+    SM: Pipe Shared Cycles Active                                                       %         2.54
+    SM: Pipe Tensor Cycles Active                                                       %         2.54
+    SM: Pipe Tensor Type Hmma Hgmma Qgmma Imma Igmma Bmma Bgmma Cycles Active           %         2.54
+    SM: Issue Active                                                                    %         1.13
+    SM: Inst Executed                                                                   %         1.12
+    SM: Inst Executed Pipe Adu                                                          %         0.90
+    SM: Pipe Alu Cycles Active                                                          %         0.56
+    SM: Mio Pq Read Cycles Active                                                       %         0.54
+    SM: Mio Pq Write Cycles Active                                                      %         0.54
+    SM: Inst Executed Pipe Lsu                                                          %         0.53
+    SM: Mio Inst Issued                                                                 %         0.50
+    SM: Inst Executed Pipe Uniform                                                      %         0.48
+    SM: Inst Executed Pipe Cbu Pred On Any                                              %         0.41
+    IDC: Request Cycles Active                                                          %         0.11
+    SM: Pipe Fmaheavy Cycles Active                                                     %         0.06
+    SM: Pipe Tma Cycles Active                                                          %         0.04
+    SM: Pipe Fma Cycles Active                                                          %         0.03
+    SM: Inst Executed Pipe Ipa                                                          %            0
+    SM: Inst Executed Pipe Tex                                                          %            0
+    SM: Inst Executed Pipe Xu                                                           %            0
+    SM: Instruction Throughput Internal Activity                                        %            0
+    SM: Memory Throughput Internal Activity                                             %            0
+    SM: Pipe Fp64 Cycles Active                                                         %            0
+    SM: Pipe Tensor Op Dmma Cycles Active                                               %            0
+    ------------------------------------------------------------------------- ----------- ------------
+
+    Table Name : Memory Throughput Breakdown
+    -------------------------------------------------------- ----------- ------------
+    Metric Name                                              Metric Unit Metric Value
+    -------------------------------------------------------- ----------- ------------
+    L1: Data Pipe Lsu Wavefronts                                       %         5.08
+    L2: T Tag Requests                                                 %         4.14
+    L2: Xbar2lts Cycles Active                                         %         3.72
+    L2: T Sectors                                                      %         3.47
+    L2: Lts2xbar Cycles Active                                         %         3.40
+    GPU: Compute Memory Access Throughput Internal Activity            %         3.26
+    L1: Lsu Writeback Active                                           %         3.11
+    L2: D Sectors                                                      %         3.07
+    L1: M Xbar2l1tex Read Sectors                                      %         2.90
+    L1: M L1tex2xbar Req Cycles Active                                 %         2.86
+    DRAM: Cycles Active                                                %         2.32
+    L2: D Sectors Fill Device                                          %         1.70
+    DRAM: Dram Sectors                                                 %         1.69
+    L1: Data Bank Reads                                                %         1.58
+    L1: Data Bank Writes                                               %         1.58
+    L1: Lsuin Requests                                                 %         0.61
+    L1: Texin Sm2tex Req Cycles Active                                 %         0.03
+    L1: Tmain Requests                                                 %         0.02
+    GPU: Compute Memory Request Throughput Internal Activity           %            0
+    L1: Data Pipe Tex Wavefronts                                       %            0
+    L1: F Wavefronts                                                   %            0
+    L1: M Xbar2l1tex Read Sectors Mem Dshared                          %            0
+    L1: Tex Writeback Active                                           %            0
+    L2: D Atomic Input Cycles Active                                   %            0
+    L2: D Decomp Input Sectors                                         %            0
+    L2: D Sectors Fill Sysmem                                          %            0
+    -------------------------------------------------------- ----------- ------------
+
+    OPT   This kernel grid is too small to fill the available resources on this device, resulting in only 0.1 full      
+          waves across all SMs. Look at Launch Statistics for more details.                                             
+
+    Section: GPU Speed Of Light Roofline Chart
+    ----------------------------------------------------------- ----------- ------------
+    Metric Name                                                 Metric Unit Metric Value
+    ----------------------------------------------------------- ----------- ------------
+    Theoretical Predicated-On DFMA Thread Instructions Executed  inst/cycle          228
+    Theoretical Predicated-On FFMA Thread Instructions Executed  inst/cycle       14,592
+    Predicated-On DFMA Thread Instructions Executed Per Cycle    inst/cycle            0
+    Predicated-On FFMA Thread Instructions Executed Per Cycle    inst/cycle            0
+    ----------------------------------------------------------- ----------- ------------
+
+    GPU Throughput Rooflines
+    Table Name : Floating Point Operations Roofline
+    Single Precision Roofline
+    Peak Work
+    ----------------------------------------- ----------- ------------
+    Metric Name                               Metric Unit Metric Value
+    ----------------------------------------- ----------- ------------
+    Theoretical Predicated-On FFMA Operations        inst       29,184
+    SM Frequency                                      Mhz       971.45
+    ----------------------------------------- ----------- ------------
+
+    Peak Traffic
+    --------------------------------- ----------- ------------
+    Metric Name                       Metric Unit Metric Value
+    --------------------------------- ----------- ------------
+    Theoretical DRAM Bytes Accessible Kbyte/cycle         1.28
+    DRAM Frequency                            Ghz         1.59
+    --------------------------------- ----------- ------------
+
+    Double Precision Roofline
+    Peak Work
+    ----------------------------------------- ----------- ------------
+    Metric Name                               Metric Unit Metric Value
+    ----------------------------------------- ----------- ------------
+    Theoretical Predicated-On DFMA Operations        inst          456
+    SM Frequency                                      Mhz       971.45
+    ----------------------------------------- ----------- ------------
+
+    Peak Traffic
+    --------------------------------- ----------- ------------
+    Metric Name                       Metric Unit Metric Value
+    --------------------------------- ----------- ------------
+    Theoretical DRAM Bytes Accessible Kbyte/cycle         1.28
+    DRAM Frequency                            Ghz         1.59
+    --------------------------------- ----------- ------------
+
+    Single Precision Achieved Value
+    Achieved Work
+    --------------------------------------------------------- ----------- ------------
+    Metric Name                                               Metric Unit Metric Value
+    --------------------------------------------------------- ----------- ------------
+    Predicated-On FFMA Operations Per Cycle                          inst            0
+    SM Frequency                                                      Mhz       971.45
+    Predicated-On FADD Thread Instructions Executed Per Cycle  inst/cycle            0
+    Predicated-On FMUL Thread Instructions Executed Per Cycle  inst/cycle            0
