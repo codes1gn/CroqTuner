@@ -60,3 +60,5 @@
 {"iter":31,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div + best flags","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.0547,"tflops_delta":-0.9134}
 {"iter":32,"category":"choreo","idea":"Warp-spec 1p2c: try --hoist-scale only (remove other flags)","bottleneck":"occupancy_limited","result":null}
 {"iter":32,"category":"choreo","idea":"Warp-spec 1p2c with --hoist-scale only","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.2572,"tflops_delta":-0.7109}
+{"iter":33,"category":"structural","idea":"Warp-spec 1p2c: try different shared memory layout for output","bottleneck":"occupancy_limited","result":null}
+{"iter":33,"category":"structural","idea":"Warp-spec 1p2c with --single-thread-producer + all best flags","bottleneck":"occupancy_limited","result":"KEEP","tflops":47.0913,"tflops_delta":0.1232}
