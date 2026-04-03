@@ -44,3 +44,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 38	iter035_ws1p2c_reverify.co	46.17	3.05	DISCARD	occupancy_limited	Re-verify iter035 timing	bash /tmp/f16_768x768x768_fs_iter038.cute.result --execute
 39	iter035_ws1p2c_disrtc_apprx_stp.co	46.0398	3.04	DISCARD	occupancy_limited	Warp-spec 1p2c --disable-runtime-check+apprx+stp	bash /tmp/f16_768x768x768_fs_iter039.cute.result --execute
 40	iter040_stages3.co	45.43	3.00	DISCARD	occupancy_limited	Warp-spec 1p2c STAGES=3+best flags	bash /tmp/f16_768x768x768_fs_iter040.cute.result --execute
+41	iter035_ws1p2c_ptxbarrier.co	45.8366	3.03	DISCARD	occupancy_limited	Warp-spec 1p2c --ptx-barrier+best	bash /tmp/f16_768x768x768_fs_iter041.cute.result --execute

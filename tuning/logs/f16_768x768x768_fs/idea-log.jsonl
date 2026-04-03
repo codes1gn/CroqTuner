@@ -76,3 +76,5 @@
 {"iter":39,"category":"choreo","idea":"Warp-spec 1p2c with --disable-runtime-check+apprx+stp","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.0398,"tflops_delta":-1.2802}
 {"iter":40,"category":"choreo","idea":"Warp-spec 1p2c: try TILE_M=192 with 3 consumers","bottleneck":"occupancy_limited","result":null}
 {"iter":40,"category":"choreo","idea":"Warp-spec 1p2c STAGES=3 with best flags","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.43,"tflops_delta":-1.89}
+{"iter":41,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier + best flags","bottleneck":"occupancy_limited","result":null}
+{"iter":41,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier+best flags","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8366,"tflops_delta":-1.4834}
