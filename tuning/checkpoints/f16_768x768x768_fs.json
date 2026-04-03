@@ -3,14 +3,14 @@
   "dtype": "f16",
   "shape": [768, 768, 768],
   "mode": "from_scratch",
-  "current_iter": 8,
+  "current_iter": 9,
   "max_iter": 150,
   "baseline_tflops": 34.92,
   "current_best_tflops": 42.9866,
   "current_best_iter": 6,
   "current_best_kernel": "iter006_stages4.co",
-  "consecutive_discards": 2,
+  "consecutive_discards": 3,
   "last_bottleneck": "occupancy_limited",
   "last_idea_category": "structural",
-  "timestamp": "2026-04-04T03:25:00Z"
+  "timestamp": "2026-04-04T03:30:00Z"
 }

@@ -11,3 +11,5 @@
 {"iter":7,"category":"macro","idea":"SPMM_STAGES=5 deeper pipeline (from 4)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":42.6404,"tflops_delta":-0.3462}
 {"iter":8,"category":"structural","idea":"SPMM_STAGES=4 + WARP_N=128 combination","bottleneck":"occupancy_limited","result":null}
 {"iter":8,"category":"structural","idea":"SPMM_STAGES=4 + WARP_N=128 combination","bottleneck":"occupancy_limited","result":"DISCARD","tflops":41.6947,"tflops_delta":-1.2919}
+{"iter":9,"category":"structural","idea":"Remove unused SPMM_STAGES shared memory arrays to reduce reg pressure","bottleneck":"occupancy_limited","result":null}
+{"iter":9,"category":"structural","idea":"Remove unused SPMM_STAGES shared memory arrays to reduce reg pressure","bottleneck":"occupancy_limited","result":"DISCARD","tflops":42.9693,"tflops_delta":-0.0173}
