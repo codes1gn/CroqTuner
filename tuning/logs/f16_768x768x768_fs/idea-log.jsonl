@@ -82,3 +82,5 @@
 {"iter":42,"category":"choreo","idea":"Warp-spec 1p2c without --apprx-div (just stp)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.2146,"tflops_delta":-1.1054}
 {"iter":43,"category":"choreo","idea":"Warp-spec 1p2c with --runtime-check=low instead of none","bottleneck":"occupancy_limited","result":null}
 {"iter":43,"category":"choreo","idea":"Warp-spec 1p2c with --runtime-check=low","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.2384,"tflops_delta":-2.0816}
+{"iter":44,"category":"structural","idea":"Warp-spec 1p2c with WARP_N=128, TILE_M=128 (36 CTAs, 128x128 tiles)","bottleneck":"occupancy_limited","result":null}
+{"iter":44,"category":"structural","idea":"Warp-spec 1p2c with WARP_N=128","bottleneck":"occupancy_limited","result":"DISCARD","tflops":43.6916,"tflops_delta":-3.6284}
