@@ -26,3 +26,5 @@
 {"iter":14,"category":"choreo","idea":"Warp-spec 1p2c with --stmatrix flag for output store","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8018,"tflops_delta":-0.0813}
 {"iter":15,"category":"choreo","idea":"Warp-spec 1p2c with --disable-runtime-check for perf","bottleneck":"occupancy_limited","result":null}
 {"iter":15,"category":"choreo","idea":"Warp-spec 1p2c with --disable-runtime-check for perf","bottleneck":"occupancy_limited","result":"KEEP","tflops":45.9496,"tflops_delta":0.0665}
+{"iter":16,"category":"choreo","idea":"Warp-spec 1p2c with --hoist-offset --hoist-scale flags","bottleneck":"occupancy_limited","result":null}
+{"iter":16,"category":"choreo","idea":"Warp-spec 1p2c with --hoist-scale flag","bottleneck":"occupancy_limited","result":"KEEP","tflops":46.1094,"tflops_delta":0.1598}
