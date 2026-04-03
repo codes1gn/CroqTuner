@@ -1,2 +1,4 @@
 {"iter":1,"category":"macro","idea":"WARP_N=128 to double grid from 36 to 72 CTAs (without prepack)","bottleneck":"occupancy_limited","metrics":"waves_per_sm=0.06, compute_throughput=2.74%, grid=(12,3,1)","result":"KEEP","tflops":41.1579,"tflops_delta":6.2379}
 {"iter":2,"category":"macro","idea":"WARP_N=64 to 4x grid from 36 to 144 CTAs (12x12)","bottleneck":"occupancy_limited","metrics":"waves_per_sm=0.06, grid=(12,3,1), only 36 CTAs on 114 SMs","result":null}
+{"iter":3,"category":"structural","idea":"SPMM_META_TILE_COLS=4 (from 8) to reduce metadata copy overhead","bottleneck":"occupancy_limited","metrics":"waves_per_sm=0.13, achieved_occupancy=7.8%, theoretical=62.5%","result":null}
+{"iter":3,"category":"structural","idea":"WARP_N=128 (from 64), grid 12x6=72 CTAs, m64n128k32 MMA","bottleneck":"occupancy_limited","metrics":"waves_per_sm=0.13, achieved_occupancy=7.8%, theoretical=62.5%","result":"DISCARD","tflops":41.1806,"tflops_delta":-0.4033}

@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 2,
+      "current_iter": 3,
       "best_iter": 2,
       "best_tflops": 41.5839,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter002_wn64.co",
-      "consecutive_discards": 0,
+      "consecutive_discards": 1,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 2: WARP_N=64, 41.58 TFLOPS (+19.1%)"
+      "note": "From-scratch iter 3: WARP_N=128 DISCARD (41.18 vs best 41.58)"
     }
   }
 }
