@@ -56,3 +56,5 @@
 {"iter":29,"category":"choreo","idea":"Warp-spec 1p2c base kernel (no flags)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.1786,"tflops_delta":-1.043}
 {"iter":30,"category":"choreo","idea":"Warp-spec 1p2c: try different block scheduling","bottleneck":"occupancy_limited","result":null}
 {"iter":30,"category":"choreo","idea":"Re-verify iter025 timing - found 46.97 TFLOPS","bottleneck":"occupancy_limited","result":"KEEP","tflops":46.9681,"tflops_delta":0.7465}
+{"iter":31,"category":"choreo","idea":"Warp-spec 1p2c: try --apprx-div with best flags","bottleneck":"occupancy_limited","result":null}
+{"iter":31,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div + best flags","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.0547,"tflops_delta":-0.9134}
