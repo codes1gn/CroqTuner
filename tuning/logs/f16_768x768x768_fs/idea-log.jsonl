@@ -90,3 +90,5 @@
 {"iter":46,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div+stmatrix+stp","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.942,"tflops_delta":-1.2984}
 {"iter":47,"category":"choreo","idea":"Warp-spec 1p2c with --native-bf16 flag (not relevant for f16)","bottleneck":"occupancy_limited","result":null}
 {"iter":47,"category":"choreo","idea":"Warp-spec 1p2c without --native-f16","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.0742,"tflops_delta":-1.1662}
+{"iter":48,"category":"structural","idea":"Warp-spec 1p2c: try different TMA swizzle for LHS (32 instead of 64)","bottleneck":"occupancy_limited","result":null}
+{"iter":48,"category":"structural","idea":"Re-verify iter033 - got 47.16 (variance)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":47.1609,"tflops_delta":-0.0795}
