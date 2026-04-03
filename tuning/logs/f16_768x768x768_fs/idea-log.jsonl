@@ -46,3 +46,5 @@
 {"iter":24,"category":"choreo","idea":"Warp-spec 1p2c with all best flags + --apprx-div","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.1562,"tflops_delta":-0.0532}
 {"iter":25,"category":"choreo","idea":"Warp-spec 1p2c with --runtime-check=none --hoist-scale --native-f16 -f16n (current best)","bottleneck":"occupancy_limited","result":null}
 {"iter":25,"category":"choreo","idea":"Warp-spec 1p2c with --stmatrix + all best flags","bottleneck":"occupancy_limited","result":"KEEP","tflops":46.2216,"tflops_delta":0.0122}
+{"iter":26,"category":"structural","idea":"Warp-spec 1p2c: sequential warp processing (remove parallel p)","bottleneck":"occupancy_limited","result":null}
+{"iter":26,"category":"structural","idea":"Warp-spec 1p2c with --single-thread-producer flag","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8463,"tflops_delta":-0.3753}
