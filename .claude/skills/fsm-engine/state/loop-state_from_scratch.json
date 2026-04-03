@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "fsm": {
-    "current_state": "STORE",
-    "iteration": 4,
+    "current_state": "IMPLEMENT",
+    "iteration": 5,
     "max_iteration": 150,
     "shape_key": "f16_768x768x768_fs",
     "dtype": "f16",
@@ -25,14 +25,14 @@
     "decision_made": true,
     "results_appended": true,
     "checkpoint_written": true,
-    "git_committed": false
+    "git_committed": true
   },
   "metrics": {
     "baseline_tflops": 34.92,
-    "current_best_tflops": 41.5967,
-    "current_best_iter": 4,
-    "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter004_stages2.co",
-    "this_iter_tflops": 41.5967,
+    "current_best_tflops": 41.6225,
+    "current_best_iter": 5,
+    "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter005_stages3.co",
+    "this_iter_tflops": 41.6225,
     "this_iter_decision": "KEEP",
     "consecutive_discards": 0,
     "last_bottleneck": "occupancy_limited",
@@ -46,5 +46,5 @@
     "idea_log": "tuning/logs/f16_768x768x768_fs/idea-log.jsonl"
   },
   "completion_promise": "iteration >= max_iteration AND best kernel registered AND state.json updated",
-  "last_updated": "2026-04-03T18:59:14Z"
+  "last_updated": "2026-04-03T18:59:53Z"
 }
