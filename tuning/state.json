@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 11,
+      "current_iter": 12,
       "best_iter": 10,
       "best_tflops": 45.8831,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter010_ws1p2c.co",
-      "consecutive_discards": 1,
+      "consecutive_discards": 2,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 11: ws1p2c STAGES=3 DISCARD (44.28 vs best 45.88)"
+      "note": "From-scratch iter 12: ws1p2c STAGES=4 DISCARD (44.67 vs best 45.88)"
     }
   }
 }

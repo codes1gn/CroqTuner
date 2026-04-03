@@ -15,3 +15,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 9	iter009_clean.co	42.9693	2.84	DISCARD	occupancy_limited	Remove unused SMEM arrays	bash /tmp/f16_768x768x768_fs_iter009.cute.result --execute
 10	iter010_ws1p2c.co	45.8831	3.03	KEEP	occupancy_limited	Warp-spec 1p2c async TMA pipeline	bash /tmp/f16_768x768x768_fs_iter010.cute.result --execute
 11	iter011_ws1p2c_s3.co	44.2764	2.93	DISCARD	occupancy_limited	Warp-spec 1p2c STAGES=3	bash /tmp/f16_768x768x768_fs_iter011.cute.result --execute
+12	iter012_ws1p2c_s4.co	44.674	2.95	DISCARD	occupancy_limited	Warp-spec 1p2c STAGES=4	bash /tmp/f16_768x768x768_fs_iter012.cute.result --execute

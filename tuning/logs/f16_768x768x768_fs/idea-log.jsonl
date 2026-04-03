@@ -18,3 +18,5 @@
 {"iter":10,"category":"choreo","idea":"Warp-specialized 1p2c producer-consumer pipeline with async TMA","bottleneck":"occupancy_limited","result":"KEEP","tflops":45.8831,"tflops_delta":2.8965}
 {"iter":11,"category":"choreo","idea":"Warp-spec 1p2c with STAGES=3 deeper pipeline","bottleneck":"occupancy_limited","result":null}
 {"iter":11,"category":"choreo","idea":"Warp-spec 1p2c with STAGES=3 deeper pipeline","bottleneck":"occupancy_limited","result":"DISCARD","tflops":44.2764,"tflops_delta":-1.6067}
+{"iter":12,"category":"choreo","idea":"Warp-spec 1p2c with STAGES=4 deeper pipeline","bottleneck":"occupancy_limited","result":null}
+{"iter":12,"category":"choreo","idea":"Warp-spec 1p2c with STAGES=4 deeper pipeline","bottleneck":"occupancy_limited","result":"DISCARD","tflops":44.674,"tflops_delta":-1.2091}
