@@ -13,3 +13,6 @@
 {"iter":8,"category":"structural","idea":"SPMM_STAGES=4 + WARP_N=128 combination","bottleneck":"occupancy_limited","result":"DISCARD","tflops":41.6947,"tflops_delta":-1.2919}
 {"iter":9,"category":"structural","idea":"Remove unused SPMM_STAGES shared memory arrays to reduce reg pressure","bottleneck":"occupancy_limited","result":null}
 {"iter":9,"category":"structural","idea":"Remove unused SPMM_STAGES shared memory arrays to reduce reg pressure","bottleneck":"occupancy_limited","result":"DISCARD","tflops":42.9693,"tflops_delta":-0.0173}
+{"iter":10,"category":"choreo","idea":"Try different choreo compilation flags: add --use-warpspec optimization","bottleneck":"occupancy_limited","metrics":"block_limit_regs=10, block_limit_smem=6, waves_per_sm=0.21","result":null}
+{"iter":10,"category":"choreo","idea":"Warp-specialized 1p2c producer-consumer pipeline with async TMA","bottleneck":"occupancy_limited","metrics":"block_limit_regs=10, waves_per_sm=0.21, compute=5.24%","result":null}
+{"iter":10,"category":"choreo","idea":"Warp-specialized 1p2c producer-consumer pipeline with async TMA","bottleneck":"occupancy_limited","result":"KEEP","tflops":45.8831,"tflops_delta":2.8965}

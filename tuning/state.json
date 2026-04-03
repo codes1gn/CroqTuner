@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 9,
-      "best_iter": 6,
-      "best_tflops": 42.9866,
+      "current_iter": 10,
+      "best_iter": 10,
+      "best_tflops": 45.8831,
       "baseline_tflops": 34.92,
-      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter006_stages4.co",
-      "consecutive_discards": 3,
+      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter010_ws1p2c.co",
+      "consecutive_discards": 0,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 9: clean SMEM DISCARD (42.97 vs best 42.99)"
+      "note": "From-scratch iter 10: Warp-spec 1p2c, 45.88 TFLOPS (+6.7%)"
     }
   }
 }
