@@ -9,3 +9,5 @@
 {"iter":6,"category":"macro","idea":"SPMM_STAGES=4 even deeper pipeline (from 3)","bottleneck":"occupancy_limited","metrics":"achieved_occupancy=7.8%","result":"KEEP","tflops":42.9866,"tflops_delta":1.3641}
 {"iter":7,"category":"macro","idea":"SPMM_STAGES=5 deeper pipeline (from 4)","bottleneck":"occupancy_limited","result":null}
 {"iter":7,"category":"macro","idea":"SPMM_STAGES=5 deeper pipeline (from 4)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":42.6404,"tflops_delta":-0.3462}
+{"iter":8,"category":"structural","idea":"SPMM_STAGES=4 + WARP_N=128 combination","bottleneck":"occupancy_limited","result":null}
+{"iter":8,"category":"structural","idea":"SPMM_STAGES=4 + WARP_N=128 combination","bottleneck":"occupancy_limited","result":"DISCARD","tflops":41.6947,"tflops_delta":-1.2919}
