@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 39,
+      "current_iter": 40,
       "best_iter": 35,
       "best_tflops": 47.32,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter035_ws1p2c_apprx_stp.co",
-      "consecutive_discards": 4,
+      "consecutive_discards": 5,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 39: ws1p2c --disable-runtime-check+apprx+stp DISCARD (46.04 vs best 47.32)"
+      "note": "From-scratch iter 40: ws1p2c STAGES=3+best DISCARD (45.43 vs best 47.32)"
     }
   }
 }
