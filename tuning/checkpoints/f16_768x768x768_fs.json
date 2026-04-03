@@ -3,14 +3,14 @@
   "dtype": "f16",
   "shape": [768, 768, 768],
   "mode": "from_scratch",
-  "current_iter": 22,
+  "current_iter": 23,
   "max_iter": 150,
   "baseline_tflops": 34.92,
-  "current_best_tflops": 46.206,
-  "current_best_iter": 22,
-  "current_best_kernel": "iter022_ws1p2c_rtcnone.co",
+  "current_best_tflops": 46.2094,
+  "current_best_iter": 23,
+  "current_best_kernel": "iter023_ws1p2c_f16n.co",
   "consecutive_discards": 0,
   "last_bottleneck": "occupancy_limited",
-  "last_idea_category": "choreo",
-  "timestamp": "2026-04-04T04:50:00Z"
+  "last_idea_category": "structural",
+  "timestamp": "2026-04-04T04:55:00Z"
 }

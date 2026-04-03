@@ -40,3 +40,5 @@
 {"iter":21,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div flag","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.0953,"tflops_delta":-0.0586}
 {"iter":22,"category":"choreo","idea":"Warp-spec 1p2c with --rtc=none flag","bottleneck":"occupancy_limited","result":null}
 {"iter":22,"category":"choreo","idea":"Warp-spec 1p2c with --runtime-check=none flag","bottleneck":"occupancy_limited","result":"KEEP","tflops":46.206,"tflops_delta":0.0521}
+{"iter":23,"category":"structural","idea":"Warp-spec 1p2c: add SMEM padding to LHS to avoid bank conflicts","bottleneck":"occupancy_limited","result":null}
+{"iter":23,"category":"structural","idea":"Warp-spec 1p2c with -f16n flag (redundant with --native-f16)","bottleneck":"occupancy_limited","result":"KEEP","tflops":46.2094,"tflops_delta":0.0034}
