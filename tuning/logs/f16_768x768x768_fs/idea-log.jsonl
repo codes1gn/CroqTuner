@@ -72,3 +72,5 @@
 {"iter":37,"category":"choreo","idea":"Warp-spec 1p2c with -bf16n flag (not relevant for f16)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.1318,"tflops_delta":-1.1882}
 {"iter":38,"category":"structural","idea":"Warp-spec 1p2c: try different RHS swizzle (64 instead of 128)","bottleneck":"occupancy_limited","result":null}
 {"iter":38,"category":"structural","idea":"Re-verify iter035 timing - got 46.17 (variance)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.17,"tflops_delta":-1.15}
+{"iter":39,"category":"choreo","idea":"Warp-spec 1p2c: try different combination of flags","bottleneck":"occupancy_limited","result":null}
+{"iter":39,"category":"choreo","idea":"Warp-spec 1p2c with --disable-runtime-check+apprx+stp","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.0398,"tflops_delta":-1.2802}
