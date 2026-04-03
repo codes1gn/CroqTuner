@@ -88,3 +88,5 @@
 {"iter":45,"category":"structural","idea":"Re-verify best kernels - iter033 gives 47.24 TFLOPS peak","bottleneck":"occupancy_limited","result":"KEEP","tflops":47.2404,"tflops_delta":0.0}
 {"iter":46,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div added to stmatrix+stp","bottleneck":"occupancy_limited","result":null}
 {"iter":46,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div+stmatrix+stp","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.942,"tflops_delta":-1.2984}
+{"iter":47,"category":"choreo","idea":"Warp-spec 1p2c with --native-bf16 flag (not relevant for f16)","bottleneck":"occupancy_limited","result":null}
+{"iter":47,"category":"choreo","idea":"Warp-spec 1p2c without --native-f16","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.0742,"tflops_delta":-1.1662}

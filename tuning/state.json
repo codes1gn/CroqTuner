@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 46,
+      "current_iter": 47,
       "best_iter": 45,
       "best_tflops": 47.2404,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter033_ws1p2c_stp_full.co",
-      "consecutive_discards": 1,
+      "consecutive_discards": 2,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 46: ws1p2c --apprx-div+stmatrix+stp DISCARD (45.94 vs best 47.24)"
+      "note": "From-scratch iter 47: ws1p2c without --native-f16 DISCARD (46.07 vs best 47.24)"
     }
   }
 }
