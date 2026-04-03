@@ -1,0 +1,176 @@
+{
+  "version": 3,
+  "description": "CrokTile kernel registry — manages kernels per (dtype, scenario, shape), with region clustering for seed selection. v3: expanded to 7 scenarios with 10 sweep lines, 134 unique shapes per dtype.",
+
+  "hardware": {
+    "gpu": "H800 PCIe",
+    "sm": "sm_90a",
+    "cuda": "12.4",
+    "driver": "550.54",
+    "peak_f16_tflops": 1513,
+    "peak_f8_tflops": 3026,
+    "n_sm": 114,
+    "smem_per_sm_bytes": 233472,
+    "l2_bytes": 52428800
+  },
+
+  "choreo_repo": "/home/albert/workspace/choreo",
+  "gemm_sp_paper_repo": "/home/albert/workspace/gemm_sp_paper",
+  "gemm_sp_kernel_dir": "/home/albert/workspace/choreo/benchmark/performance/gemm_sp",
+
+  "reference_kernels": {
+    "f16": {
+      "best_cu": "/home/albert/workspace/choreo/benchmark/performance/gemm_sp/gemm_sp_f16_aitune_2026-03-25_iter143/gemm_sp_f16_iter143_ref_adapted.cu",
+      "best_tflops": 655,
+      "best_hw_eff": 43.3,
+      "tuned_shape": [4096, 8192, 8192],
+      "origin_iter": 143,
+      "origin_readme": "/home/albert/workspace/choreo/benchmark/performance/gemm_sp/README_gemm_sp_f16_aitune_2026-03-25.md"
+    },
+    "e4m3": {
+      "best_cu": "/home/albert/workspace/choreo/benchmark/performance/gemm_sp/e4m3_aitune_2026-03-21_iter068/gemm_sp_e4m3_aitune_2026-03-21_iter068.cu",
+      "best_tflops": 1127,
+      "best_hw_eff": 37.2,
+      "tuned_shape": [4096, 8192, 8192],
+      "origin_iter": 68,
+      "origin_readme": "/home/albert/workspace/choreo/benchmark/performance/gemm_sp/README_e4m3_aitune_2026-03-21.md"
+    }
+  },
+
+  "baseline_kernels": {
+    "_note": "Canonical baseline .co files from choreo — starting point for from-scratch tuning. These are the simplest correct kernels: no warp-spec, no prepack, no pipeline stages.",
+    "f16": "gemm_sp_f16.co",
+    "e4m3": "gemm_sp_e4m3.co"
+  },
+
+  "scenarios": {
+    "square": {
+      "label": "M=N=K",
+      "type": "single",
+      "M": "S", "N": "S", "K": "S",
+      "sizes": [256, 512, 768, 1024, 2048, 3072, 4096, 6144, 8192, 12288, 16384]
+    },
+    "sweep_m": {
+      "label": "Vary M, fix N=K=8192",
+      "type": "single",
+      "M": "S", "N": 8192, "K": 8192,
+      "sizes": [128, 256, 384, 512, 768, 1024, 2048, 3072, 4096, 6144, 8192, 16384]
+    },
+    "sweep_n": {
+      "label": "Vary N, fix M=4096 K=8192",
+      "type": "single",
+      "M": 4096, "N": "S", "K": 8192,
+      "sizes": [256, 512, 1024, 2048, 3072, 4096, 6144, 8192, 12288, 16384, 32768]
+    },
+    "sweep_k": {
+      "label": "Vary K, fix M=4096 N=8192",
+      "type": "single",
+      "M": 4096, "N": 8192, "K": "S",
+      "sizes": [128, 256, 512, 1024, 2048, 4096, 6144, 8192, 12288, 16384, 32768]
+    },
+    "sweep_mn": {
+      "label": "M=N tied",
+      "type": "tied_pair",
+      "tied_dims": ["M", "N"],
+      "free_dim": "K",
+      "sub_series": {
+        "fixK4096":  { "label": "Fix K=4096, vary M=N",  "fixed": {"K": 4096}, "tied_sizes": [256, 512, 1024, 2048, 3072, 4096, 6144, 8192, 12288, 16384] },
+        "fixK8192":  { "label": "Fix K=8192, vary M=N",  "fixed": {"K": 8192}, "tied_sizes": [256, 512, 1024, 2048, 3072, 4096, 6144, 8192, 12288, 16384] },
+        "fixMN4096": { "label": "Fix M=N=4096, vary K",  "fixed": {"M": 4096, "N": 4096}, "vary_sizes": [128, 256, 512, 1024, 2048, 4096, 6144, 8192, 12288, 16384] },
+        "fixMN8192": { "label": "Fix M=N=8192, vary K",  "fixed": {"M": 8192, "N": 8192}, "vary_sizes": [128, 256, 512, 1024, 2048, 4096, 6144, 8192, 12288, 16384] }
+      }
+    },
+    "sweep_mk": {
+      "label": "M=K tied",
+      "type": "tied_pair",
+      "tied_dims": ["M", "K"],
+      "free_dim": "N",
+      "sub_series": {
+        "fixN4096":  { "label": "Fix N=4096, vary M=K",  "fixed": {"N": 4096}, "tied_sizes": [256, 512, 1024, 2048, 3072, 4096, 6144, 8192, 12288, 16384] },
+        "fixN8192":  { "label": "Fix N=8192, vary M=K",  "fixed": {"N": 8192}, "tied_sizes": [256, 512, 1024, 2048, 3072, 4096, 6144, 8192, 12288, 16384] },
+        "fixMK4096": { "label": "Fix M=K=4096, vary N",  "fixed": {"M": 4096, "K": 4096}, "vary_sizes": [256, 512, 1024, 2048, 4096, 6144, 8192, 12288, 16384, 32768] },
+        "fixMK8192": { "label": "Fix M=K=8192, vary N",  "fixed": {"M": 8192, "K": 8192}, "vary_sizes": [256, 512, 1024, 2048, 4096, 6144, 8192, 12288, 16384, 32768] }
+      }
+    },
+    "sweep_nk": {
+      "label": "N=K tied",
+      "type": "tied_pair",
+      "tied_dims": ["N", "K"],
+      "free_dim": "M",
+      "sub_series": {
+        "fixM4096":  { "label": "Fix M=4096, vary N=K",  "fixed": {"M": 4096}, "tied_sizes": [256, 512, 1024, 2048, 3072, 4096, 6144, 8192, 12288, 16384] },
+        "fixM8192":  { "label": "Fix M=8192, vary N=K",  "fixed": {"M": 8192}, "tied_sizes": [256, 512, 1024, 2048, 3072, 4096, 6144, 8192, 12288, 16384] },
+        "fixNK4096": { "label": "Fix N=K=4096, vary M",  "fixed": {"N": 4096, "K": 4096}, "vary_sizes": [128, 256, 512, 1024, 2048, 4096, 6144, 8192, 12288, 16384] },
+        "fixNK8192": { "label": "Fix N=K=8192, vary M",  "fixed": {"N": 8192, "K": 8192}, "vary_sizes": [128, 256, 512, 1024, 2048, 4096, 6144, 8192, 12288, 16384] }
+      }
+    }
+  },
+
+  "size_constraints": {
+    "min_M": 128,
+    "min_N": 256,
+    "min_K": 128
+  },
+
+  "region_clustering": {
+    "_note": "Shapes are clustered by distance from the reference shape (4096,8192,8192). Near shapes can adapt from the reference best with ~30 iters. Far shapes need from-scratch tuning with >=150 iters.",
+    "near_threshold": "M in [2048,8192], N in [4096,16384], K in [4096,16384]",
+    "far_threshold": "any dimension outside near range",
+    "typical_shapes_for_scratch": {
+      "_note": "14 representative far shapes — 2 per scenario at ~1/4 and ~3/4 sweep positions. All use _fs suffix in artifact keys.",
+      "f16": [
+        [768, 768, 768],
+        [12288, 12288, 12288],
+        [512, 8192, 8192],
+        [16384, 8192, 8192],
+        [4096, 1024, 8192],
+        [4096, 32768, 8192],
+        [4096, 8192, 512],
+        [4096, 8192, 32768],
+        [1024, 1024, 4096],
+        [12288, 12288, 4096],
+        [1024, 8192, 1024],
+        [12288, 8192, 12288],
+        [4096, 1024, 1024],
+        [12288, 4096, 4096]
+      ],
+      "e4m3": [
+        [768, 768, 768],
+        [12288, 12288, 12288],
+        [512, 8192, 8192],
+        [16384, 8192, 8192],
+        [4096, 1024, 8192],
+        [4096, 32768, 8192],
+        [4096, 8192, 512],
+        [4096, 8192, 32768],
+        [1024, 1024, 4096],
+        [12288, 12288, 4096],
+        [1024, 8192, 1024],
+        [12288, 8192, 12288],
+        [4096, 1024, 1024],
+        [12288, 4096, 4096]
+      ]
+    }
+  },
+
+  "build": {
+    "nvcc_flags": "-arch sm_90a -std=c++17 -DCUTLASS_ENABLE_TENSOR_CORE_MMA=1 -D__CHOREO_TARGET_CUTE__ -D__USE_CUDA_TYPE__ -D__CHOREO_DMA_DIAGNOSIS__ -Xcompiler -static-libstdc++ -O2 --use_fast_math",
+    "nvcc_includes": "-I${CHOREO_REPO}/runtime -I${CHOREO_REPO}/extern/cutlass/include -I${CHOREO_REPO}",
+    "nvcc_libs": "-L/usr/local/cuda/lib64 -lcuda",
+    "f16_extra": "-ftz=true",
+    "e4m3_extra": "",
+    "choreo_flags": "-gs -t cute -arch=sm_90a --use-warpspec --use-prepack",
+    "warmup": 10,
+    "iters": 500
+  },
+
+  "verification": {
+    "f16": { "base_tol": 1.0, "rel_tol": 0.01 },
+    "e4m3": { "base_tol": 0.5, "rel_tol": 0.01 }
+  },
+
+  "tuning_limits": {
+    "from_current_best": { "max_iter": 30, "description": "Quick adaptation from reference best" },
+    "from_scratch": { "max_iter": 150, "description": "Full tuning from baseline .co" }
+  }
+}
