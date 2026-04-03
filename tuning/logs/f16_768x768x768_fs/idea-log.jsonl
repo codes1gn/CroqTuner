@@ -32,3 +32,5 @@
 {"iter":17,"category":"choreo","idea":"Warp-spec 1p2c with --native-f16 flag","bottleneck":"occupancy_limited","result":"KEEP","tflops":46.1539,"tflops_delta":0.0445}
 {"iter":18,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier flag","bottleneck":"occupancy_limited","result":null}
 {"iter":18,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier flag","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8802,"tflops_delta":-0.2737}
+{"iter":19,"category":"choreo","idea":"Warp-spec 1p2c with --single-thread-producer=false","bottleneck":"occupancy_limited","result":null}
+{"iter":19,"category":"choreo","idea":"Warp-spec 1p2c with --single-thread-producer=false","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.1033,"tflops_delta":-0.0506}

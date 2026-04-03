@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 18,
+      "current_iter": 19,
       "best_iter": 17,
       "best_tflops": 46.1539,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter017_ws1p2c_nativef16.co",
-      "consecutive_discards": 1,
+      "consecutive_discards": 2,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 18: ws1p2c --ptx-barrier DISCARD (45.88 vs best 46.15)"
+      "note": "From-scratch iter 19: ws1p2c --single-thread-producer=false DISCARD (46.10 vs best 46.15)"
     }
   }
 }
