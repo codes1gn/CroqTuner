@@ -30,3 +30,5 @@
 {"iter":16,"category":"choreo","idea":"Warp-spec 1p2c with --hoist-scale flag","bottleneck":"occupancy_limited","result":"KEEP","tflops":46.1094,"tflops_delta":0.1598}
 {"iter":17,"category":"choreo","idea":"Warp-spec 1p2c with --native-f16 flag","bottleneck":"occupancy_limited","result":null}
 {"iter":17,"category":"choreo","idea":"Warp-spec 1p2c with --native-f16 flag","bottleneck":"occupancy_limited","result":"KEEP","tflops":46.1539,"tflops_delta":0.0445}
+{"iter":18,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier flag","bottleneck":"occupancy_limited","result":null}
+{"iter":18,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier flag","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8802,"tflops_delta":-0.2737}
