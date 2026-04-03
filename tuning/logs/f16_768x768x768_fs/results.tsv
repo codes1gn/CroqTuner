@@ -48,3 +48,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 42	iter033_ws1p2c_noapprx.co	46.2146	3.05	DISCARD	occupancy_limited	Warp-spec 1p2c without --apprx-div	bash /tmp/f16_768x768x768_fs_iter042.cute.result --execute
 43	iter035_ws1p2c_rtclow.co	45.2384	2.99	DISCARD	occupancy_limited	Warp-spec 1p2c --runtime-check=low	bash /tmp/f16_768x768x768_fs_iter043.cute.result --execute
 44	iter044_wn128.co	43.6916	2.89	DISCARD	occupancy_limited	Warp-spec 1p2c WARP_N=128	bash /tmp/f16_768x768x768_fs_iter044.cute.result --execute
+45	iter033_ws1p2c_stp_full.co	47.2404	3.12	KEEP	occupancy_limited	Re-verify best kernels	bash /tmp/f16_768x768x768_fs_iter033_verify.cute.result --execute

@@ -84,3 +84,5 @@
 {"iter":43,"category":"choreo","idea":"Warp-spec 1p2c with --runtime-check=low","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.2384,"tflops_delta":-2.0816}
 {"iter":44,"category":"structural","idea":"Warp-spec 1p2c with WARP_N=128, TILE_M=128 (36 CTAs, 128x128 tiles)","bottleneck":"occupancy_limited","result":null}
 {"iter":44,"category":"structural","idea":"Warp-spec 1p2c with WARP_N=128","bottleneck":"occupancy_limited","result":"DISCARD","tflops":43.6916,"tflops_delta":-3.6284}
+{"iter":45,"category":"structural","idea":"Warp-spec 1p2c: try mma.col.col.sp instead of mma.row.row.sp","bottleneck":"occupancy_limited","result":null}
+{"iter":45,"category":"structural","idea":"Re-verify best kernels - iter033 gives 47.24 TFLOPS peak","bottleneck":"occupancy_limited","result":"KEEP","tflops":47.2404,"tflops_delta":0.0}
