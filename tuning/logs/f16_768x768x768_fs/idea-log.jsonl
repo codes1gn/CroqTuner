@@ -34,3 +34,5 @@
 {"iter":18,"category":"choreo","idea":"Warp-spec 1p2c with --ptx-barrier flag","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8802,"tflops_delta":-0.2737}
 {"iter":19,"category":"choreo","idea":"Warp-spec 1p2c with --single-thread-producer=false","bottleneck":"occupancy_limited","result":null}
 {"iter":19,"category":"choreo","idea":"Warp-spec 1p2c with --single-thread-producer=false","bottleneck":"occupancy_limited","result":"DISCARD","tflops":46.1033,"tflops_delta":-0.0506}
+{"iter":20,"category":"structural","idea":"Warp-spec 1p2c: replace dma.copy with tma.copy for metadata","bottleneck":"occupancy_limited","result":null}
+{"iter":20,"category":"structural","idea":"Warp-spec 1p2c with --stmatrix + best flags combo","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.7603,"tflops_delta":-0.3936}
