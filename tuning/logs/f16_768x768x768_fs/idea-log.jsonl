@@ -22,3 +22,5 @@
 {"iter":12,"category":"choreo","idea":"Warp-spec 1p2c with STAGES=4 deeper pipeline","bottleneck":"occupancy_limited","result":"DISCARD","tflops":44.674,"tflops_delta":-1.2091}
 {"iter":13,"category":"choreo","idea":"Warp-spec 1p3c with 4 warps (1 producer + 3 consumers)","bottleneck":"occupancy_limited","result":null}
 {"iter":13,"category":"choreo","idea":"Warp-spec 1p2c with WARP_N=128","bottleneck":"occupancy_limited","result":"DISCARD","tflops":43.7336,"tflops_delta":-2.1495}
+{"iter":14,"category":"choreo","idea":"Warp-spec 1p1c with TILE_M=64, 144 CTAs for max parallelism","bottleneck":"occupancy_limited","result":null}
+{"iter":14,"category":"choreo","idea":"Warp-spec 1p2c with --stmatrix flag for output store","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8018,"tflops_delta":-0.0813}
