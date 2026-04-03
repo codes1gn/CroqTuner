@@ -24,3 +24,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 18	iter017_ws1p2c_ptxbarrier.co	45.8802	3.03	DISCARD	occupancy_limited	Warp-spec 1p2c --ptx-barrier	bash /tmp/f16_768x768x768_fs_iter018.cute.result --execute
 19	iter017_ws1p2c_nost.co	46.1033	3.05	DISCARD	occupancy_limited	Warp-spec 1p2c --single-thread-producer=false	bash /tmp/f16_768x768x768_fs_iter019.cute.result --execute
 20	iter017_ws1p2c_stmatrix.co	45.7603	3.02	DISCARD	occupancy_limited	Warp-spec 1p2c --stmatrix+best flags	bash /tmp/f16_768x768x768_fs_iter020.cute.result --execute
+21	iter017_ws1p2c_apprxdiv.co	46.0953	3.04	DISCARD	occupancy_limited	Warp-spec 1p2c --apprx-div	bash /tmp/f16_768x768x768_fs_iter021.cute.result --execute
