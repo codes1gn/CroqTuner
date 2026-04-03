@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 10,
+      "current_iter": 11,
       "best_iter": 10,
       "best_tflops": 45.8831,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter010_ws1p2c.co",
-      "consecutive_discards": 0,
+      "consecutive_discards": 1,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 10: Warp-spec 1p2c, 45.88 TFLOPS (+6.7%)"
+      "note": "From-scratch iter 11: ws1p2c STAGES=3 DISCARD (44.28 vs best 45.88)"
     }
   }
 }
