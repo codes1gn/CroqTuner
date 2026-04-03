@@ -9,3 +9,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 3	iter003_wn128.co	41.1806	2.72	DISCARD	occupancy_limited	WARP_N=128 (from 64), grid 12x6=72 CTAs	bash /tmp/f16_768x768x768_fs_iter003.cute.result --execute
 4	iter004_stages2.co	41.5967	2.75	KEEP	occupancy_limited	SPMM_STAGES=2 double-buffering pipeline	bash /tmp/f16_768x768x768_fs_iter004.cute.result --execute
 5	iter005_stages3.co	41.6225	2.75	KEEP	occupancy_limited	SPMM_STAGES=3 deeper pipeline (from 2)	bash /tmp/f16_768x768x768_fs_iter005.cute.result --execute
+6	iter006_stages4.co	42.9866	2.84	KEEP	occupancy_limited	SPMM_STAGES=4 even deeper pipeline	bash /tmp/f16_768x768x768_fs_iter006.cute.result --execute

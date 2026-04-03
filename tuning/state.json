@@ -3313,17 +3313,17 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 5,
-      "best_iter": 5,
-      "best_tflops": 41.6225,
+      "current_iter": 6,
+      "best_iter": 6,
+      "best_tflops": 42.9866,
       "baseline_tflops": 34.92,
-      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter005_stages3.co",
+      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter006_stages4.co",
       "consecutive_discards": 0,
       "scenarios": [
         "square"
       ],
       "region": "far",
-      "note": "From-scratch iter 5: SPMM_STAGES=3, 41.62 TFLOPS"
+      "note": "From-scratch iter 6: SPMM_STAGES=4, 42.99 TFLOPS (+3.3%)"
     }
   }
 }

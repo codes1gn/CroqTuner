@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "fsm": {
-    "current_state": "IMPLEMENT",
-    "iteration": 5,
+    "current_state": "STORE",
+    "iteration": 6,
     "max_iteration": 150,
     "shape_key": "f16_768x768x768_fs",
     "dtype": "f16",
@@ -21,22 +21,22 @@
     "idea_logged": true,
     "compile_succeeded": true,
     "correctness_verified": true,
-    "timing_captured": true,
-    "decision_made": true,
-    "results_appended": true,
-    "checkpoint_written": true,
-    "git_committed": true
+    "timing_captured": false,
+    "decision_made": false,
+    "results_appended": false,
+    "checkpoint_written": false,
+    "git_committed": false
   },
   "metrics": {
     "baseline_tflops": 34.92,
-    "current_best_tflops": 41.6225,
-    "current_best_iter": 5,
-    "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter005_stages3.co",
-    "this_iter_tflops": 41.6225,
+    "current_best_tflops": 42.9866,
+    "current_best_iter": 6,
+    "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter006_stages4.co",
+    "this_iter_tflops": 42.9866,
     "this_iter_decision": "KEEP",
     "consecutive_discards": 0,
     "last_bottleneck": "occupancy_limited",
-    "last_idea_category": "structural"
+    "last_idea_category": "macro"
   },
   "paths": {
     "shape_dir_logs": "tuning/logs/f16_768x768x768_fs",
@@ -46,5 +46,5 @@
     "idea_log": "tuning/logs/f16_768x768x768_fs/idea-log.jsonl"
   },
   "completion_promise": "iteration >= max_iteration AND best kernel registered AND state.json updated",
-  "last_updated": "2026-04-03T18:59:53Z"
+  "last_updated": "2026-04-03T19:04:04Z"
 }

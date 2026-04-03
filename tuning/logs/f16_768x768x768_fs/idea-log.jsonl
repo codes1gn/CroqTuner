@@ -5,3 +5,5 @@
 {"iter":4,"category":"structural","idea":"SPMM_STAGES=2 double-buffering pipeline","bottleneck":"occupancy_limited","metrics":"waves_per_sm=0.13, achieved_occupancy=7.8%","result":null}
 {"iter":5,"category":"structural","idea":"Output SMEM padding [WARP_M, WARP_N+8] to avoid bank conflicts","bottleneck":"occupancy_limited","metrics":"achieved_occupancy=7.8%, theoretical=62.5%","result":null}
 {"iter":5,"category":"structural","idea":"SPMM_STAGES=3 deeper pipeline (from 2)","bottleneck":"occupancy_limited","metrics":"achieved_occupancy=7.8%, theoretical=62.5%","result":"KEEP","tflops":41.6225,"tflops_delta":0.0258}
+{"iter":6,"category":"macro","idea":"SPMM_STAGES=4 even deeper pipeline (from 3)","bottleneck":"occupancy_limited","metrics":"achieved_occupancy=7.8%","result":null}
+{"iter":6,"category":"macro","idea":"SPMM_STAGES=4 even deeper pipeline (from 3)","bottleneck":"occupancy_limited","metrics":"achieved_occupancy=7.8%","result":"KEEP","tflops":42.9866,"tflops_delta":1.3641}
