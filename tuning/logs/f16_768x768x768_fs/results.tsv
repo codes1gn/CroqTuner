@@ -97,3 +97,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 91	iter091_direct_store.co	45.4446	3.00	DISCARD	compute_bound	dma.copy output instead of tma.copy — eliminate TMA overhead	bash /tmp/f16_768x768x768_fs_iter091.cute.result --execute
 92	iter092_wn256.co	37.5609	2.48	DISCARD	compute_bound	WARP_N=256 (24 CTAs, maximum N tile) — 10 consecutive discards, radical tile shape change	bash /tmp/f16_768x768x768_fs_iter092.cute.result --execute
 93	iter093_wn80_base.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=80 EDSL tile variant from current best to probe compute-bound tile width sensitivity	compile_error
+94	iter094_wn112_base.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=112 legal sparse-MMA tile-width probe from current best	compile_error
