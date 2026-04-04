@@ -1,0 +1,30 @@
+/tmp/1775272405084120601_123154446640960/__choreo_cute_iter058_1p1c_ptx.cu(264): warning #177-D: variable "anon_1" was declared but never referenced
+              auto anon_1 = __choreo_vg4id_x - 1;
+                   ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/tmp/1775272405084120601_123154446640960/__choreo_cute_iter058_1p1c_ptx.cu(265): warning #177-D: variable "anon_2" was declared but never referenced
+              auto anon_2 = __choreo_vg4id_x - 1;
+                   ^
+
+/tmp/1775272405084120601_123154446640960/__choreo_cute_iter058_1p1c_ptx.cu(236): warning #177-D: variable "anon_3" was declared but never referenced
+      auto anon_3 = __choreo_vg4id_x - 1;
+           ^
+
+/tmp/1775272405084120601_123154446640960/__choreo_cute_iter058_1p1c_ptx.cu(158): warning #177-D: variable "__choreo_device_matmul_sp_f16__ring__" was declared but never referenced
+    auto __choreo_device_matmul_sp_f16__ring__ = nullptr;
+         ^
+
+/tmp/1775272405084120601_123154446640960/__choreo_cute_iter058_1p1c_ptx.cu(170): warning #20054-D: dynamic initialization is not supported for a function-scope static __shared__ variable within a __device__/__global__ function
+    __attribute__((shared)) cuda::barrier<cuda::thread_scope_block> full[2];
+                                                                    ^
+
+/tmp/1775272405084120601_123154446640960/__choreo_cute_iter058_1p1c_ptx.cu(178): warning #20054-D: dynamic initialization is not supported for a function-scope static __shared__ variable within a __device__/__global__ function
+    __attribute__((shared)) cuda::barrier<cuda::thread_scope_block> empty[2];
+                                                                    ^
+
+TFLOPS: 49.167
+HW efficiency: 3.24964%
+Test Passed (verify skipped)
+
