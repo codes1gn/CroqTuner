@@ -62,3 +62,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 56	iter056_tile64_1p1c.co	48.2012	3.19	KEEP	occupancy_limited	TILE_M=64+1p1c (288 CTAs×256 threads)	bash /tmp/f16_768x768x768_fs_iter056.cute.result --execute
 57	iter057_1p1c_stages3.co	47.2934	3.12	DISCARD	occupancy_limited	TILE_M=64+1p1c+STAGES=3	bash /tmp/f16_768x768x768_fs_iter057.cute.result --execute
 58	iter058_1p1c_ptx.co	48.3024	3.19	DISCARD	occupancy_limited	TILE_M=64+1p1c+--ptx-barrier	bash /tmp/f16_768x768x768_fs_iter058.cute.result --execute
+59	iter059_wn16.co	41.9898	2.78	DISCARD	occupancy_limited	WARP_N=16 (too small for tensor core)	bash /tmp/f16_768x768x768_fs_iter059.cute.result --execute
