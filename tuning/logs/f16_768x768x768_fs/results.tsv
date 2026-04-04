@@ -91,3 +91,9 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 85	iter085_wn96_rtclow.co	45.8605	3.03	DISCARD	occupancy_limited	WARP_N=96+rtc=low+native-f16+apprx-div+ptx-barrier	bash /tmp/f16_768x768x768_fs_iter085.cute.result --execute
 86	iter086_swiz128.co	0.0	0.0	DISCARD	runtime_crash	LHS swiz<128> incompatible with TILE_K=64	runtime_crash
 87	iter087_tk128.co	0.0	0.0	DISCARD	runtime_crash	TILE_K=128 — halves K-loop iterations but crashes (CUDA invalid argument)	runtime_crash
+88	iter088_wn128.co	45.9373	3.04	DISCARD	latency_bound	WARP_N=128 (72 CTAs, fewer but larger) — 5+ consecutive discards, trying different tile shape	bash /tmp/f16_768x768x768_fs_iter088.cute.result --execute
+89	iter089_wn192.co	42.1146	2.78	DISCARD	latency_bound	WARP_N=192 (48 CTAs, very large tiles) — 7 consecutive discards, radical approach	bash /tmp/f16_768x768x768_fs_iter089.cute.result --execute
+90	iter090_rhs64.co	0.0	0.0	DISCARD	runtime_crash	RHS swiz<64> instead of swiz<128> — incompatible with WARP_N=96 config	runtime_crash
+91	iter091_direct_store.co	45.4446	3.00	DISCARD	compute_bound	dma.copy output instead of tma.copy — eliminate TMA overhead	bash /tmp/f16_768x768x768_fs_iter091.cute.result --execute
+92	iter092_wn256.co	37.5609	2.48	DISCARD	compute_bound	WARP_N=256 (24 CTAs, maximum N tile) — 10 consecutive discards, radical tile shape change	bash /tmp/f16_768x768x768_fs_iter092.cute.result --execute
+94	iter094_splitk.co	0.3728	0.02	DISCARD	compute_bound	Radical split-K restructure attempt	bash /tmp/f16_768x768x768_fs_iter094.cute.result --execute
