@@ -1,10 +1,10 @@
 {
   "shape_key": "f16_768x768x768_fs",
-  "iteration": 96,
+  "iteration": 97,
   "current_best_iter": 82,
   "current_best_tflops": 47.0379,
   "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter082_wn96.co",
-  "consecutive_discards": 13,
+  "consecutive_discards": 14,
   "last_bottleneck": "grid_too_small",
-  "last_idea_category": "choreo"
+  "last_idea_category": "ncu_micro"
 }
