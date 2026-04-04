@@ -12,8 +12,8 @@
   "best_iter": 22,
   "best_tflops": 210.727,
   "baseline_tflops": 42.068,
-  "best_kernel": "tuning/srcs/f16_256x4096x256/iter022_all256_wait0.cu",
+  "best_kernel": "kernels/gemm_sp_f16/f16_256x4096x256_best.cu",
   "consecutive_discards": 8,
-  "status": "active",
+  "status": "done",
   "last_updated": "2026-04-04T14:49:45Z"
 }
