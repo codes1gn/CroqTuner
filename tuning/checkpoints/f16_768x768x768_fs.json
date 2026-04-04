@@ -1,14 +1,10 @@
 {
   "shape_key": "f16_768x768x768_fs",
-  "dtype": "f16",
-  "mode": "from_scratch",
-  "iteration": 63,
-  "max_iteration": 150,
-  "baseline_tflops": 34.92,
-  "current_best_tflops": 48.5236,
-  "current_best_iter": 63,
-  "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter063_meta4.co",
-  "consecutive_discards": 0,
+  "iteration": 86,
+  "current_best_iter": 82,
+  "current_best_tflops": 47.0379,
+  "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter082_wn96.co",
+  "consecutive_discards": 4,
   "last_bottleneck": "occupancy_limited",
-  "last_idea_category": "macro"
+  "last_idea_category": "ncu_micro"
 }

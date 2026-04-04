@@ -1,0 +1,3 @@
+iter086: runtime_crash - CUDA error 700 (illegal memory access)
+swiz<128> incompatible with LHS tile shape (TILE_K=64, WARP_M=64)
+TFLOPS: 0

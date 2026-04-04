@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "fsm": {
-    "current_state": "IMPLEMENT",
-    "iteration": 49,
+    "current_state": "STORE",
+    "iteration": 86,
     "max_iteration": 150,
     "shape_key": "f16_768x768x768_fs",
     "dtype": "f16",
@@ -14,7 +14,7 @@
     "mode": "from_scratch"
   },
   "guard_flags": {
-    "gpu_health_checked": true,
+    "gpu_health_checked": false,
     "ncu_ran_this_iter": true,
     "bottleneck_identified": true,
     "idea_is_novel": true,
@@ -29,14 +29,14 @@
   },
   "metrics": {
     "baseline_tflops": 34.92,
-    "current_best_tflops": 47.2404,
-    "current_best_iter": 45,
-    "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter033_ws1p2c_stp_full.co",
-    "this_iter_tflops": 45.8181,
+    "current_best_tflops": 47.0379,
+    "current_best_iter": 82,
+    "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter082_wn96.co",
+    "this_iter_tflops": 0,
     "this_iter_decision": "DISCARD",
     "consecutive_discards": 4,
     "last_bottleneck": "occupancy_limited",
-    "last_idea_category": "choreo"
+    "last_idea_category": "ncu_micro"
   },
   "paths": {
     "shape_dir_logs": "tuning/logs/f16_768x768x768_fs",
@@ -46,5 +46,5 @@
     "idea_log": "tuning/logs/f16_768x768x768_fs/idea-log.jsonl"
   },
   "completion_promise": "iteration >= max_iteration AND best kernel registered AND state.json updated",
-  "last_updated": "2026-04-03T20:05:48Z"
+  "last_updated": "2026-04-04T04:43:04Z"
 }
