@@ -69,3 +69,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 63	iter063_meta4.co	48.5236	3.21	KEEP	occupancy_limited	TILE_M=64+1p1c+META_TILE_COLS=4	bash /tmp/f16_768x768x768_fs_iter063.cute.result --execute
 64	iter064_drc_wn128.co	42.1673	2.78	DISCARD	occupancy_limited	WARP_N=128+--disable-runtime-check (no warpspec)	bash /tmp/f16_768x768x768_fs_iter064.cute.result --execute
 65	iter065_nativef16.co	41.2494	2.73	DISCARD	occupancy_limited	-f16n flag (native f16 arithmetic)	bash /tmp/f16_768x768x768_fs_iter065.cute.result --execute
+66	iter066_hoistscale.co	41.9841	2.77	DISCARD	occupancy_limited	--hoist-scale flag	bash /tmp/f16_768x768x768_fs_iter066.cute.result --execute
