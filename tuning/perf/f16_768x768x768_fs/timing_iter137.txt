@@ -1,0 +1,28 @@
+TFLOPS: 38.9757
+HW efficiency: 2.57605%
+f16_sp: 0 errors
+Test Passed
+/tmp/1775299988832460676_126356363519808/__choreo_cute_iter137_wn192_no_ptx.cu(247): warning #177-D: variable "__choreo_vg4id_x" was declared but never referenced
+            auto __choreo_vg4id_x = threadIdx.x / 128;
+                 ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/tmp/1775299988832460676_126356363519808/__choreo_cute_iter137_wn192_no_ptx.cu(157): warning #177-D: variable "__choreo_device_matmul_sp_f16__ring__" was declared but never referenced
+    auto __choreo_device_matmul_sp_f16__ring__ = nullptr;
+         ^
+
+/tmp/1775299988832460676_126356363519808/__choreo_cute_iter137_wn192_no_ptx.cu(160): warning #20054-D: dynamic initialization is not supported for a function-scope static __shared__ variable within a __device__/__global__ function
+    __attribute__((shared)) cuda::barrier<cuda::thread_scope_block> choreo_copy_atom_t_0_barrier;
+                                                                    ^
+
+/tmp/1775299988832460676_126356363519808/__choreo_cute_iter137_wn192_no_ptx.cu(168): warning #20054-D: dynamic initialization is not supported for a function-scope static __shared__ variable within a __device__/__global__ function
+    __attribute__((shared)) cuda::barrier<cuda::thread_scope_block> choreo_copy_atom_t_1_barrier;
+                                                                    ^
+
+/tmp/1775299988832460676_126356363519808/__choreo_cute_iter137_wn192_no_ptx.cu(176): warning #20054-D: dynamic initialization is not supported for a function-scope static __shared__ variable within a __device__/__global__ function
+    __attribute__((shared)) cuda::barrier<cuda::thread_scope_block> choreo_copy_atom_t_2_barrier;
+                                                                    ^
+
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 666 by compiler to allow use of registers in GMMA in function '_Z29__choreo_device_matmul_sp_f16P6__halfPhS0_S0_14CUtensorMap_stS2_S2_'
+ptxas info    : (C7510) Potential Performance Loss: wgmma.mma_async instructions are serialized due to wgmma pipeline crossing function boundary at a function call in the function '_Z29__choreo_device_matmul_sp_f16P6__halfPhS0_S0_14CUtensorMap_stS2_S2_'
