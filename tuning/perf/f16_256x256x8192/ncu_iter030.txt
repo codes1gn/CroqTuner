@@ -1,0 +1,5 @@
+==PROF== Connected to process 480097 (/tmp/f16_256x256x8192_profile_iter030)
+Test Passed (verify skipped)
+
+==PROF== Disconnected from process 480097
+==WARNING== No kernels were profiled.
