@@ -124,3 +124,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 118	iter118_wn184_base.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=184 legal sparse-MMA tile-width probe from current best	compile_error
 119	iter119_wn192_stmatrix.co	42.0943	2.78	DISCARD	compute_bound	WARP_N=192 + --stmatrix on current-best pipeline	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter119.cute.result" --execute
 120	iter120_wn96_no_ptx.co	45.2315	2.99	DISCARD	compute_bound	WARP_N=96 without --ptx-barrier to test barrier overhead sensitivity	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter120.cute.result" --execute
+121	iter121_wn200_base.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=200 legal sparse-MMA tile-width probe from current best	incorrect
