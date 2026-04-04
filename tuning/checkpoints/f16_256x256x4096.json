@@ -8,12 +8,12 @@
   ],
   "mode": "from_current_best",
   "max_iter": 30,
-  "current_iter": 13,
+  "current_iter": 14,
   "best_iter": 4,
   "best_tflops": 14.4419,
   "baseline_tflops": 14.0838,
   "best_kernel": "tuning/srcs/f16_256x256x4096/iter004_l2rhs128.cu",
-  "consecutive_discards": 9,
+  "consecutive_discards": 10,
   "status": "active",
-  "last_updated": "2026-04-04T13:16:35Z"
+  "last_updated": "2026-04-04T13:17:10Z"
 }

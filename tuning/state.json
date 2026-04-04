@@ -176,7 +176,7 @@
     "f16_256x256x4096": {
       "status": "active",
       "mode": "from_current_best",
-      "current_iter": 13,
+      "current_iter": 14,
       "best_tflops": 14.4419,
       "baseline_tflops": 14.0838,
       "best_kernel": "tuning/srcs/f16_256x256x4096/iter004_l2rhs128.cu",
@@ -185,7 +185,7 @@
       ],
       "region": "far",
       "best_iter": 4,
-      "consecutive_discards": 9
+      "consecutive_discards": 10
     },
     "f16_256x256x8192": {
       "status": "pending",
