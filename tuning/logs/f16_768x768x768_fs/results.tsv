@@ -152,3 +152,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 146	iter146_wn256_rhs64.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=256 + RHS swiz<64> to shift shared-memory traffic pattern	incorrect
 147	iter147_wn112_lhs128.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=112 + LHS swiz<128> to test packed-A layout at wider swizzle	compile_error
 148	iter148_wn128_swizswap.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=128 + swap LHS/RHS swizzle factors (128/64)	incorrect
+149	iter149_wn64_direct_store.co	48.2918	3.19	DISCARD	compute_bound	WARP_N=64 + dma.copy output store instead of TMA epilogue	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter149.cute.result" --execute
