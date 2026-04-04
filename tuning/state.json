@@ -176,7 +176,7 @@
     "f16_256x256x4096": {
       "status": "active",
       "mode": "from_current_best",
-      "current_iter": 21,
+      "current_iter": 22,
       "best_tflops": 14.4712,
       "baseline_tflops": 14.0838,
       "best_kernel": "tuning/srcs/f16_256x256x4096/iter019_port_meta4_dns.cu",
@@ -185,7 +185,7 @@
       ],
       "region": "far",
       "best_iter": 19,
-      "consecutive_discards": 1
+      "consecutive_discards": 2
     },
     "f16_256x256x8192": {
       "status": "pending",
