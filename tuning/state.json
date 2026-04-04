@@ -204,7 +204,7 @@
     "f16_256x4096x256": {
       "status": "active",
       "mode": "from_current_best",
-      "current_iter": 18,
+      "current_iter": 19,
       "best_tflops": 210.12,
       "baseline_tflops": 42.068,
       "best_kernel": "tuning/srcs/f16_256x4096x256/iter018_ns_both_100_200.cu",
@@ -213,8 +213,8 @@
       ],
       "region": "far",
       "best_iter": 18,
-      "consecutive_discards": 0,
-      "last_updated": "2026-04-04T14:46:50Z"
+      "consecutive_discards": 1,
+      "last_updated": "2026-04-04T14:47:04Z"
     },
     "f16_256x4096x4096": {
       "status": "pending",
