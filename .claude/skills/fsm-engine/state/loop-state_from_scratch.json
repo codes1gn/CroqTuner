@@ -2,7 +2,7 @@
   "schema_version": 1,
   "fsm": {
     "current_state": "STORE",
-    "iteration": 137,
+    "iteration": 138,
     "max_iteration": 150,
     "shape_key": "f16_768x768x768_fs",
     "dtype": "f16",
@@ -32,9 +32,9 @@
     "current_best_tflops": 48.567,
     "current_best_iter": 129,
     "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter129_wn96_no_native.co",
-    "this_iter_tflops": 38.9757,
+    "this_iter_tflops": 48.5029,
     "this_iter_decision": "DISCARD",
-    "consecutive_discards": 8,
+    "consecutive_discards": 9,
     "last_bottleneck": "compute_bound",
     "last_idea_category": "ncu_micro"
   },
@@ -46,5 +46,5 @@
     "idea_log": "tuning/logs/f16_768x768x768_fs/idea-log.jsonl"
   },
   "completion_promise": "iteration >= max_iteration AND best kernel registered AND state.json updated",
-  "last_updated": "2026-04-04T10:54:00Z"
+  "last_updated": "2026-04-04T10:54:52Z"
 }
