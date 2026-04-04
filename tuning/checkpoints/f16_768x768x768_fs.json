@@ -1,12 +1,12 @@
 {
   "shape_key": "f16_768x768x768_fs",
-  "iteration": 118,
-  "current_iter": 118,
+  "iteration": 119,
+  "current_iter": 119,
   "current_best_iter": 117,
   "current_best_tflops": 47.6603,
   "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter117_wn64_hoist.co",
   "baseline_tflops": 34.92,
-  "consecutive_discards": 1,
+  "consecutive_discards": 2,
   "last_bottleneck": "compute_bound",
-  "last_idea_category": "choreo"
+  "last_idea_category": "ncu_micro"
 }
