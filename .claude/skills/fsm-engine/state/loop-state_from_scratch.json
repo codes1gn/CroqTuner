@@ -2,7 +2,7 @@
   "schema_version": 1,
   "fsm": {
     "current_state": "STORE",
-    "iteration": 132,
+    "iteration": 133,
     "max_iteration": 150,
     "shape_key": "f16_768x768x768_fs",
     "dtype": "f16",
@@ -19,7 +19,7 @@
     "bottleneck_identified": true,
     "idea_is_novel": true,
     "idea_logged": true,
-    "compile_succeeded": false,
+    "compile_succeeded": true,
     "correctness_verified": false,
     "timing_captured": false,
     "decision_made": true,
@@ -33,10 +33,10 @@
     "current_best_iter": 129,
     "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter129_wn96_no_native.co",
     "this_iter_tflops": 0,
-    "this_iter_decision": "DISCARD_COMPILE_FAIL",
-    "consecutive_discards": 3,
+    "this_iter_decision": "DISCARD_INCORRECT",
+    "consecutive_discards": 4,
     "last_bottleneck": "compute_bound",
-    "last_idea_category": "ncu_micro"
+    "last_idea_category": "choreo"
   },
   "paths": {
     "shape_dir_logs": "tuning/logs/f16_768x768x768_fs",
@@ -46,5 +46,5 @@
     "idea_log": "tuning/logs/f16_768x768x768_fs/idea-log.jsonl"
   },
   "completion_promise": "iteration >= max_iteration AND best kernel registered AND state.json updated",
-  "last_updated": "2026-04-04T10:51:30Z"
+  "last_updated": "2026-04-04T10:51:57Z"
 }

@@ -136,3 +136,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 130	iter130_wn224_base.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=224 legal sparse-MMA tile-width probe from current best	incorrect
 131	iter131_wn256_hoist.co	38.5090	2.55	DISCARD	compute_bound	WARP_N=256 + --hoist-scale on current-best pipeline	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter131.cute.result" --execute
 132	iter132_wn112_no_ptx.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=112 without --ptx-barrier to test barrier overhead sensitivity	compile_error
+133	iter133_wn232_base.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=232 legal sparse-MMA tile-width probe from current best	incorrect
