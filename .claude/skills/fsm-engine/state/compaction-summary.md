@@ -1,20 +1,17 @@
 # Compaction Summary
 ## Last Updated
-2026-04-04T10:58:44Z
+2026-04-04T11:32:57Z
 ## IMMEDIATE ACTION
-Read `loop-state_from_scratch.json` and resume from state `STORE` at iteration 150.
+Read `loop-state.json` and resume from state `STORE` at iteration 1.
 ## Current Task
-- Shape: f16_768x768x768_fs (from_scratch, 150 iters max)
-- Current best: 48.5670 TFLOPS at iter129
-- Baseline: 34.92 TFLOPS
-- Last bottleneck: compute_bound
-- Consecutive discards: 21
+- Shape: f16_128x8192x8192 (from_current_best, 30 iters max)
+- Current best: 188.8310 TFLOPS at iter 0
+- Baseline: 188.8310 TFLOPS
+- Last bottleneck: ncu_timeout
+- Consecutive discards: 1
 ## Recent History (last 5 iterations)
-- iter146: WARP_N=256 + RHS swiz<64> to shift shared-memory traffic pattern -> DISCARD_INCORRECT @ 0.0000 TFLOPS
-- iter147: WARP_N=112 + LHS swiz<128> to test packed-A layout at wider swizzle -> DISCARD_COMPILE_FAIL @ 0.0000 TFLOPS
-- iter148: WARP_N=128 + swap LHS/RHS swizzle factors (128/64) -> DISCARD_INCORRECT @ 0.0000 TFLOPS
-- iter149: WARP_N=64 + dma.copy output store instead of TMA epilogue -> DISCARD @ 48.2918 TFLOPS
-- iter150: WARP_N=96 + dma.copy output store with output padding 8 -> DISCARD @ 46.9121 TFLOPS
+- iter000: shape-aware seed baseline -> BASELINE @ 188.8310 TFLOPS
+- iter001: L2_256B promotion on all tensor maps -> DISCARD @ 187.5540 TFLOPS
 ## DO NOT
 - Do NOT re-run completed iterations
 - Do NOT ask the user what to do — resume autonomously

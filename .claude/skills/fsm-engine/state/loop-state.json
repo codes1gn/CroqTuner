@@ -2,19 +2,19 @@
   "schema_version": 1,
   "fsm": {
     "current_state": "STORE",
-    "iteration": 3,
-    "max_iteration": 150,
-    "shape_key": "f16_768x768x768_fs",
+    "iteration": 1,
+    "max_iteration": 30,
+    "shape_key": "f16_128x8192x8192",
     "dtype": "f16",
     "shape": [
-      768,
-      768,
-      768
+      128,
+      8192,
+      8192
     ],
-    "mode": "from_scratch"
+    "mode": "from_current_best"
   },
   "guard_flags": {
-    "gpu_health_checked": true,
+    "gpu_health_checked": false,
     "ncu_ran_this_iter": true,
     "bottleneck_identified": true,
     "idea_is_novel": true,
@@ -28,23 +28,23 @@
     "git_committed": false
   },
   "metrics": {
-    "baseline_tflops": 34.92,
-    "current_best_tflops": 34.92,
+    "baseline_tflops": 188.831,
+    "current_best_tflops": 188.831,
     "current_best_iter": 0,
-    "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/baseline.co",
-    "this_iter_tflops": 280.07,
+    "current_best_kernel": "tuning/srcs/f16_128x8192x8192/seed.cu",
+    "this_iter_tflops": 187.554,
     "this_iter_decision": "DISCARD",
-    "consecutive_discards": 6,
-    "last_bottleneck": "smem_throughput",
-    "last_idea_category": "choreo"
+    "consecutive_discards": 1,
+    "last_bottleneck": "ncu_timeout",
+    "last_idea_category": "macro"
   },
   "paths": {
-    "shape_dir_logs": "tuning/logs/f16_768x768x768_fs",
-    "shape_dir_srcs": "tuning/srcs/f16_768x768x768_fs",
-    "shape_dir_perf": "tuning/perf/f16_768x768x768_fs",
-    "checkpoint_file": "tuning/checkpoints/f16_768x768x768_fs.json",
-    "idea_log": "tuning/logs/f16_768x768x768_fs/idea-log.jsonl"
+    "shape_dir_logs": "tuning/logs/f16_128x8192x8192",
+    "shape_dir_srcs": "tuning/srcs/f16_128x8192x8192",
+    "shape_dir_perf": "tuning/perf/f16_128x8192x8192",
+    "checkpoint_file": "tuning/checkpoints/f16_128x8192x8192.json",
+    "idea_log": "tuning/logs/f16_128x8192x8192/idea-log.jsonl"
   },
   "completion_promise": "iteration >= max_iteration AND best kernel registered AND state.json updated",
-  "last_updated": "2026-04-03T14:32:18Z"
+  "last_updated": "2026-04-04T11:32:40Z"
 }

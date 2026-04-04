@@ -147,17 +147,19 @@
       "region": "far"
     },
     "f16_128x8192x8192": {
-      "status": "pending",
+      "status": "active",
       "mode": "from_current_best",
-      "current_iter": 0,
-      "best_tflops": 0,
-      "baseline_tflops": 0,
-      "best_kernel": "",
+      "current_iter": 1,
+      "best_tflops": 188.831,
+      "baseline_tflops": 188.831,
+      "best_kernel": "tuning/srcs/f16_128x8192x8192/seed.cu",
       "scenarios": [
         "sweep_m",
         "sweep_nk_fixNK8192"
       ],
-      "region": "far"
+      "region": "far",
+      "best_iter": 0,
+      "consecutive_discards": 1
     },
     "f16_256x256x256": {
       "status": "pending",
