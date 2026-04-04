@@ -65,3 +65,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 59	iter059_wn16.co	41.9898	2.78	DISCARD	occupancy_limited	WARP_N=16 (too small for tensor core)	bash /tmp/f16_768x768x768_fs_iter059.cute.result --execute
 60	iter060_swiz32.co	0.0	0.0	DISCARD	runtime_crash	swiz<32> incompatible with TILE_K=64	runtime_crash
 61	iter061_tile64_1p2c.co	0.0	0.0	DISCARD	runtime_crash	TILE_M=64+1p2c illegal mem access	runtime_crash
+62	iter062_1p2c_wn32_drc.co	47.2059	3.12	DISCARD	occupancy_limited	TILE_M=128+1p2c+WARP_N=32+--disable-runtime-check	bash /tmp/f16_768x768x768_fs_iter062.cute.result --execute
