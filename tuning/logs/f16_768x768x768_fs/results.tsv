@@ -128,3 +128,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 122	iter122_wn256_stmatrix.co	38.4176	2.54	DISCARD	compute_bound	WARP_N=256 + --stmatrix on current-best pipeline	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter122.cute.result" --execute
 123	iter123_wn112_hoist.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=112 + --hoist-scale on current-best pipeline	compile_error
 124	iter124_wn208_base.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=208 legal sparse-MMA tile-width probe from current best	incorrect
+125	iter125_wn128_hoist.co	46.0048	3.04	DISCARD	compute_bound	WARP_N=128 + --hoist-scale on current-best pipeline	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter125.cute.result" --execute
