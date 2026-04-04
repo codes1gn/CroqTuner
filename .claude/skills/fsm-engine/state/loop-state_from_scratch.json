@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "fsm": {
-    "current_state": "STORE",
+    "current_state": "SHAPE_COMPLETE",
     "iteration": 150,
     "max_iteration": 150,
     "shape_key": "f16_768x768x768_fs",
@@ -25,7 +25,7 @@
     "decision_made": true,
     "results_appended": true,
     "checkpoint_written": true,
-    "git_committed": false
+    "git_committed": true
   },
   "metrics": {
     "baseline_tflops": 34.92,
