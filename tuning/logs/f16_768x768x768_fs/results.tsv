@@ -90,3 +90,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 84	iter084_wn96_hoist.co	47.0683	3.11	DISCARD	occupancy_limited	WARP_N=96+winning+--hoist-scale	bash /tmp/f16_768x768x768_fs_iter084.cute.result --execute
 85	iter085_wn96_rtclow.co	45.8605	3.03	DISCARD	occupancy_limited	WARP_N=96+rtc=low+native-f16+apprx-div+ptx-barrier	bash /tmp/f16_768x768x768_fs_iter085.cute.result --execute
 86	iter086_swiz128.co	0.0	0.0	DISCARD	runtime_crash	LHS swiz<128> incompatible with TILE_K=64	runtime_crash
+87	iter087_tk128.co	0.0	0.0	DISCARD	runtime_crash	TILE_K=128 — halves K-loop iterations but crashes (CUDA invalid argument)	runtime_crash
