@@ -1,0 +1,7 @@
+Totally 2 errors have been detected.
+/home/albert/workspace/CroqTuner/tuning/srcs/f16_768x768x768_fs/iter104_wn256_outpad8.co:56.5: error: DMA to-buffer is too small (16896 > 16384)
+      tma.copy output_s => output.subspan(WARP_M, WARP_N).at(block_m, block_n);
+      ^
+/home/albert/workspace/CroqTuner/tuning/srcs/f16_768x768x768_fs/iter104_wn256_outpad8.co:56.5: error: Type inconsistent between DMA 'from'(shared f16 mdspan<2> [64, 264]) and 'to'(global f16 mdspan<2> [64, 256]).
+      tma.copy output_s => output.subspan(WARP_M, WARP_N).at(block_m, block_n);
+      ^
