@@ -59,3 +59,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 53	iter053_stages3.co	45.177	2.98	DISCARD	occupancy_limited	STAGES=3 pipeline (from iter051 base)	bash /tmp/f16_768x768x768_fs_iter053.cute.result --execute
 54	iter054_meta_tile4.co	47.9105	3.17	DISCARD	occupancy_limited	SPMM_META_TILE_COLS=4 (from iter051 base)	bash /tmp/f16_768x768x768_fs_iter054.cute.result --execute
 55	iter055_stages3_ptx.co	45.1574	2.98	DISCARD	occupancy_limited	WARP_N=32+STAGES=3+--ptx-barrier combo	bash /tmp/f16_768x768x768_fs_iter055.cute.result --execute
+56	iter056_tile64_1p1c.co	48.2012	3.19	KEEP	occupancy_limited	TILE_M=64+1p1c (288 CTAs×256 threads)	bash /tmp/f16_768x768x768_fs_iter056.cute.result --execute
