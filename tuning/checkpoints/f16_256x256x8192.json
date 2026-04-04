@@ -8,12 +8,12 @@
   ],
   "mode": "from_current_best",
   "max_iter": 30,
-  "current_iter": 9,
-  "best_iter": 5,
-  "best_tflops": 412.602,
+  "current_iter": 10,
+  "best_iter": 10,
+  "best_tflops": 415.021,
   "baseline_tflops": 17.0124,
-  "best_kernel": "tuning/srcs/f16_256x256x8192/iter005_wait0.cu",
-  "consecutive_discards": 4,
+  "best_kernel": "tuning/srcs/f16_256x256x8192/iter010_nsmeta100.cu",
+  "consecutive_discards": 0,
   "status": "active",
-  "last_updated": "2026-04-04T14:08:13Z"
+  "last_updated": "2026-04-04T14:08:40Z"
 }
