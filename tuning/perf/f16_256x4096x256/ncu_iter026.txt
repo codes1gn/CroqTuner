@@ -1,0 +1,8 @@
+==PROF== Connected to process 556899 (/tmp/f16_256x4096x256_iter022)
+Timing avg ms: 0.0316852
+TFLOPS: 16.9439
+HW efficiency: 1.11989%
+Test Passed (verify skipped)
+
+==PROF== Disconnected from process 556899
+==WARNING== No kernels were profiled.
