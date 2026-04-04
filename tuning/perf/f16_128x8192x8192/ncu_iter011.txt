@@ -1,0 +1,55 @@
+==PROF== Connected to process 255269 (/tmp/f16_128x8192x8192_profile_iter011)
+==WARNING== Unable to access the following 6 metrics: ctc__rx_bytes_data_user.sum, ctc__rx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__rx_bytes_data_user.sum.per_second, ctc__tx_bytes_data_user.sum, ctc__tx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__tx_bytes_data_user.sum.per_second.
+
+
+==PROF== Profiling "__choreo_device_spmm" - 0: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 1: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 2: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 3: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 4: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 5: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 6: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 7: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 8: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 9: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 10: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 11: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 12: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 13: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 14: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 15: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 16: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 17: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 18: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 19: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 20: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 21: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 22: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 23: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 24: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 25: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 26: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 27: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 28: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 29: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 30: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 31: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 32: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 33: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 34: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 35: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 36: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 37: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 38: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 39: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 40: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 41: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 42: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 43: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 44: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 45: 0%....==PROF== Trying to shutdown target application
+ - 20 passes
+==ERROR== Failed to profile "__choreo_device_spmm" in process 255269
+==PROF== Trying to shutdown target application
+==ERROR== An error occurred while trying to profile.
+==PROF== Report: /tmp/f16_128x8192x8192_ncu_iter011.ncu-rep
