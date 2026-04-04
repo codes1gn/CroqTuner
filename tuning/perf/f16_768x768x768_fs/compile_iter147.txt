@@ -1,0 +1,5 @@
+/home/albert/workspace/CroqTuner/tuning/srcs/f16_768x768x768_fs/iter147_wn112_lhs128.co:50.11: error: MMA [f16(a)f16(b)f16(c)f16(d): m64n109k32] is not support by current architecture(SM_90A).
+            mma.row.row.sp mc, ma, mb, me;
+            ^
+/home/albert/workspace/choreo/lib/target_utils.hpp:633: Assertion failed: unsupported MMA config: MMAConfig(sparsity=SPARSE, a_ty=f16, b_ty=f16, scale_ty=unknown, c_ty=f16, d_ty=f16, shape=(64, 109, 32))
+Aborted (core dumped)
