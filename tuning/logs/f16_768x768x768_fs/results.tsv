@@ -101,3 +101,10 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 96	iter096_prepack.co	0.0	0.0	DISCARD_COMPILE_FAIL	grid_too_small	Prepack crashes on this shape (OOM)	bash /tmp/f16_768x768x768_fs_iter096_prepack.cute.result --execute
 97	iter097_cuda0.co	0.3725	0.02	DISCARD	grid_too_small	Explicit CUDA_VISIBLE_DEVICES=0	bash /tmp/f16_768x768x768_fs_iter097.cute.result --execute
 98	iter098_minflags.co	0.3722	0.02	DISCARD	grid_too_small	Minimal compilation flags	bash /tmp/f16_768x768x768_fs_iter098.cute.result --execute
+99	iter99_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
+100	iter100_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
+101	iter101_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
+102	iter102_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
+103	iter103_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
+104	iter104_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
+105	iter105_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
