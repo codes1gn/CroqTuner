@@ -1,0 +1,111 @@
+==PROF== Connected to process 507969 (/tmp/f16_256x4096x256_baseline)
+==WARNING== Unable to access the following 6 metrics: ctc__rx_bytes_data_user.sum, ctc__rx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__rx_bytes_data_user.sum.per_second, ctc__tx_bytes_data_user.sum, ctc__tx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__tx_bytes_data_user.sum.per_second.
+
+
+==PROF== Profiling "__choreo_device_spmm" - 0: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 1: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 2: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 3: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 4: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 5: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 6: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 7: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 8: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 9: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 10: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 11: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 12: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 13: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 14: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 15: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 16: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 17: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 18: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 19: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 20: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 21: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 22: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 23: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 24: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 25: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 26: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 27: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 28: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 29: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 30: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 31: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 32: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 33: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 34: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 35: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 36: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 37: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 38: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 39: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 40: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 41: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 42: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 43: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 44: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 45: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 46: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 47: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 48: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 49: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 50: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 51: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 52: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 53: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 54: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 55: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 56: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 57: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 58: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 59: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 60: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 61: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 62: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 63: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 64: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 65: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 66: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 67: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 68: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 69: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 70: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 71: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 72: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 73: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 74: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 75: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 76: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 77: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 78: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 79: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 80: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 81: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 82: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 83: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 84: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 85: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 86: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 87: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 88: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 89: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 90: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 91: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 92: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 93: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 94: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 95: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 96: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 97: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 98: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 99: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 100: 0%....50%....100% - 38 passes
+==PROF== Profiling "__choreo_device_spmm" - 101: 0%....50%.==PROF== Trying to shutdown target application
+ - 27 passes
+==ERROR== Failed to profile "__choreo_device_spmm" in process 507969
+==PROF== Trying to shutdown target application
+==ERROR== An error occurred while trying to profile.
+==PROF== Report: /tmp/f16_256x4096x256_ncu_iter001_gpu1.ncu-rep
