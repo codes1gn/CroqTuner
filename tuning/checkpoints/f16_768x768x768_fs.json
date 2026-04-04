@@ -1,12 +1,12 @@
 {
   "shape_key": "f16_768x768x768_fs",
-  "iteration": 142,
-  "current_iter": 142,
+  "iteration": 143,
+  "current_iter": 143,
   "current_best_iter": 129,
   "current_best_tflops": 48.567,
   "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter129_wn96_no_native.co",
   "baseline_tflops": 34.92,
-  "consecutive_discards": 13,
+  "consecutive_discards": 14,
   "last_bottleneck": "compute_bound",
   "last_idea_category": "structural"
 }

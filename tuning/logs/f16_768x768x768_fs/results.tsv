@@ -146,3 +146,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 140	iter140_wn256_no_ptx.co	35.7010	2.36	DISCARD	compute_bound	WARP_N=256 without --ptx-barrier to test barrier overhead sensitivity	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter140.cute.result" --execute
 141	iter141_wn112_rhs64.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=112 + RHS swiz<64> to shift shared-memory traffic pattern	compile_error
 142	iter142_wn128_rhs64.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=128 + RHS swiz<64> to shift shared-memory traffic pattern	incorrect
+143	iter143_wn64_swizswap.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=64 + swap LHS/RHS swizzle factors (128/64)	incorrect
