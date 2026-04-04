@@ -1,0 +1,14 @@
+f16_sp: 0 errors
+Test Passed
+/tmp/1775299867773764597_125727714654016/__choreo_cute_iter131_wn256_hoist.cu(245): warning #177-D: variable "__choreo_vg4id_x" was declared but never referenced
+            auto __choreo_vg4id_x = threadIdx.x / 128;
+                 ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/tmp/1775299867773764597_125727714654016/__choreo_cute_iter131_wn256_hoist.cu(157): warning #177-D: variable "__choreo_device_matmul_sp_f16__ring__" was declared but never referenced
+    auto __choreo_device_matmul_sp_f16__ring__ = nullptr;
+         ^
+
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 665 by compiler to allow use of registers in GMMA in function '_Z29__choreo_device_matmul_sp_f16P6__halfPhS0_S0_14CUtensorMap_stS2_S2_'
+ptxas info    : (C7510) Potential Performance Loss: wgmma.mma_async instructions are serialized due to wgmma pipeline crossing function boundary at a function call in the function '_Z29__choreo_device_matmul_sp_f16P6__halfPhS0_S0_14CUtensorMap_stS2_S2_'
