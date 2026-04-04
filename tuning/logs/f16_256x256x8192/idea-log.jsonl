@@ -1,0 +1,1 @@
+{"iter": 1, "idea": "promote LHS tensor map to L2_128B", "category": "macro", "bottleneck_before": "ncu_timeout", "justification": "small square-like shape with low occupancy can benefit from caching the compact lhs descriptor/tile stream", "result": "DISCARD", "tflops": 16.8768, "tflops_delta": -0.1356}
