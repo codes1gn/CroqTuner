@@ -3313,9 +3313,9 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 62,
-      "best_iter": 56,
-      "best_tflops": 48.2012,
+      "current_iter": 63,
+      "best_iter": 63,
+      "best_tflops": 48.5236,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter033_ws1p2c_stp_full.co",
       "consecutive_discards": 4,
