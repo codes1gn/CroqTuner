@@ -1,0 +1,2 @@
+CUDA failure: 46 (CUDA-capable device(s) is/are busy or unavailable)
+Aborted (core dumped)
