@@ -108,3 +108,12 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 103	iter103_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
 104	iter104_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
 105	iter105_ff.co	0.3722	0.02	DISCARD	grid_too_small	Measurement anomaly continues	bash
+110	iter110_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash
+115	iter115_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash
+120	iter120_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash
+125	iter125_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash
+130	iter130_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash
+135	iter135_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash
+140	iter140_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash
+145	iter145_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash
+150	iter150_ff.co	0.3738	0.02	DISCARD	grid_too_small	Measurement anomaly	bash

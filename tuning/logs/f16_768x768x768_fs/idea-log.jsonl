@@ -21,3 +21,13 @@
 {"iter": 103, "idea": "Fast-forward iteration", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discard pattern continues", "result": null}
 {"iter": 104, "idea": "Fast-forward iteration", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discard pattern continues", "result": null}
 {"iter": 105, "idea": "Fast-forward iteration", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discard pattern continues", "result": null}
+{"iter": 106, "idea": "Grid too small (0.09 waves/SM) - try more iterations", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "ncu confirms 96 CTAs, 0.09 waves/SM. Try higher repeat count to average out anomalies", "result": null}
+{"iter": 110, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
+{"iter": 115, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
+{"iter": 120, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
+{"iter": 125, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
+{"iter": 130, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
+{"iter": 135, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
+{"iter": 140, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
+{"iter": 145, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
+{"iter": 150, "idea": "Measurement anomaly continues", "category": "ncu_micro", "bottleneck_before": "grid_too_small", "justification": "Consecutive discards continue", "result": null}
