@@ -76,3 +76,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 70	iter070_wn64_stmatrix.co	43.2602	2.86	DISCARD	occupancy_limited	WARP_N=64+drc+native-f16+--stmatrix	bash /tmp/f16_768x768x768_fs_iter070.cute.result --execute
 71	iter071_wn64_apprx.co	43.5127	2.88	KEEP	occupancy_limited	WARP_N=64+drc+native-f16+--apprx-div	bash /tmp/f16_768x768x768_fs_iter071.cute.result --execute
 72	iter072_wn64_allflags.co	43.4379	2.87	DISCARD	occupancy_limited	WARP_N=64+drc+native-f16+apprx-div+hoist-scale	bash /tmp/f16_768x768x768_fs_iter072.cute.result --execute
+73	iter073_wn64_ptx.co	46.2134	3.05	KEEP	occupancy_limited	WARP_N=64+drc+native-f16+apprx-div+--ptx-barrier	bash /tmp/f16_768x768x768_fs_iter073.cute.result --execute
