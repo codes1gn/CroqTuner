@@ -158,3 +158,5 @@
 {"iter":82,"category":"structural","idea":"WARP_N=96 — 96 CTAs","bottleneck_before":"occupancy_limited","justification":"Sweet spot between WARP_N=64 and WARP_N=128.","result":"KEEP","tflops":47.0379,"tflops_delta":0.8245}
 {"iter":83,"category":"macro","idea":"WARP_N=96+winning flags+--stmatrix","bottleneck_before":"occupancy_limited","justification":"stmatrix regressed on WARP_N=64 but may work differently with WARP_N=96.","result":null}
 {"iter":83,"category":"macro","idea":"WARP_N=96+winning+--stmatrix","bottleneck_before":"occupancy_limited","justification":"stmatrix may work differently with WARP_N=96.","result":"DISCARD","tflops":46.9692,"tflops_delta":-0.0687}
+{"iter":84,"category":"structural","idea":"WARP_N=80 — 120 CTAs (between 96 and 144)","bottleneck_before":"occupancy_limited","justification":"WARP_N=96 (96 CTAs) beat WARP_N=64 (144 CTAs). WARP_N=80 gives 120 CTAs which may be the sweet spot.","result":null}
+{"iter":84,"category":"macro","idea":"WARP_N=96+winning+--hoist-scale","bottleneck_before":"occupancy_limited","justification":"hoist-scale may work differently with WARP_N=96.","result":"DISCARD","tflops":47.0683,"tflops_delta":0.0304}

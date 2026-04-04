@@ -87,3 +87,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 81	iter073_wn64_ptx_reverify.co	46.2417	3.06	DISCARD	occupancy_limited	Re-verify iter073 best kernel (avg 46.17)	bash /tmp/f16_768x768x768_fs_iter073_verify.cute.result --execute
 82	iter082_wn96.co	47.0379	3.11	KEEP	occupancy_limited	WARP_N=96+drc+native-f16+apprx-div+ptx-barrier (96 CTAs)	bash /tmp/f16_768x768x768_fs_iter082.cute.result --execute
 83	iter083_wn96_stmatrix.co	46.9692	3.10	DISCARD	occupancy_limited	WARP_N=96+winning+--stmatrix	bash /tmp/f16_768x768x768_fs_iter083.cute.result --execute
+84	iter084_wn96_hoist.co	47.0683	3.11	DISCARD	occupancy_limited	WARP_N=96+winning+--hoist-scale	bash /tmp/f16_768x768x768_fs_iter084.cute.result --execute
