@@ -2,16 +2,25 @@ import { useState } from "react";
 import { api } from "../api";
 
 interface Props {
+  availableModels: string[];
+  defaultModel: string;
   onCreated: () => void;
   onCancel: () => void;
 }
 
-export function AddTaskForm({ onCreated, onCancel }: Props) {
+const MODEL_LABELS: Record<string, string> = {
+  "opencode/qwen3.6-plus-free": "Qwen3.6 Plus Free",
+  "opencode/minimax-m2.5-free": "Minimax M2.5 Free",
+  "opencode/big-pickle": "Big Pickle Free",
+};
+
+export function AddTaskForm({ availableModels, defaultModel, onCreated, onCancel }: Props) {
   const [dtype, setDtype] = useState("f16");
   const [m, setM] = useState("");
   const [n, setN] = useState("");
   const [k, setK] = useState("");
   const [mode, setMode] = useState("from_current_best");
+  const [model, setModel] = useState(defaultModel);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -29,7 +38,7 @@ export function AddTaskForm({ onCreated, onCancel }: Props) {
 
     setSubmitting(true);
     try {
-      await api.createTask({ dtype, m: mVal, n: nVal, k: kVal, mode });
+      await api.createTask({ dtype, m: mVal, n: nVal, k: kVal, mode, model });
       onCreated();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create task");
@@ -94,6 +103,22 @@ export function AddTaskForm({ onCreated, onCancel }: Props) {
               <option value="from_scratch">From Scratch (150 iter)</option>
             </select>
             <p className="text-xs text-gray-500 mt-1">Max iterations: {maxIter}</p>
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-400 mb-1">Model</label>
+            <select
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+              className="w-full bg-gray-700 rounded px-3 py-2 text-gray-100 border border-gray-600 focus:border-blue-500 focus:outline-none"
+            >
+              {(availableModels.length > 0 ? availableModels : [defaultModel]).map((item) => (
+                <option key={item} value={item}>
+                  {MODEL_LABELS[item] ?? item}
+                </option>
+              ))}
+            </select>
+            <p className="text-xs text-gray-500 mt-1 font-mono">{model}</p>
           </div>
         </div>
 

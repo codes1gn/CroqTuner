@@ -4,9 +4,16 @@ import { StatusBadge } from "./StatusBadge";
 
 interface Props {
   tasks: TaskData[];
+  activeTaskId: number | null;
 }
 
-export function TaskList({ tasks }: Props) {
+const MODEL_LABELS: Record<string, string> = {
+  "opencode/qwen3.6-plus-free": "Qwen3.6 Plus Free",
+  "opencode/minimax-m2.5-free": "Minimax M2.5 Free",
+  "opencode/big-pickle": "Big Pickle Free",
+};
+
+export function TaskList({ tasks, activeTaskId }: Props) {
   const navigate = useNavigate();
 
   if (tasks.length === 0) {
@@ -25,6 +32,7 @@ export function TaskList({ tasks }: Props) {
           <tr className="text-left text-gray-400 border-b border-gray-700">
             <th className="py-3 px-4">Status</th>
             <th className="py-3 px-4">Shape Key</th>
+            <th className="py-3 px-4">Model</th>
             <th className="py-3 px-4">Dtype</th>
             <th className="py-3 px-4">Mode</th>
             <th className="py-3 px-4">Progress</th>
@@ -41,12 +49,16 @@ export function TaskList({ tasks }: Props) {
               <tr
                 key={task.id}
                 onClick={() => navigate(`/tasks/${task.id}`)}
-                className="border-b border-gray-800 hover:bg-gray-800/50 cursor-pointer transition"
+                className={`border-b border-gray-800 hover:bg-gray-800/50 cursor-pointer transition ${task.id === activeTaskId ? "bg-cyan-950/20" : ""}`}
               >
                 <td className="py-3 px-4">
                   <StatusBadge status={task.status} />
                 </td>
                 <td className="py-3 px-4 font-mono text-gray-200">{task.shape_key}</td>
+                <td className="py-3 px-4 text-gray-300">
+                  <div>{MODEL_LABELS[task.model ?? ""] ?? "--"}</div>
+                  <div className="font-mono text-[11px] text-gray-500">{task.model ?? "system default"}</div>
+                </td>
                 <td className="py-3 px-4 text-gray-300 uppercase">{task.dtype}</td>
                 <td className="py-3 px-4 text-gray-300">
                   {task.mode === "from_current_best" ? "from-best" : "scratch"}

@@ -139,3 +139,4 @@ async def test_health_endpoint(client):
     data = resp.json()
     assert data["status"] == "ok"
     assert isinstance(data["scheduler_running"], bool)
+    assert data["default_model"] == "opencode/qwen3.6-plus-free"

@@ -18,6 +18,14 @@ async def init_db():
     from .models import Base
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        columns = {
+            row[1]
+            for row in (await conn.exec_driver_sql("PRAGMA table_info(tasks)")).fetchall()
+        }
+        if "model" not in columns:
+            await conn.exec_driver_sql("ALTER TABLE tasks ADD COLUMN model VARCHAR(128)")
+        if "opencode_session_id" not in columns:
+            await conn.exec_driver_sql("ALTER TABLE tasks ADD COLUMN opencode_session_id VARCHAR(128)")
 
 
 async def get_session():

@@ -1,5 +1,7 @@
 from pydantic import BaseModel, field_validator
 
+from .config import is_supported_opencode_model
+
 
 class TaskCreate(BaseModel):
     dtype: str
@@ -7,6 +9,7 @@ class TaskCreate(BaseModel):
     n: int
     k: int
     mode: str
+    model: str | None = None
 
     @field_validator("dtype")
     @classmethod
@@ -43,6 +46,13 @@ class TaskCreate(BaseModel):
             raise ValueError("mode must be 'from_current_best' or 'from_scratch'")
         return v
 
+    @field_validator("model")
+    @classmethod
+    def validate_model(cls, v: str | None) -> str | None:
+        if v is not None and not is_supported_opencode_model(v):
+            raise ValueError("unsupported model")
+        return v
+
 
 class TaskUpdate(BaseModel):
     status: str | None = None
@@ -69,6 +79,8 @@ class TaskResponse(BaseModel):
     best_tflops: float | None
     baseline_tflops: float | None
     best_kernel: str | None
+    model: str | None
+    opencode_session_id: str | None
     error_message: str | None
     created_at: str | None
     updated_at: str | None
@@ -96,8 +108,45 @@ class AgentLogResponse(BaseModel):
     timestamp: str | None
 
 
+class SessionHistoryEntryResponse(BaseModel):
+    id: str
+    message_id: str
+    role: str
+    kind: str
+    text: str
+    tool: str | None
+    status: str | None
+    timestamp: str | None
+
+
+class SessionHistoryResponse(BaseModel):
+    session_id: str | None
+    session_title: str | None
+    session_directory: str | None
+    entries: list[SessionHistoryEntryResponse]
+
+
 class HealthResponse(BaseModel):
     status: str
     scheduler_running: bool
     active_task_id: int | None
     gpu_info: str | None
+    default_model: str
+    available_models: list[str]
+    task_counts: dict[str, int]
+
+
+class ModelSettingsUpdate(BaseModel):
+    default_model: str
+
+    @field_validator("default_model")
+    @classmethod
+    def validate_default_model(cls, v: str) -> str:
+        if not is_supported_opencode_model(v):
+            raise ValueError("unsupported model")
+        return v
+
+
+class ModelSettingsResponse(BaseModel):
+    default_model: str
+    available_models: list[str]

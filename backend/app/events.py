@@ -28,7 +28,7 @@ class EventBus:
         try:
             while True:
                 payload = await q.get()
-                yield f"data: {json.dumps(payload)}\n\n"
+                yield json.dumps(payload)
         finally:
             if q in self._subscribers:
                 self._subscribers.remove(q)

@@ -2,6 +2,16 @@
 
 A lightweight, self-contained agent bot that manages GPU kernel tuning tasks through a web dashboard. It orchestrates [opencode](https://opencode.ai) to execute tuning using the CroqTuner FSM-driven skills from the croktile paper, providing real-time status updates.
 
+## Screenshots
+
+| Dashboard | Task Detail — TFLOPS Chart & Iteration Log |
+|:-:|:-:|
+| ![Dashboard](docs/screenshots/dashboard.png) | ![TFLOPS Chart](docs/screenshots/tflops-chart.png) |
+
+| OpenCode Session History | Runtime Event Log |
+|:-:|:-:|
+| ![Task Detail](docs/screenshots/task-detail.png) | ![Iteration Log](docs/screenshots/iteration-log.png) |
+
 ## Architecture
 
 ```

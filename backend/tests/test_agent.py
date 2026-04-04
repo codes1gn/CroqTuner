@@ -2,7 +2,15 @@ import re
 
 import pytest
 
-from app.agent import ITER_PATTERN, BASELINE_PATTERN, build_prompt
+from app.agent import (
+    BASELINE_PATTERN,
+    ITER_PATTERN,
+    build_command,
+    build_prompt,
+    extract_session_id,
+    is_fatal_agent_error,
+)
+from app.config import settings
 from app.models import Task
 
 
@@ -64,3 +72,43 @@ def test_build_prompt_from_scratch():
     prompt = build_prompt(task)
     assert "ai-tune-from-scratch" in prompt
     assert "max 150 iterations" in prompt
+
+
+def test_build_command_includes_model_override():
+    task = _make_task()
+    command = build_command(task)
+    assert command[:3] == [settings.opencode_bin, "run", "--print-logs"]
+    assert "--model" in command
+    model_index = command.index("--model")
+    assert command[model_index + 1] == settings.opencode_model
+
+
+def test_build_command_prefers_task_model():
+    task = _make_task(model="opencode/big-pickle")
+    command = build_command(task)
+    model_index = command.index("--model")
+    assert command[model_index + 1] == "opencode/big-pickle"
+
+
+@pytest.mark.parametrize(
+    ("line", "expected"),
+    [
+        ("Error: Model not found: nvidia/nemotron-3-super-free.", True),
+        ("ProviderModelNotFoundError: ProviderModelNotFoundError", True),
+        ("iter_003: candidate A -- 91.2 TFLOPS (KEEP)", False),
+    ],
+)
+def test_is_fatal_agent_error(line, expected):
+    assert is_fatal_agent_error(line) is expected
+
+
+@pytest.mark.parametrize(
+    ("line", "expected"),
+    [
+        ("INFO service=llm sessionID=ses_abc123 stream", "ses_abc123"),
+        ("GET /session/ses_xyz789/message request", "ses_xyz789"),
+        ("iter_003: candidate A -- 91.2 TFLOPS (KEEP)", None),
+    ],
+)
+def test_extract_session_id(line, expected):
+    assert extract_session_id(line) == expected

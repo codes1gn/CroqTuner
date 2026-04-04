@@ -27,6 +27,8 @@ class Task(Base):
     best_tflops = Column(Float, nullable=True)
     baseline_tflops = Column(Float, nullable=True)
     best_kernel = Column(String(512), nullable=True)
+    model = Column(String(128), nullable=True)
+    opencode_session_id = Column(String(128), nullable=True)
     error_message = Column(Text, nullable=True)
     created_at = Column(DateTime, nullable=False, default=_utcnow)
     updated_at = Column(DateTime, nullable=False, default=_utcnow, onupdate=_utcnow)
@@ -51,6 +53,8 @@ class Task(Base):
             "best_tflops": self.best_tflops,
             "baseline_tflops": self.baseline_tflops,
             "best_kernel": self.best_kernel,
+            "model": self.model,
+            "opencode_session_id": self.opencode_session_id,
             "error_message": self.error_message,
             "created_at": self.created_at.isoformat() if self.created_at else None,
             "updated_at": self.updated_at.isoformat() if self.updated_at else None,
@@ -107,3 +111,11 @@ class AgentLog(Base):
             "message": self.message,
             "timestamp": self.timestamp.isoformat() if self.timestamp else None,
         }
+
+
+class SystemSetting(Base):
+    __tablename__ = "system_settings"
+
+    key = Column(String(64), primary_key=True)
+    value = Column(String(256), nullable=False)
+    updated_at = Column(DateTime, nullable=False, default=_utcnow, onupdate=_utcnow)

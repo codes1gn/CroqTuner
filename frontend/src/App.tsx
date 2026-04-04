@@ -1,13 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
-import { api, type TaskData } from "./api";
+import { api, type HealthData, type TaskData } from "./api";
 import { useSSE, type SSEEvent } from "./hooks/useSSE";
 import { TaskList } from "./components/TaskList";
 import { TaskDetail } from "./components/TaskDetail";
 import { AddTaskForm } from "./components/AddTaskForm";
+import { SystemStatusPanel } from "./components/SystemStatusPanel";
 
 export default function App() {
   const [tasks, setTasks] = useState<TaskData[]>([]);
+  const [health, setHealth] = useState<HealthData | null>(null);
   const [showAdd, setShowAdd] = useState(false);
   const [lastEvent, setLastEvent] = useState<SSEEvent | null>(null);
 
@@ -19,9 +21,25 @@ export default function App() {
     }
   }, []);
 
+  const loadHealth = useCallback(async () => {
+    try {
+      setHealth(await api.getHealth());
+    } catch {
+      // silently retry on next interval
+    }
+  }, []);
+
   useEffect(() => {
     loadTasks();
-  }, [loadTasks]);
+    loadHealth();
+  }, [loadHealth, loadTasks]);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      void loadHealth();
+    }, 10000);
+    return () => window.clearInterval(timer);
+  }, [loadHealth]);
 
   useSSE((event) => {
     setLastEvent(event);
@@ -36,9 +54,11 @@ export default function App() {
         }
         return [updated, ...prev];
       });
+      void loadHealth();
     } else if (event.type === "task_deleted") {
       const { id } = event.data as { id: number };
       setTasks((prev) => prev.filter((t) => t.id !== id));
+      void loadHealth();
     }
   });
 
@@ -60,17 +80,23 @@ export default function App() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 py-6">
+        <div className="mb-6">
+          <SystemStatusPanel health={health} onRefresh={loadHealth} />
+        </div>
         <Routes>
-          <Route path="/" element={<TaskList tasks={tasks} />} />
+          <Route path="/" element={<TaskList tasks={tasks} activeTaskId={health?.active_task_id ?? null} />} />
           <Route path="/tasks/:id" element={<TaskDetail sseEvent={lastEvent} />} />
         </Routes>
       </main>
 
       {showAdd && (
         <AddTaskForm
+          availableModels={health?.available_models ?? []}
+          defaultModel={health?.default_model ?? "opencode/qwen3.6-plus-free"}
           onCreated={() => {
             setShowAdd(false);
             loadTasks();
+            loadHealth();
           }}
           onCancel={() => setShowAdd(false)}
         />

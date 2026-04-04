@@ -14,6 +14,8 @@ export interface TaskData {
   best_tflops: number | null;
   baseline_tflops: number | null;
   best_kernel: string | null;
+  model: string | null;
+  opencode_session_id: string | null;
   error_message: string | null;
   created_at: string | null;
   updated_at: string | null;
@@ -41,11 +43,37 @@ export interface AgentLogData {
   timestamp: string | null;
 }
 
+export interface SessionHistoryEntryData {
+  id: string;
+  message_id: string;
+  role: string;
+  kind: string;
+  text: string;
+  tool: string | null;
+  status: string | null;
+  timestamp: string | null;
+}
+
+export interface SessionHistoryData {
+  session_id: string | null;
+  session_title: string | null;
+  session_directory: string | null;
+  entries: SessionHistoryEntryData[];
+}
+
 export interface HealthData {
   status: string;
   scheduler_running: boolean;
   active_task_id: number | null;
   gpu_info: string | null;
+  default_model: string;
+  available_models: string[];
+  task_counts: Record<string, number>;
+}
+
+export interface ModelSettingsData {
+  default_model: string;
+  available_models: string[];
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -65,7 +93,7 @@ export const api = {
   listTasks: (status?: string) =>
     request<TaskData[]>(`/tasks${status ? `?status=${status}` : ""}`),
 
-  createTask: (data: { dtype: string; m: number; n: number; k: number; mode: string }) =>
+  createTask: (data: { dtype: string; m: number; n: number; k: number; mode: string; model?: string }) =>
     request<TaskData>("/tasks", { method: "POST", body: JSON.stringify(data) }),
 
   getTask: (id: number) => request<TaskData>(`/tasks/${id}`),
@@ -82,6 +110,11 @@ export const api = {
       body: JSON.stringify({ status: "pending" }),
     }),
 
+  retryTask: (id: number) =>
+    request<TaskData>(`/tasks/${id}/retry`, {
+      method: "POST",
+    }),
+
   deleteTask: (id: number) =>
     request<void>(`/tasks/${id}`, { method: "DELETE" }),
 
@@ -91,5 +124,16 @@ export const api = {
   getAgentLogs: (id: number, limit = 100) =>
     request<AgentLogData[]>(`/tasks/${id}/agent-logs?limit=${limit}`),
 
+  getSessionHistory: (id: number, limit = 200) =>
+    request<SessionHistoryData>(`/tasks/${id}/session-history?limit=${limit}`),
+
   getHealth: () => request<HealthData>("/health"),
+
+  getModelSettings: () => request<ModelSettingsData>("/settings/model"),
+
+  setDefaultModel: (default_model: string) =>
+    request<ModelSettingsData>("/settings/model", {
+      method: "PATCH",
+      body: JSON.stringify({ default_model }),
+    }),
 };

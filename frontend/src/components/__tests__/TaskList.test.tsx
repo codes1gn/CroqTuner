@@ -18,6 +18,8 @@ const mockTask: TaskData = {
   best_tflops: 55.3,
   baseline_tflops: 45.0,
   best_kernel: null,
+  model: "opencode/qwen3.6-plus-free",
+  opencode_session_id: "ses_abc123",
   error_message: null,
   created_at: "2026-04-03T10:00:00",
   updated_at: "2026-04-03T10:05:00",
@@ -29,7 +31,7 @@ describe("TaskList", () => {
   it("shows empty state when no tasks", () => {
     render(
       <MemoryRouter>
-        <TaskList tasks={[]} />
+        <TaskList tasks={[]} activeTaskId={null} />
       </MemoryRouter>,
     );
     expect(screen.getByText("No tuning tasks yet.")).toBeInTheDocument();
@@ -38,7 +40,7 @@ describe("TaskList", () => {
   it("renders task rows", () => {
     render(
       <MemoryRouter>
-        <TaskList tasks={[mockTask]} />
+        <TaskList tasks={[mockTask]} activeTaskId={1} />
       </MemoryRouter>,
     );
     expect(screen.getByText("f16_768x768x768")).toBeInTheDocument();
@@ -46,6 +48,7 @@ describe("TaskList", () => {
     expect(screen.getByText("from-best")).toBeInTheDocument();
     expect(screen.getByText("55.3")).toBeInTheDocument();
     expect(screen.getByText("10/30")).toBeInTheDocument();
+    expect(screen.getByText("Qwen3.6 Plus Free")).toBeInTheDocument();
   });
 
   it("renders multiple tasks", () => {
@@ -55,7 +58,7 @@ describe("TaskList", () => {
     ];
     render(
       <MemoryRouter>
-        <TaskList tasks={tasks} />
+        <TaskList tasks={tasks} activeTaskId={null} />
       </MemoryRouter>,
     );
     expect(screen.getByText("f16_768x768x768")).toBeInTheDocument();

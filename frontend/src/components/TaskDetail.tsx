@@ -1,9 +1,16 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { api, type TaskData, type IterationLogData, type AgentLogData } from "../api";
+import {
+  api,
+  type TaskData,
+  type IterationLogData,
+  type AgentLogData,
+  type SessionHistoryData,
+} from "../api";
 import { StatusBadge } from "./StatusBadge";
 import { TflopsChart } from "./TflopsChart";
 import { LiveLog } from "./LiveLog";
+import { SessionHistory } from "./SessionHistory";
 import type { SSEEvent } from "../hooks/useSSE";
 
 interface Props {
@@ -16,21 +23,33 @@ export function TaskDetail({ sseEvent }: Props) {
   const [task, setTask] = useState<TaskData | null>(null);
   const [iterLogs, setIterLogs] = useState<IterationLogData[]>([]);
   const [agentLogs, setAgentLogs] = useState<AgentLogData[]>([]);
+  const [sessionHistory, setSessionHistory] = useState<SessionHistoryData | null>(null);
   const [error, setError] = useState("");
 
   const taskId = id ? parseInt(id) : NaN;
 
+  const loadSessionHistory = useCallback(async () => {
+    if (isNaN(taskId)) return;
+    try {
+      setSessionHistory(await api.getSessionHistory(taskId, 400));
+    } catch {
+      // allow the detail view to keep rendering even if session history is unavailable
+    }
+  }, [taskId]);
+
   const loadData = useCallback(async () => {
     if (isNaN(taskId)) return;
     try {
-      const [t, il, al] = await Promise.all([
+      const [t, il, al, sh] = await Promise.all([
         api.getTask(taskId),
         api.getIterationLogs(taskId),
         api.getAgentLogs(taskId, 200),
+        api.getSessionHistory(taskId, 400),
       ]);
       setTask(t);
       setIterLogs(il);
       setAgentLogs(al.reverse());
+      setSessionHistory(sh);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load task");
     }
@@ -41,12 +60,21 @@ export function TaskDetail({ sseEvent }: Props) {
   }, [loadData]);
 
   useEffect(() => {
+    if (!task || task.status !== "running") return;
+    const timer = window.setInterval(() => {
+      void loadData();
+    }, 5000);
+    return () => window.clearInterval(timer);
+  }, [loadData, task]);
+
+  useEffect(() => {
     if (!sseEvent || isNaN(taskId)) return;
     const d = sseEvent.data as Record<string, unknown>;
     if ((d.task_id ?? d.id) !== taskId) return;
 
     if (sseEvent.type === "task_update") {
       setTask(d as unknown as TaskData);
+      void loadSessionHistory();
     } else if (sseEvent.type === "iteration") {
       setIterLogs((prev) => {
         const exists = prev.some((l) => l.iteration === (d.iteration as number));
@@ -77,8 +105,9 @@ export function TaskDetail({ sseEvent }: Props) {
           timestamp: new Date().toISOString(),
         },
       ]);
+      void loadSessionHistory();
     }
-  }, [sseEvent, taskId]);
+  }, [loadSessionHistory, sseEvent, taskId]);
 
   const handleCancel = async () => {
     if (!task) return;
@@ -100,6 +129,16 @@ export function TaskDetail({ sseEvent }: Props) {
     }
   };
 
+  const handleRetry = async () => {
+    if (!task) return;
+    try {
+      const retried = await api.retryTask(task.id);
+      navigate(`/tasks/${retried.id}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to retry");
+    }
+  };
+
   if (error) {
     return <div className="p-6 text-red-400">{error}</div>;
   }
@@ -117,6 +156,8 @@ export function TaskDetail({ sseEvent }: Props) {
             new Date(task.started_at).getTime(),
         )
       : "--";
+
+  const modelLabel = MODEL_LABELS[task.model ?? ""] ?? task.model ?? "system default";
 
   return (
     <div className="space-y-5">
@@ -140,6 +181,15 @@ export function TaskDetail({ sseEvent }: Props) {
               className="px-3 py-1 text-xs rounded bg-emerald-900/50 hover:bg-emerald-800 text-emerald-200 border border-emerald-700 transition"
             >
               Promote to queue
+            </button>
+          )}
+          {(task.status === "failed" || task.status === "completed" || task.status === "cancelled") && (
+            <button
+              type="button"
+              onClick={handleRetry}
+              className="px-3 py-1 text-xs rounded bg-cyan-900/50 hover:bg-cyan-800 text-cyan-200 border border-cyan-700 transition"
+            >
+              Retry as new task
             </button>
           )}
           {(task.status === "running" || task.status === "pending" || task.status === "waiting") && (
@@ -176,6 +226,27 @@ export function TaskDetail({ sseEvent }: Props) {
           </div>
         ))}
       </div>
+
+      <div className="grid gap-4 md:grid-cols-2">
+        <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+          <h3 className="text-sm font-semibold text-gray-400 mb-2">Model</h3>
+          <div className="text-base font-semibold text-gray-100">{modelLabel}</div>
+          <div className="mt-1 font-mono text-xs text-gray-500">{task.model ?? "inherited at dispatch"}</div>
+        </div>
+
+        <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+          <h3 className="text-sm font-semibold text-gray-400 mb-2">OpenCode Session</h3>
+          <div className="font-mono text-sm text-cyan-300 break-all">{task.opencode_session_id ?? "Not captured yet"}</div>
+          <div className="mt-1 text-xs text-gray-500">Session ID is captured from the live opencode logs for this task.</div>
+        </div>
+      </div>
+
+      {task.error_message && (
+        <div className="rounded-lg border border-red-900 bg-red-950/30 p-4 text-sm text-red-200">
+          <div className="font-semibold">Last error</div>
+          <div className="mt-2 whitespace-pre-wrap font-mono text-xs text-red-100">{task.error_message}</div>
+        </div>
+      )}
 
       <div className="w-full bg-gray-700 rounded-full h-2">
         <div
@@ -231,12 +302,23 @@ export function TaskDetail({ sseEvent }: Props) {
       </div>
 
       <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
-        <h3 className="text-sm font-semibold text-gray-400 mb-3">Live Agent Log</h3>
+        <h3 className="text-sm font-semibold text-gray-400 mb-3">OpenCode Session History</h3>
+        <SessionHistory history={sessionHistory} />
+      </div>
+
+      <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
+        <h3 className="text-sm font-semibold text-gray-400 mb-3">Runtime Event Log</h3>
         <LiveLog logs={agentLogs} />
       </div>
     </div>
   );
 }
+
+const MODEL_LABELS: Record<string, string> = {
+  "opencode/qwen3.6-plus-free": "Qwen3.6 Plus Free",
+  "opencode/minimax-m2.5-free": "Minimax M2.5 Free",
+  "opencode/big-pickle": "Big Pickle Free",
+};
 
 function formatDuration(ms: number): string {
   const s = Math.floor(ms / 1000);
