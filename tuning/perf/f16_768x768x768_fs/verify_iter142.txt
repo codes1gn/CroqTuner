@@ -1,0 +1,14 @@
+/tmp/1775300143510312743_138618165663552/__choreo_cute_iter142_wn128_rhs64.cu(245): warning #177-D: variable "__choreo_vg4id_x" was declared but never referenced
+            auto __choreo_vg4id_x = threadIdx.x / 128;
+                 ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/tmp/1775300143510312743_138618165663552/__choreo_cute_iter142_wn128_rhs64.cu(157): warning #177-D: variable "__choreo_device_matmul_sp_f16__ring__" was declared but never referenced
+    auto __choreo_device_matmul_sp_f16__ring__ = nullptr;
+         ^
+
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 633 by compiler to allow use of registers in GMMA in function '_Z29__choreo_device_matmul_sp_f16P6__halfPhS0_S0_14CUtensorMap_stS2_S2_'
+ptxas info    : (C7510) Potential Performance Loss: wgmma.mma_async instructions are serialized due to wgmma pipeline crossing function boundary at a function call in the function '_Z29__choreo_device_matmul_sp_f16P6__halfPhS0_S0_14CUtensorMap_stS2_S2_'
+CUDA failure: 1 (invalid argument)
+/tmp/f16_768x768x768_fs_iter142.cute.result: line 6854: 165341 Aborted                 (core dumped) /tmp/1775300143510312743_138618165663552/__choreo_cute_iter142_wn128_rhs64.exe
