@@ -55,3 +55,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 49	iter035_ws1p2c_apprx_stp_reverify.co	45.8181	3.03	DISCARD	occupancy_limited	Warp-spec 1p2c --apprx-div (no stmatrix) re-verify	bash /tmp/f16_768x768x768_fs_iter049.cute.result --execute
 50	iter050_tile64_wn32.co	47.3241	3.13	KEEP	occupancy_limited	WARP_N=32 (144 CTAs vs 72)	bash /tmp/f16_768x768x768_fs_iter050.cute.result --execute
 51	iter051_launch_bounds.co	48.7409	3.22	KEEP	occupancy_limited	--disable-runtime-check (reduce reg pressure)	bash /tmp/f16_768x768x768_fs_iter051.cute.result --execute
+52	iter052_1p1c.co	45.9621	3.04	DISCARD	occupancy_limited	Switch 1p2c→1p1c (256 threads/CTA)	bash /tmp/f16_768x768x768_fs_iter052.cute.result --execute
