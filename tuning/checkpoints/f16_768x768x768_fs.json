@@ -1,12 +1,12 @@
 {
   "shape_key": "f16_768x768x768_fs",
-  "iteration": 128,
-  "current_iter": 128,
-  "current_best_iter": 117,
-  "current_best_tflops": 47.6603,
-  "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter117_wn64_hoist.co",
+  "iteration": 129,
+  "current_iter": 129,
+  "current_best_iter": 129,
+  "current_best_tflops": 48.567,
+  "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter129_wn96_no_native.co",
   "baseline_tflops": 34.92,
-  "consecutive_discards": 11,
+  "consecutive_discards": 0,
   "last_bottleneck": "compute_bound",
   "last_idea_category": "ncu_micro"
 }
