@@ -1,0 +1,2 @@
+choreo runtime check failed: shape inconsistent on the 1st parameter ('lhs_packed', dim: 0): expect: 4096, but got 128.
+Aborted (core dumped)
