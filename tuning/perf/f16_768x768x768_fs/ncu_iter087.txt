@@ -1,0 +1,2 @@
+ncu profiling timed out (>5 min). Using last known bottleneck: occupancy_limited.
+Previous ncu data (iter082): sm__warps_active.avg.pct_of_peak_sustained_active=23.27%, achieved_occupancy=7.8%, theoretical=62.5%

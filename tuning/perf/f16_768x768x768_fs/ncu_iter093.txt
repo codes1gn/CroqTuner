@@ -1,0 +1,1 @@
+ncu skipped for iter 93 due known systematic timeout on this shape; carrying forward bottleneck compute_bound from prior measurements.
