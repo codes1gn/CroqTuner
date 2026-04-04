@@ -1,0 +1,15 @@
+==WARNING== No metrics to collect found in sections.
+  Usage: /tmp/f16_768x768x768_fs_iter050.cute.result <actions>
+
+  Options:
+   --execute,           Compile and execute
+   --compile-link,      Compile and link
+   --compile-module,    Compile and generate the module
+   --gen-fatbin,        Compile and generate the fatbin
+   --lib,               Compile and generate the lib
+
+  Environment Variables:
+   CUDA_HOME:           (Must) Cuda compiler installation path
+   CUTE_HOME:           (Must) Cute header library path
+   EXTRA_TARGET_CFLAGS: Extra target compilation flags
+==ERROR== The application returned an error code (1).

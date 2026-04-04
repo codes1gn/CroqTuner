@@ -2,13 +2,13 @@
   "shape_key": "f16_768x768x768_fs",
   "dtype": "f16",
   "mode": "from_scratch",
-  "iteration": 50,
+  "iteration": 51,
   "max_iteration": 150,
   "baseline_tflops": 34.92,
-  "current_best_tflops": 47.3241,
-  "current_best_iter": 50,
-  "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter050_tile64_wn32.co",
+  "current_best_tflops": 48.7409,
+  "current_best_iter": 51,
+  "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter051_launch_bounds.co",
   "consecutive_discards": 0,
   "last_bottleneck": "occupancy_limited",
-  "last_idea_category": "structural"
+  "last_idea_category": "ncu_micro"
 }
