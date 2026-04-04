@@ -94,3 +94,4 @@
 {"iter":48,"category":"structural","idea":"Re-verify iter033 - got 47.16 (variance)","bottleneck":"occupancy_limited","result":"DISCARD","tflops":47.1609,"tflops_delta":-0.0795}
 {"iter":49,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div (without stmatrix)","bottleneck":"occupancy_limited","result":null}
 {"iter":49,"category":"choreo","idea":"Warp-spec 1p2c with --apprx-div (no stmatrix) re-verify","bottleneck":"occupancy_limited","result":"DISCARD","tflops":45.8181,"tflops_delta":-1.4223}
+{"iter":50,"category":"structural","idea":"Reduce TILE_M=64, WARP_N=32 for 4x more CTAs (288 vs 72), add --maxrregcount=128","bottleneck":"occupancy_limited","justification":"smsp_maximum_warps_avg=1, only 72 CTAs for 114 SMs. Reducing tile sizes gives 288 CTAs to fill GPU. maxrregcount improves per-CTA occupancy.","result":null}
