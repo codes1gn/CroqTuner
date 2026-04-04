@@ -98,3 +98,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 92	iter092_wn256.co	37.5609	2.48	DISCARD	compute_bound	WARP_N=256 (24 CTAs, maximum N tile) — 10 consecutive discards, radical tile shape change	bash /tmp/f16_768x768x768_fs_iter092.cute.result --execute
 94	iter094_splitk.co	0.3728	0.02	DISCARD	compute_bound	Radical split-K restructure attempt	bash /tmp/f16_768x768x768_fs_iter094.cute.result --execute
 95	iter095_cluster.co	0.3728	0.02	DISCARD	grid_too_small	CTA cluster-aware mode — no improvement	bash /tmp/f16_768x768x768_fs_iter095.cute.result --execute
+96	iter096_prepack.co	0.0	0.0	DISCARD_COMPILE_FAIL	grid_too_small	Prepack crashes on this shape (OOM)	bash /tmp/f16_768x768x768_fs_iter096_prepack.cute.result --execute

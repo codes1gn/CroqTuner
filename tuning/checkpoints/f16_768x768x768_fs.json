@@ -1,10 +1,10 @@
 {
   "shape_key": "f16_768x768x768_fs",
-  "iteration": 95,
+  "iteration": 96,
   "current_best_iter": 82,
   "current_best_tflops": 47.0379,
   "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter082_wn96.co",
-  "consecutive_discards": 12,
+  "consecutive_discards": 13,
   "last_bottleneck": "grid_too_small",
   "last_idea_category": "choreo"
 }
