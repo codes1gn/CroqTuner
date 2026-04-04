@@ -3313,11 +3313,11 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 78,
+      "current_iter": 79,
       "best_tflops": 46.2134,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter073_wn64_ptx.co",
-      "consecutive_discards": 5,
+      "consecutive_discards": 6,
       "note": "iter063 crashes with warpspec; working best ~42.1 TFLOPS at iter064"
     }
   }
