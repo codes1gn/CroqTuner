@@ -3313,7 +3313,7 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 59,
+      "current_iter": 60,
       "best_iter": 56,
       "best_tflops": 48.2012,
       "baseline_tflops": 34.92,

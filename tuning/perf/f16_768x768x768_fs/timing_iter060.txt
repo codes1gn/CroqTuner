@@ -1,0 +1,1 @@
+Runtime crash: CUDA failure 1 (invalid argument) - swiz<32> incompatible with TILE_K=64
