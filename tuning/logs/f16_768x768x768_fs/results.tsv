@@ -81,3 +81,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 75	iter075_wn64_rtcnone.co	46.1758	3.05	DISCARD	occupancy_limited	WARP_N=64+rtc=none+native-f16+apprx-div+ptx-barrier	bash /tmp/f16_768x768x768_fs_iter075.cute.result --execute
 76	iter076_wn64_stp.co	45.2459	2.99	DISCARD	occupancy_limited	WARP_N=64+winning+--single-thread-producer	bash /tmp/f16_768x768x768_fs_iter076.cute.result --execute
 77	iter077_wn64_fastmath.co	0.0	0.0	DISCARD_COMPILE_FAIL	compile_error	--fast-math flag rejected by choreo compiler	compile_error
+78	iter078_wn64_colmajor.co	45.0967	2.98	DISCARD	occupancy_limited	Column-major block scheduling	bash /tmp/f16_768x768x768_fs_iter078.cute.result --execute
