@@ -1,0 +1,28 @@
+/tmp/1775275558146718148_123345008523072/__choreo_cute_iter001_wn128.cu(246): warning #177-D: variable "__choreo_vg4id_x" was declared but never referenced
+            auto __choreo_vg4id_x = threadIdx.x / 128;
+                 ^
+
+Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
+
+/tmp/1775275558146718148_123345008523072/__choreo_cute_iter001_wn128.cu(156): warning #177-D: variable "__choreo_device_matmul_sp_f16__ring__" was declared but never referenced
+    auto __choreo_device_matmul_sp_f16__ring__ = nullptr;
+         ^
+
+/tmp/1775275558146718148_123345008523072/__choreo_cute_iter001_wn128.cu(159): warning #20054-D: dynamic initialization is not supported for a function-scope static __shared__ variable within a __device__/__global__ function
+    __attribute__((shared)) cuda::barrier<cuda::thread_scope_block> choreo_copy_atom_t_0_barrier;
+                                                                    ^
+
+/tmp/1775275558146718148_123345008523072/__choreo_cute_iter001_wn128.cu(167): warning #20054-D: dynamic initialization is not supported for a function-scope static __shared__ variable within a __device__/__global__ function
+    __attribute__((shared)) cuda::barrier<cuda::thread_scope_block> choreo_copy_atom_t_1_barrier;
+                                                                    ^
+
+/tmp/1775275558146718148_123345008523072/__choreo_cute_iter001_wn128.cu(175): warning #20054-D: dynamic initialization is not supported for a function-scope static __shared__ variable within a __device__/__global__ function
+    __attribute__((shared)) cuda::barrier<cuda::thread_scope_block> choreo_copy_atom_t_2_barrier;
+                                                                    ^
+
+ptxas info    : (C7519) warpgroup.arrive is injected in around line 650 by compiler to allow use of registers in GMMA in function '_Z29__choreo_device_matmul_sp_f16P6__halfPhS0_S0_14CUtensorMap_stS2_S2_'
+ptxas info    : (C7510) Potential Performance Loss: wgmma.mma_async instructions are serialized due to wgmma pipeline crossing function boundary at a function call in the function '_Z29__choreo_device_matmul_sp_f16P6__halfPhS0_S0_14CUtensorMap_stS2_S2_'
+TFLOPS: 42.0609
+HW efficiency: 2.77997%
+Test Passed (verify skipped)
+

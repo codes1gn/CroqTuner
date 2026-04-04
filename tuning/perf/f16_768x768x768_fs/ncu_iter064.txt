@@ -1,0 +1,5 @@
+ncu profiling failed: kernel crashes with CUDA error 700 (illegal memory access)
+Kernel: iter063_meta4.co (TILE_M=64+1p1c+META_TILE_COLS=4, compiled with --use-warpspec)
+Root cause: --use-warpspec flag causes illegal memory access for shape 768x768x768
+Baseline without --use-warpspec: works at 35.49 TFLOPS
+All warpspec-compiled kernels (iter033-iter063) now crash with cudaErrorIllegalAddress

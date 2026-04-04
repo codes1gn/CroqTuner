@@ -3313,17 +3313,12 @@
     "f16_768x768x768_fs": {
       "status": "active",
       "mode": "from_scratch",
-      "current_iter": 63,
-      "best_iter": 63,
+      "current_iter": 64,
       "best_tflops": 48.5236,
       "baseline_tflops": 34.92,
-      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter033_ws1p2c_stp_full.co",
-      "consecutive_discards": 4,
-      "scenarios": [
-        "square"
-      ],
-      "region": "far",
-      "note": "From-scratch iter 49: ws1p2c --apprx-div (no stmatrix) DISCARD (45.82 vs best 47.24)"
+      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter063_meta4.co",
+      "consecutive_discards": 1,
+      "note": "iter063 crashes with warpspec; working best ~42.1 TFLOPS at iter064"
     }
   }
 }
