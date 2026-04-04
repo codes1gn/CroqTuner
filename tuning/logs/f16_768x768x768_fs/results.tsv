@@ -118,3 +118,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 112	iter112_wn168_base.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=168 legal sparse-MMA tile-width probe from current best	compile_error
 113	iter113_wn256_outpad16.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=256 + output padding 16 for more aggressive epilogue bank-conflict relief	compile_error
 114	iter114_wn112_stmatrix.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=112 + --stmatrix on current-best pipeline	compile_error
+115	iter115_wn176_base.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=176 legal sparse-MMA tile-width probe from current best	compile_error
