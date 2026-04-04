@@ -204,17 +204,17 @@
     "f16_256x4096x256": {
       "status": "active",
       "mode": "from_current_best",
-      "current_iter": 17,
-      "best_tflops": 210.02,
+      "current_iter": 18,
+      "best_tflops": 210.12,
       "baseline_tflops": 42.068,
-      "best_kernel": "tuning/srcs/f16_256x4096x256/iter005_all256.cu",
+      "best_kernel": "tuning/srcs/f16_256x4096x256/iter018_ns_both_100_200.cu",
       "scenarios": [
         "sweep_mk_fixN4096"
       ],
       "region": "far",
-      "best_iter": 5,
-      "consecutive_discards": 12,
-      "last_updated": "2026-04-04T14:46:35Z"
+      "best_iter": 18,
+      "consecutive_discards": 0,
+      "last_updated": "2026-04-04T14:46:50Z"
     },
     "f16_256x4096x4096": {
       "status": "pending",
