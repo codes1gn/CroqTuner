@@ -3313,13 +3313,13 @@
     "f16_768x768x768_fs": {
       "status": "in_progress",
       "mode": "from_scratch",
-      "current_iter": 98,
+      "current_iter": 99,
       "best_iter": 82,
       "best_tflops": 47.0379,
       "baseline_tflops": 34.92,
       "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter082_wn96.co",
-      "consecutive_discards": 16,
-      "note": "Iter 98 complete. Current best iter 82."
+      "consecutive_discards": 17,
+      "note": "Iter 99 complete. Current best iter 82."
     }
   },
   "f16_768x768x768_fs": {
