@@ -106,3 +106,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 100	iter100_wn120_base.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=120 legal sparse-MMA tile-width probe from current best	compile_error
 101	iter101_wn192_outpad8.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=192 + output padding 8 to reduce shared-store bank conflicts	compile_error
 102	iter102_wn96_outpad8.co	0.0000	0.00	DISCARD_COMPILE_FAIL	compute_bound	WARP_N=96 + output padding 8 to reduce shared-store bank conflicts	compile_error
+103	iter103_wn136_base.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=136 legal sparse-MMA tile-width probe from current best	incorrect
