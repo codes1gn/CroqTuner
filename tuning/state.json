@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "description": "Global tuning state \u2014 tracks per-shape kernel status across all scenarios and dtypes. All work on main branch. v3: 134 unique shapes x 2 dtypes = 268 entries.",
+  "description": "Global tuning state — tracks per-shape kernel status across all scenarios and dtypes. All work on main branch. v3: 134 unique shapes x 2 dtypes = 268 entries.",
   "shapes": {
     "f16_4096x8192x8192": {
       "status": "done",
@@ -9,7 +9,7 @@
       "best_tflops": 671,
       "baseline_tflops": 671,
       "best_kernel": "tuning/srcs/f16_4096x8192x8192/seed.cu",
-      "note": "Reference shape \u2014 no tuning needed, counts as 30",
+      "note": "Reference shape — no tuning needed, counts as 30",
       "scenarios": [
         "sweep_k",
         "sweep_m",
@@ -2568,7 +2568,7 @@
       "best_tflops": 1215.31,
       "baseline_tflops": 1215.31,
       "best_kernel": "tuning/srcs/e4m3_4096x8192x8192/seed.cu",
-      "note": "Reference shape \u2014 no tuning needed, counts as 30",
+      "note": "Reference shape — no tuning needed, counts as 30",
       "scenarios": [
         "sweep_k",
         "sweep_m",
@@ -3311,14 +3311,15 @@
       "region": "far"
     },
     "f16_768x768x768_fs": {
-      "status": "active",
+      "status": "done",
       "mode": "from_scratch",
-      "current_iter": 92,
+      "current_iter": 150,
+      "best_iter": 82,
       "best_tflops": 47.0379,
       "baseline_tflops": 34.92,
-      "best_kernel": "tuning/srcs/f16_768x768x768_fs/iter082_wn96.co",
-      "consecutive_discards": 3,
-      "note": "iter063 crashes with warpspec; working best ~42.1 TFLOPS at iter064"
+      "best_kernel": "kernels/gemm_sp_f16/f16_768x768x768_fs_best.co",
+      "consecutive_discards": 67,
+      "note": "COMPLETED 150 iters. Grid too small (96 CTAs for 132 SMs). Measurement anomaly after iter 93."
     }
   }
 }
