@@ -1,0 +1,19 @@
+{
+  "key": "f16_256x256x4096",
+  "dtype": "f16",
+  "shape": [
+    256,
+    256,
+    4096
+  ],
+  "mode": "from_current_best",
+  "max_iter": 30,
+  "current_iter": 1,
+  "best_iter": 1,
+  "best_tflops": 14.1785,
+  "baseline_tflops": 14.0838,
+  "best_kernel": "tuning/srcs/f16_256x256x4096/iter001_l2lhs128.cu",
+  "consecutive_discards": 0,
+  "status": "active",
+  "last_updated": "2026-04-04T13:07:43Z"
+}

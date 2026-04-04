@@ -1,0 +1,13 @@
+==PROF== Connected to process 359696 (/tmp/f16_256x256x4096_profile_iter001)
+==WARNING== Unable to access the following 6 metrics: ctc__rx_bytes_data_user.sum, ctc__rx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__rx_bytes_data_user.sum.per_second, ctc__tx_bytes_data_user.sum, ctc__tx_bytes_data_user.sum.pct_of_peak_sustained_elapsed, ctc__tx_bytes_data_user.sum.per_second.
+
+
+==PROF== Profiling "__choreo_device_spmm" - 0: 0%....50%....100% - 38 passes
+Timing avg ms: 4424.78
+TFLOPS: 0.000121333
+HW efficiency: 8.01935e-06%
+Test Passed (verify skipped)
+
+==PROF== Disconnected from process 359696
+==PROF== Report: /tmp/f16_256x256x4096_ncu_iter001.ncu-rep
+

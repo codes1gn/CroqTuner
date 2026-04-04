@@ -174,16 +174,18 @@
       "region": "far"
     },
     "f16_256x256x4096": {
-      "status": "pending",
+      "status": "active",
       "mode": "from_current_best",
-      "current_iter": 0,
-      "best_tflops": 0,
-      "baseline_tflops": 0,
-      "best_kernel": "",
+      "current_iter": 1,
+      "best_tflops": 14.1785,
+      "baseline_tflops": 14.0838,
+      "best_kernel": "tuning/srcs/f16_256x256x4096/iter001_l2lhs128.cu",
       "scenarios": [
         "sweep_mn_fixK4096"
       ],
-      "region": "far"
+      "region": "far",
+      "best_iter": 1,
+      "consecutive_discards": 0
     },
     "f16_256x256x8192": {
       "status": "pending",

@@ -1,0 +1,1 @@
+{"iter": 1, "idea": "promote LHS tensor map to L2_128B", "category": "macro", "bottleneck_before": "occupancy_limited", "justification": "baseline ncu shows occupancy-limited small shape; modest L2 help may reduce refill latency without changing structure", "result": "KEEP", "tflops": 14.1785, "tflops_delta": 0.0947}
