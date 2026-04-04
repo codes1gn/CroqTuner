@@ -2,13 +2,13 @@
   "shape_key": "f16_768x768x768_fs",
   "dtype": "f16",
   "mode": "from_scratch",
-  "iteration": 54,
+  "iteration": 55,
   "max_iteration": 150,
   "baseline_tflops": 34.92,
   "current_best_tflops": 48.7409,
   "current_best_iter": 51,
   "current_best_kernel": "tuning/srcs/f16_768x768x768_fs/iter051_launch_bounds.co",
-  "consecutive_discards": 3,
+  "consecutive_discards": 4,
   "last_bottleneck": "occupancy_limited",
-  "last_idea_category": "macro"
+  "last_idea_category": "choreo"
 }
