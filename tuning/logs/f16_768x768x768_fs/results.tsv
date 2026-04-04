@@ -71,3 +71,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 65	iter065_nativef16.co	41.2494	2.73	DISCARD	occupancy_limited	-f16n flag (native f16 arithmetic)	bash /tmp/f16_768x768x768_fs_iter065.cute.result --execute
 66	iter066_hoistscale.co	41.9841	2.77	DISCARD	occupancy_limited	--hoist-scale flag	bash /tmp/f16_768x768x768_fs_iter066.cute.result --execute
 67	iter067_combo.co	42.0601	2.78	DISCARD	occupancy_limited	--disable-runtime-check+--native-f16+--stmatrix combo	bash /tmp/f16_768x768x768_fs_iter067.cute.result --execute
+68	iter068_wn64_baseline.co	42.4244	2.80	KEEP	occupancy_limited	WARP_N=64 simple baseline (144 CTAs)	bash /tmp/f16_768x768x768_fs_iter068.cute.result --execute
