@@ -142,3 +142,4 @@ iter	kernel	tflops	hw_eff_pct	decision	bottleneck_before	idea_summary	run_comman
 136	iter136_wn240_base.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=240 legal sparse-MMA tile-width probe from current best	incorrect
 137	iter137_wn192_no_ptx.co	38.9757	2.58	DISCARD	compute_bound	WARP_N=192 without --ptx-barrier to test barrier overhead sensitivity	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter137.cute.result" --execute
 138	iter138_wn96_no_apprx_no_native.co	48.5029	3.21	DISCARD	compute_bound	WARP_N=96 without --apprx-div and --native-f16 to test math-flag dependence	CHOREO_TIMING_WARMUP=10 CHOREO_TIMING_REPEAT=500 bash "/tmp/f16_768x768x768_fs_iter138.cute.result" --execute
+139	iter139_wn248_base.co	0.0000	0.00	DISCARD_INCORRECT	compute_bound	WARP_N=248 legal sparse-MMA tile-width probe from current best	incorrect
