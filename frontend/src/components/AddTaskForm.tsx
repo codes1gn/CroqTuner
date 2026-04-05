@@ -3,24 +3,36 @@ import { api } from "../api";
 
 interface Props {
   availableModels: string[];
+  availableVariants: string[];
   defaultModel: string;
+  defaultVariant: string;
   onCreated: () => void;
   onCancel: () => void;
 }
 
-const MODEL_LABELS: Record<string, string> = {
-  "opencode/qwen3.6-plus-free": "Qwen3.6 Plus Free",
-  "opencode/minimax-m2.5-free": "Minimax M2.5 Free",
-  "opencode/big-pickle": "Big Pickle Free",
-};
+function providerGroup(models: string[]): Record<string, string[]> {
+  const groups: Record<string, string[]> = {};
+  for (const m of models) {
+    const slash = m.indexOf("/");
+    const provider = slash > 0 ? m.slice(0, slash) : "other";
+    (groups[provider] ??= []).push(m);
+  }
+  return groups;
+}
 
-export function AddTaskForm({ availableModels, defaultModel, onCreated, onCancel }: Props) {
+function shortName(model: string): string {
+  const slash = model.indexOf("/");
+  return slash > 0 ? model.slice(slash + 1) : model;
+}
+
+export function AddTaskForm({ availableModels, availableVariants, defaultModel, defaultVariant, onCreated, onCancel }: Props) {
   const [dtype, setDtype] = useState("f16");
   const [m, setM] = useState("");
   const [n, setN] = useState("");
   const [k, setK] = useState("");
   const [mode, setMode] = useState("from_current_best");
   const [model, setModel] = useState(defaultModel);
+  const [variant, setVariant] = useState(defaultVariant);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -38,7 +50,7 @@ export function AddTaskForm({ availableModels, defaultModel, onCreated, onCancel
 
     setSubmitting(true);
     try {
-      await api.createTask({ dtype, m: mVal, n: nVal, k: kVal, mode, model });
+      await api.createTask({ dtype, m: mVal, n: nVal, k: kVal, mode, model, variant });
       onCreated();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create task");
@@ -48,6 +60,12 @@ export function AddTaskForm({ availableModels, defaultModel, onCreated, onCancel
   };
 
   const maxIter = mode === "from_current_best" ? 30 : 150;
+  const groups = providerGroup(availableModels.length > 0 ? availableModels : [defaultModel]);
+  const providerOrder = ["github-copilot", "opencode", "nvidia"];
+  const sortedProviders = [
+    ...providerOrder.filter((p) => groups[p]),
+    ...Object.keys(groups).filter((p) => !providerOrder.includes(p)),
+  ];
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
@@ -105,21 +123,37 @@ export function AddTaskForm({ availableModels, defaultModel, onCreated, onCancel
             <p className="text-xs text-gray-500 mt-1">Max iterations: {maxIter}</p>
           </div>
 
-          <div>
-            <label className="block text-sm text-gray-400 mb-1">Model</label>
-            <select
-              value={model}
-              onChange={(e) => setModel(e.target.value)}
-              className="w-full bg-gray-700 rounded px-3 py-2 text-gray-100 border border-gray-600 focus:border-blue-500 focus:outline-none"
-            >
-              {(availableModels.length > 0 ? availableModels : [defaultModel]).map((item) => (
-                <option key={item} value={item}>
-                  {MODEL_LABELS[item] ?? item}
-                </option>
-              ))}
-            </select>
-            <p className="text-xs text-gray-500 mt-1 font-mono">{model}</p>
+          <div className="grid grid-cols-3 gap-3">
+            <div className="col-span-2">
+              <label className="block text-sm text-gray-400 mb-1">Model</label>
+              <select
+                value={model}
+                onChange={(e) => setModel(e.target.value)}
+                className="w-full bg-gray-700 rounded px-3 py-2 text-gray-100 border border-gray-600 focus:border-blue-500 focus:outline-none"
+              >
+                {sortedProviders.map((provider) => (
+                  <optgroup key={provider} label={provider}>
+                    {groups[provider].map((item) => (
+                      <option key={item} value={item}>{shortName(item)}</option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm text-gray-400 mb-1">Variant</label>
+              <select
+                value={variant}
+                onChange={(e) => setVariant(e.target.value)}
+                className="w-full bg-gray-700 rounded px-3 py-2 text-gray-100 border border-gray-600 focus:border-blue-500 focus:outline-none"
+              >
+                {(availableVariants.length > 0 ? availableVariants : [""]).map((v) => (
+                  <option key={v} value={v}>{v || "(none)"}</option>
+                ))}
+              </select>
+            </div>
           </div>
+          <p className="text-xs text-gray-500 font-mono">{model}{variant ? ` --variant ${variant}` : ""}</p>
         </div>
 
         {error && (

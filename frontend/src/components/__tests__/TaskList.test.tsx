@@ -19,6 +19,7 @@ const mockTask: TaskData = {
   baseline_tflops: 45.0,
   best_kernel: null,
   model: "opencode/qwen3.6-plus-free",
+  variant: "",
   opencode_session_id: "ses_abc123",
   error_message: null,
   created_at: "2026-04-03T10:00:00",

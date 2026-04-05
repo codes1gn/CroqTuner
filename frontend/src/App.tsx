@@ -92,7 +92,9 @@ export default function App() {
       {showAdd && (
         <AddTaskForm
           availableModels={health?.available_models ?? []}
-          defaultModel={health?.default_model ?? "opencode/qwen3.6-plus-free"}
+          availableVariants={health?.available_variants ?? [""]}
+          defaultModel={health?.default_model ?? "github-copilot/gpt-5.4"}
+          defaultVariant={health?.default_variant ?? ""}
           onCreated={() => {
             setShowAdd(false);
             loadTasks();

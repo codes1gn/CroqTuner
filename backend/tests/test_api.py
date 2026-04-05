@@ -4,6 +4,7 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import delete, select
 import sqlite3
 
+import app.config as config_module
 from app.config import settings
 from app.main import app
 from app.database import async_session, init_db, engine
@@ -11,15 +12,26 @@ from app.models import Base, IterationLog, Task
 from app.state_seed import seed_tasks_from_state_if_empty
 
 
+_TEST_MODELS = [
+    "opencode/qwen3.6-plus-free",
+    "opencode/minimax-m2.5-free",
+    "opencode/big-pickle",
+    "github-copilot/gpt-5.4",
+    settings.opencode_model,
+]
+
+
 @pytest_asyncio.fixture(autouse=True)
 async def setup_db():
-    """Create fresh tables for each test."""
+    """Create fresh tables and inject test model list for each test."""
+    config_module._cached_models = _TEST_MODELS
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
         await conn.run_sync(Base.metadata.create_all)
     yield
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
+    config_module._cached_models = None
 
 
 @pytest_asyncio.fixture
@@ -224,15 +236,19 @@ async def test_health(client):
     assert data["status"] == "ok"
     assert "scheduler_running" in data
     assert data["default_model"] == settings.opencode_model
+    assert "default_variant" in data
     assert "opencode/qwen3.6-plus-free" in data["available_models"]
+    assert "available_variants" in data
     assert "pending" in data["task_counts"]
 
 
 @pytest.mark.asyncio
 async def test_update_default_model(client):
-    resp = await client.patch("/api/settings/model", json={"default_model": "opencode/big-pickle"})
+    resp = await client.patch("/api/settings/model", json={"default_model": "opencode/big-pickle", "default_variant": "high"})
     assert resp.status_code == 200
-    assert resp.json()["default_model"] == "opencode/big-pickle"
+    data = resp.json()
+    assert data["default_model"] == "opencode/big-pickle"
+    assert data["default_variant"] == "high"
 
     resp = await client.post("/api/tasks", json={
         "dtype": "f16",
@@ -242,7 +258,9 @@ async def test_update_default_model(client):
         "mode": "from_current_best",
     })
     assert resp.status_code == 201
-    assert resp.json()["model"] == "opencode/big-pickle"
+    task = resp.json()
+    assert task["model"] == "opencode/big-pickle"
+    assert task["variant"] == "high"
 
 
 @pytest.mark.asyncio
@@ -492,3 +510,160 @@ async def test_session_history_reads_opencode_db(client, tmp_path):
         assert data["entries"][2]["status"] == "completed"
     finally:
         settings.opencode_db_path = original_db_path
+
+
+# ── Resume-from-iter tests ────────────────────────────────────────
+
+@pytest.mark.asyncio
+async def test_resume_task_from_iter(client):
+    """POST /api/tasks/{id}/resume creates a new task starting at given iteration."""
+    resp = await client.post("/api/tasks", json={
+        "dtype": "f16", "m": 768, "n": 768, "k": 768, "mode": "from_scratch",
+    })
+    assert resp.status_code == 201
+    task_id = resp.json()["id"]
+
+    async with async_session() as session:
+        task = await session.get(Task, task_id)
+        task.status = "stopped"
+        task.current_iteration = 93
+        task.best_tflops = 47.0
+        task.baseline_tflops = 34.9
+        task.best_kernel = "tuning/srcs/f16_768x768x768_fs/iter082_wn96.co"
+        await session.commit()
+
+    resp = await client.post(f"/api/tasks/{task_id}/resume", json={"from_iteration": 93})
+    assert resp.status_code == 201
+    data = resp.json()
+    assert data["current_iteration"] == 93
+    assert data["status"] == "pending"
+    assert data["best_tflops"] == 47.0
+    assert data["baseline_tflops"] == 34.9
+    assert data["best_kernel"] == "tuning/srcs/f16_768x768x768_fs/iter082_wn96.co"
+    assert data["id"] != task_id
+
+
+@pytest.mark.asyncio
+async def test_resume_task_rejects_running(client):
+    """Cannot resume a task that is currently running."""
+    resp = await client.post("/api/tasks", json={
+        "dtype": "f16", "m": 768, "n": 768, "k": 768, "mode": "from_scratch",
+    })
+    task_id = resp.json()["id"]
+
+    async with async_session() as session:
+        task = await session.get(Task, task_id)
+        task.status = "running"
+        await session.commit()
+
+    resp = await client.post(f"/api/tasks/{task_id}/resume", json={"from_iteration": 50})
+    assert resp.status_code == 400
+
+
+@pytest.mark.asyncio
+async def test_resume_task_clamps_iteration(client):
+    """from_iteration > max_iterations gets clamped."""
+    resp = await client.post("/api/tasks", json={
+        "dtype": "f16", "m": 768, "n": 768, "k": 768, "mode": "from_current_best",
+    })
+    task_id = resp.json()["id"]
+
+    async with async_session() as session:
+        task = await session.get(Task, task_id)
+        task.status = "completed"
+        task.current_iteration = 30
+        await session.commit()
+
+    resp = await client.post(f"/api/tasks/{task_id}/resume", json={"from_iteration": 999})
+    assert resp.status_code == 201
+    data = resp.json()
+    assert data["current_iteration"] <= 30
+
+
+# ── poll_artifacts safety tests ───────────────────────────────────
+
+@pytest.mark.asyncio
+async def test_poll_artifacts_does_not_complete_from_stale_state(client):
+    """poll_artifacts should NOT mark a running task completed from state.json."""
+    import tempfile
+    from pathlib import Path
+    from app.agent import poll_artifacts
+    from app.config import settings
+
+    resp = await client.post("/api/tasks", json={
+        "dtype": "f16", "m": 768, "n": 768, "k": 768, "mode": "from_scratch",
+    })
+    task_id = resp.json()["id"]
+
+    async with async_session() as session:
+        task = await session.get(Task, task_id)
+        task.status = "running"
+        task.current_iteration = 50
+        await session.commit()
+
+    original_tuning_dir = settings.tuning_dir
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp = Path(tmpdir)
+        settings.tuning_dir = tmp
+
+        (tmp / "checkpoints").mkdir()
+        (tmp / "logs" / "f16_768x768x768_fs").mkdir(parents=True)
+
+        state_file = tmp / "state.json"
+        state_file.write_text('{"shapes":{"f16_768x768x768_fs":{"status":"done","current_iter":150}}}')
+
+        task_snap = Task(
+            id=task_id, shape_key="f16_768x768x768_fs", dtype="f16",
+            m=768, n=768, k=768, mode="from_scratch",
+            max_iterations=150, status="running", current_iteration=50,
+        )
+        await poll_artifacts(task_snap, async_session)
+
+        async with async_session() as session:
+            db_task = await session.get(Task, task_id)
+            assert db_task.status == "running", f"Expected running but got {db_task.status}"
+
+        settings.tuning_dir = original_tuning_dir
+
+
+@pytest.mark.asyncio
+async def test_poll_artifacts_reads_checkpoint_iteration_key(client):
+    """poll_artifacts reads 'iteration' key from checkpoint (not just 'current_iter')."""
+    import tempfile
+    from pathlib import Path
+    from app.agent import poll_artifacts
+    from app.config import settings
+
+    resp = await client.post("/api/tasks", json={
+        "dtype": "f16", "m": 768, "n": 768, "k": 768, "mode": "from_scratch",
+    })
+    task_id = resp.json()["id"]
+
+    async with async_session() as session:
+        task = await session.get(Task, task_id)
+        task.status = "running"
+        task.current_iteration = 0
+        await session.commit()
+
+    original_tuning_dir = settings.tuning_dir
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tmp = Path(tmpdir)
+        settings.tuning_dir = tmp
+
+        (tmp / "checkpoints").mkdir()
+        cp_file = tmp / "checkpoints" / "f16_768x768x768_fs.json"
+        cp_file.write_text('{"iteration": 42, "current_best_tflops": 45.0}')
+
+        task_snap = Task(
+            id=task_id, shape_key="f16_768x768x768_fs", dtype="f16",
+            m=768, n=768, k=768, mode="from_scratch",
+            max_iterations=150, status="running", current_iteration=0,
+        )
+        await poll_artifacts(task_snap, async_session)
+
+        async with async_session() as session:
+            db_task = await session.get(Task, task_id)
+            assert db_task.current_iteration == 42, f"Expected 42 but got {db_task.current_iteration}"
+            assert db_task.best_tflops == 45.0
+
+        settings.tuning_dir = original_tuning_dir

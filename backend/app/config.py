@@ -1,37 +1,61 @@
+import subprocess
 from pathlib import Path
 
 from pydantic_settings import BaseSettings
 
-AVAILABLE_OPENCODE_MODELS = (
-    "opencode/qwen3.6-plus-free",
-    "opencode/minimax-m2.5-free",
-    "opencode/big-pickle",
-)
+AVAILABLE_VARIANTS = ("", "minimal", "low", "medium", "high", "xhigh", "max")
+
+DEFAULT_OPENCODE_MODEL = "opencode/big-pickle"
+DEFAULT_OPENCODE_VARIANT = "high"  # max is 3x cost — not worth it
+
+_cached_models: list[str] | None = None
+
+
+def fetch_opencode_models() -> list[str]:
+    global _cached_models
+    if _cached_models is not None:
+        return _cached_models
+    try:
+        result = subprocess.run(
+            ["opencode", "models"],
+            capture_output=True, text=True, timeout=15, check=False,
+        )
+        if result.returncode == 0:
+            models = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+            if models:
+                _cached_models = models
+                return models
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        pass
+    _cached_models = [DEFAULT_OPENCODE_MODEL]
+    return _cached_models
+
+
+def invalidate_model_cache() -> None:
+    global _cached_models
+    _cached_models = None
 
 
 def is_supported_opencode_model(model: str) -> bool:
-    return model in AVAILABLE_OPENCODE_MODELS
+    return model in fetch_opencode_models()
 
-# backend/app/config.py -> CroqTuner repository root (self-contained project for opencode)
+
+def is_valid_variant(variant: str) -> bool:
+    return variant in AVAILABLE_VARIANTS
+
+
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
 
 class Settings(BaseSettings):
-    """
-    Defaults keep all CroqTuner assets inside this repo:
-    - `.claude/skills/` — FSM + tuning skills (same layout as Claude Code)
-    - `kernels/` — manifest + gemm_sp registry paths referenced by skills
-    - `tuning/` — state, logs, checkpoints (often gitignored; rsync from paper repo)
-    `project_dir` is the directory passed to `opencode run` (working tree for the agent).
-    """
-
     tuning_dir: Path = _PROJECT_ROOT / "tuning"
     skills_dir: Path = _PROJECT_ROOT / ".claude" / "skills"
     project_dir: Path = _PROJECT_ROOT
     heartbeat_sec: int = 30
     db_path: str = "./data/croqtuner.db"
     opencode_bin: str = "opencode"
-    opencode_model: str = "opencode/qwen3.6-plus-free"
+    opencode_model: str = DEFAULT_OPENCODE_MODEL
+    opencode_variant: str = DEFAULT_OPENCODE_VARIANT
     opencode_db_path: Path = Path.home() / ".local" / "share" / "opencode" / "opencode.db"
     cuda_visible_devices: str = "0"
     mock_mode: bool = False

@@ -26,6 +26,8 @@ async def init_db():
             await conn.exec_driver_sql("ALTER TABLE tasks ADD COLUMN model VARCHAR(128)")
         if "opencode_session_id" not in columns:
             await conn.exec_driver_sql("ALTER TABLE tasks ADD COLUMN opencode_session_id VARCHAR(128)")
+        if "variant" not in columns:
+            await conn.exec_driver_sql("ALTER TABLE tasks ADD COLUMN variant VARCHAR(32) DEFAULT ''")
 
 
 async def get_session():

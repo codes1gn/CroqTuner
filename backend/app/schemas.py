@@ -1,6 +1,6 @@
 from pydantic import BaseModel, field_validator
 
-from .config import is_supported_opencode_model
+from .config import is_valid_variant
 
 
 class TaskCreate(BaseModel):
@@ -10,6 +10,7 @@ class TaskCreate(BaseModel):
     k: int
     mode: str
     model: str | None = None
+    variant: str | None = None
 
     @field_validator("dtype")
     @classmethod
@@ -46,11 +47,11 @@ class TaskCreate(BaseModel):
             raise ValueError("mode must be 'from_current_best' or 'from_scratch'")
         return v
 
-    @field_validator("model")
+    @field_validator("variant")
     @classmethod
-    def validate_model(cls, v: str | None) -> str | None:
-        if v is not None and not is_supported_opencode_model(v):
-            raise ValueError("unsupported model")
+    def validate_variant(cls, v: str | None) -> str | None:
+        if v is not None and not is_valid_variant(v):
+            raise ValueError("unsupported variant")
         return v
 
 
@@ -63,6 +64,9 @@ class TaskUpdate(BaseModel):
         if v is not None and v not in ("pending", "cancelled", "waiting"):
             raise ValueError("status must be 'pending', 'cancelled', or 'waiting'")
         return v
+
+
+VALID_TASK_STATUSES = ("pending", "waiting", "running", "stopped", "completed", "failed", "cancelled")
 
 
 class TaskResponse(BaseModel):
@@ -80,6 +84,7 @@ class TaskResponse(BaseModel):
     baseline_tflops: float | None
     best_kernel: str | None
     model: str | None
+    variant: str | None
     opencode_session_id: str | None
     error_message: str | None
     created_at: str | None
@@ -132,21 +137,37 @@ class HealthResponse(BaseModel):
     active_task_id: int | None
     gpu_info: str | None
     default_model: str
+    default_variant: str
     available_models: list[str]
+    available_variants: list[str]
     task_counts: dict[str, int]
+
+
+class ResumeRequest(BaseModel):
+    from_iteration: int = 0
+
+    @field_validator("from_iteration")
+    @classmethod
+    def validate_from_iteration(cls, v: int) -> int:
+        if v < 0:
+            raise ValueError("from_iteration must be >= 0")
+        return v
 
 
 class ModelSettingsUpdate(BaseModel):
     default_model: str
+    default_variant: str = ""
 
-    @field_validator("default_model")
+    @field_validator("default_variant")
     @classmethod
-    def validate_default_model(cls, v: str) -> str:
-        if not is_supported_opencode_model(v):
-            raise ValueError("unsupported model")
+    def validate_default_variant(cls, v: str) -> str:
+        if not is_valid_variant(v):
+            raise ValueError("unsupported variant")
         return v
 
 
 class ModelSettingsResponse(BaseModel):
     default_model: str
+    default_variant: str
     available_models: list[str]
+    available_variants: list[str]

@@ -15,6 +15,7 @@ export interface TaskData {
   baseline_tflops: number | null;
   best_kernel: string | null;
   model: string | null;
+  variant: string | null;
   opencode_session_id: string | null;
   error_message: string | null;
   created_at: string | null;
@@ -67,13 +68,17 @@ export interface HealthData {
   active_task_id: number | null;
   gpu_info: string | null;
   default_model: string;
+  default_variant: string;
   available_models: string[];
+  available_variants: string[];
   task_counts: Record<string, number>;
 }
 
 export interface ModelSettingsData {
   default_model: string;
+  default_variant: string;
   available_models: string[];
+  available_variants: string[];
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -93,7 +98,7 @@ export const api = {
   listTasks: (status?: string) =>
     request<TaskData[]>(`/tasks${status ? `?status=${status}` : ""}`),
 
-  createTask: (data: { dtype: string; m: number; n: number; k: number; mode: string; model?: string }) =>
+  createTask: (data: { dtype: string; m: number; n: number; k: number; mode: string; model?: string; variant?: string }) =>
     request<TaskData>("/tasks", { method: "POST", body: JSON.stringify(data) }),
 
   getTask: (id: number) => request<TaskData>(`/tasks/${id}`),
@@ -115,6 +120,12 @@ export const api = {
       method: "POST",
     }),
 
+  resumeTask: (id: number, fromIteration: number) =>
+    request<TaskData>(`/tasks/${id}/resume`, {
+      method: "POST",
+      body: JSON.stringify({ from_iteration: fromIteration }),
+    }),
+
   deleteTask: (id: number) =>
     request<void>(`/tasks/${id}`, { method: "DELETE" }),
 
@@ -131,9 +142,9 @@ export const api = {
 
   getModelSettings: () => request<ModelSettingsData>("/settings/model"),
 
-  setDefaultModel: (default_model: string) =>
+  setDefaultModel: (default_model: string, default_variant: string = "") =>
     request<ModelSettingsData>("/settings/model", {
       method: "PATCH",
-      body: JSON.stringify({ default_model }),
+      body: JSON.stringify({ default_model, default_variant }),
     }),
 };

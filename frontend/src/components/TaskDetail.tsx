@@ -25,6 +25,8 @@ export function TaskDetail({ sseEvent }: Props) {
   const [agentLogs, setAgentLogs] = useState<AgentLogData[]>([]);
   const [sessionHistory, setSessionHistory] = useState<SessionHistoryData | null>(null);
   const [error, setError] = useState("");
+  const [showResume, setShowResume] = useState(false);
+  const [resumeIter, setResumeIter] = useState("");
 
   const taskId = id ? parseInt(id) : NaN;
 
@@ -139,6 +141,21 @@ export function TaskDetail({ sseEvent }: Props) {
     }
   };
 
+  const handleResume = async () => {
+    if (!task) return;
+    const iter = parseInt(resumeIter);
+    if (isNaN(iter) || iter < 0) {
+      setError("Invalid iteration number");
+      return;
+    }
+    try {
+      const resumed = await api.resumeTask(task.id, iter);
+      navigate(`/tasks/${resumed.id}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to resume");
+    }
+  };
+
   if (error) {
     return <div className="p-6 text-red-400">{error}</div>;
   }
@@ -157,7 +174,8 @@ export function TaskDetail({ sseEvent }: Props) {
         )
       : "--";
 
-  const modelLabel = MODEL_LABELS[task.model ?? ""] ?? task.model ?? "system default";
+  const variantSuffix = task.variant ? ` (${task.variant})` : "";
+  const taskModelLabel = task.model ? modelLabel(task.model) + variantSuffix : "system default";
 
   return (
     <div className="space-y-5">
@@ -183,16 +201,25 @@ export function TaskDetail({ sseEvent }: Props) {
               Promote to queue
             </button>
           )}
-          {(task.status === "failed" || task.status === "completed" || task.status === "cancelled") && (
-            <button
-              type="button"
-              onClick={handleRetry}
-              className="px-3 py-1 text-xs rounded bg-cyan-900/50 hover:bg-cyan-800 text-cyan-200 border border-cyan-700 transition"
-            >
-              Retry as new task
-            </button>
+          {(task.status === "failed" || task.status === "completed" || task.status === "cancelled" || task.status === "stopped") && (
+            <>
+              <button
+                type="button"
+                onClick={handleRetry}
+                className="px-3 py-1 text-xs rounded bg-cyan-900/50 hover:bg-cyan-800 text-cyan-200 border border-cyan-700 transition"
+              >
+                Retry (fresh)
+              </button>
+              <button
+                type="button"
+                onClick={() => { setShowResume(!showResume); setResumeIter(String(task.current_iteration)); }}
+                className="px-3 py-1 text-xs rounded bg-amber-900/50 hover:bg-amber-800 text-amber-200 border border-amber-700 transition"
+              >
+                Resume from iter
+              </button>
+            </>
           )}
-          {(task.status === "running" || task.status === "pending" || task.status === "waiting") && (
+          {(task.status === "running" || task.status === "pending" || task.status === "waiting" || task.status === "stopped") && (
             <button
               type="button"
               onClick={handleCancel}
@@ -203,6 +230,34 @@ export function TaskDetail({ sseEvent }: Props) {
           )}
         </div>
       </div>
+
+      {showResume && (
+        <div className="flex items-center gap-3 bg-amber-950/30 border border-amber-800 rounded-lg px-4 py-2">
+          <span className="text-sm text-amber-200">Resume from iteration:</span>
+          <input
+            type="number"
+            value={resumeIter}
+            onChange={(e) => setResumeIter(e.target.value)}
+            min={0}
+            max={task.current_iteration}
+            className="w-24 bg-gray-800 rounded px-2 py-1 text-sm text-gray-100 border border-gray-600 focus:border-amber-500 focus:outline-none"
+          />
+          <button
+            type="button"
+            onClick={handleResume}
+            className="px-3 py-1 text-xs rounded bg-amber-600 hover:bg-amber-500 text-white font-medium transition"
+          >
+            Resume
+          </button>
+          <button
+            type="button"
+            onClick={() => setShowResume(false)}
+            className="px-2 py-1 text-xs text-gray-400 hover:text-gray-200"
+          >
+            Cancel
+          </button>
+        </div>
+      )}
 
       {task.status === "waiting" && (
         <p className="text-sm text-slate-400 bg-slate-900/50 border border-slate-700 rounded-lg px-3 py-2">
@@ -230,8 +285,10 @@ export function TaskDetail({ sseEvent }: Props) {
       <div className="grid gap-4 md:grid-cols-2">
         <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
           <h3 className="text-sm font-semibold text-gray-400 mb-2">Model</h3>
-          <div className="text-base font-semibold text-gray-100">{modelLabel}</div>
-          <div className="mt-1 font-mono text-xs text-gray-500">{task.model ?? "inherited at dispatch"}</div>
+          <div className="text-base font-semibold text-gray-100">{taskModelLabel}</div>
+          <div className="mt-1 font-mono text-xs text-gray-500">
+            {task.model ?? "inherited at dispatch"}{task.variant ? ` --variant ${task.variant}` : ""}
+          </div>
         </div>
 
         <div className="bg-gray-800 rounded-lg p-4 border border-gray-700">
@@ -314,11 +371,10 @@ export function TaskDetail({ sseEvent }: Props) {
   );
 }
 
-const MODEL_LABELS: Record<string, string> = {
-  "opencode/qwen3.6-plus-free": "Qwen3.6 Plus Free",
-  "opencode/minimax-m2.5-free": "Minimax M2.5 Free",
-  "opencode/big-pickle": "Big Pickle Free",
-};
+function modelLabel(id: string): string {
+  const slash = id.indexOf("/");
+  return slash > 0 ? id.slice(slash + 1) : id;
+}
 
 function formatDuration(ms: number): string {
   const s = Math.floor(ms / 1000);

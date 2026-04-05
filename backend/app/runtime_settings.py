@@ -2,14 +2,19 @@ from datetime import datetime, timezone
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .config import AVAILABLE_OPENCODE_MODELS, settings
+from .config import AVAILABLE_VARIANTS, fetch_opencode_models, settings
 from .models import SystemSetting
 
 DEFAULT_MODEL_KEY = "default_model"
+DEFAULT_VARIANT_KEY = "default_variant"
 
 
 def available_models() -> list[str]:
-    return list(AVAILABLE_OPENCODE_MODELS)
+    return fetch_opencode_models()
+
+
+def available_variants() -> list[str]:
+    return list(AVAILABLE_VARIANTS)
 
 
 async def get_default_model(session: AsyncSession) -> str:
@@ -21,14 +26,33 @@ async def get_default_model(session: AsyncSession) -> str:
     return row.value
 
 
-async def set_default_model(session: AsyncSession, model: str) -> str:
-    row = await session.get(SystemSetting, DEFAULT_MODEL_KEY)
-    now = datetime.now(timezone.utc)
+async def get_default_variant(session: AsyncSession) -> str:
+    row = await session.get(SystemSetting, DEFAULT_VARIANT_KEY)
     if row is None:
-        row = SystemSetting(key=DEFAULT_MODEL_KEY, value=model, updated_at=now)
+        row = SystemSetting(key=DEFAULT_VARIANT_KEY, value=settings.opencode_variant)
         session.add(row)
-    else:
-        row.value = model
-        row.updated_at = now
-    await session.flush()
+        await session.flush()
     return row.value
+
+
+async def set_default_model(session: AsyncSession, model: str, variant: str) -> tuple[str, str]:
+    now = datetime.now(timezone.utc)
+
+    m_row = await session.get(SystemSetting, DEFAULT_MODEL_KEY)
+    if m_row is None:
+        m_row = SystemSetting(key=DEFAULT_MODEL_KEY, value=model, updated_at=now)
+        session.add(m_row)
+    else:
+        m_row.value = model
+        m_row.updated_at = now
+
+    v_row = await session.get(SystemSetting, DEFAULT_VARIANT_KEY)
+    if v_row is None:
+        v_row = SystemSetting(key=DEFAULT_VARIANT_KEY, value=variant, updated_at=now)
+        session.add(v_row)
+    else:
+        v_row.value = variant
+        v_row.updated_at = now
+
+    await session.flush()
+    return m_row.value, v_row.value

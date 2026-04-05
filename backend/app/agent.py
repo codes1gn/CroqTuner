@@ -68,6 +68,9 @@ def build_command(task: Task) -> list[str]:
     model = task.model or settings.opencode_model
     if model:
         command.extend(["--model", model])
+    variant = getattr(task, "variant", None) or ""
+    if variant:
+        command.extend(["--variant", variant])
     command.extend([prompt, project_dir])
     return command
 
@@ -186,7 +189,13 @@ async def _read_stream(
 
 
 async def poll_artifacts(task: Task, session_factory) -> None:
-    """Read checkpoint and results.tsv from filesystem to update task state."""
+    """Read checkpoint and results.tsv from filesystem to update task metrics.
+    
+    IMPORTANT: This function NEVER changes task.status. Status transitions are
+    handled exclusively by the scheduler's _finalize_task. This prevents stale
+    artifact files (e.g. state.json with status=done from a prior run) from
+    prematurely completing a running task.
+    """
     key = task.shape_key
     if task.mode == "from_scratch" and not key.endswith("_fs"):
         key = f"{key}_fs"
@@ -194,50 +203,25 @@ async def poll_artifacts(task: Task, session_factory) -> None:
     tuning_dir = settings.tuning_dir.resolve()
     checkpoint_path = tuning_dir / "checkpoints" / f"{key}.json"
     results_path = tuning_dir / "logs" / key / "results.tsv"
-    state_path = tuning_dir / "state.json"
 
-    update = {}
-
-    if state_path.exists():
-        try:
-            state_data = json.loads(state_path.read_text())
-            shape_state = state_data.get("shapes", {}).get(key, {})
-            if shape_state:
-                update["current_iteration"] = shape_state.get("current_iter", task.current_iteration)
-                state_best = shape_state.get("best_tflops")
-                if state_best not in (None, ""):
-                    update["best_tflops"] = state_best
-                state_baseline = shape_state.get("baseline_tflops")
-                if state_baseline not in (None, ""):
-                    update["baseline_tflops"] = state_baseline
-                state_best_kernel = shape_state.get("best_kernel")
-                if state_best_kernel:
-                    update["best_kernel"] = state_best_kernel
-                if shape_state.get("status") == "done":
-                    update["status"] = "completed"
-                    update["completed_at"] = datetime.now(timezone.utc)
-        except (json.JSONDecodeError, OSError):
-            pass
+    update: dict = {}
 
     if checkpoint_path.exists():
         try:
             cp = json.loads(checkpoint_path.read_text())
-            update["current_iteration"] = cp.get("current_iter", task.current_iteration)
-            cp_best = cp.get("best_tflops")
+            cp_iter = cp.get("iteration") or cp.get("current_iter")
+            if cp_iter is not None:
+                update["current_iteration"] = int(cp_iter)
+            cp_best = cp.get("current_best_tflops") or cp.get("best_tflops")
             if cp_best not in (None, ""):
-                update["best_tflops"] = cp_best
+                update["best_tflops"] = float(cp_best)
             cp_baseline = cp.get("baseline_tflops")
             if cp_baseline not in (None, ""):
-                update["baseline_tflops"] = cp_baseline
-            cp_best_kernel = cp.get("best_kernel")
+                update["baseline_tflops"] = float(cp_baseline)
+            cp_best_kernel = cp.get("current_best_kernel") or cp.get("best_kernel")
             if cp_best_kernel:
                 update["best_kernel"] = cp_best_kernel
-            if cp.get("status") == "done" or (
-                cp.get("current_iter", 0) >= task.max_iterations
-            ):
-                update["status"] = "completed"
-                update["completed_at"] = datetime.now(timezone.utc)
-        except (json.JSONDecodeError, OSError):
+        except (json.JSONDecodeError, OSError, ValueError):
             pass
 
     if results_path.exists():
@@ -249,9 +233,7 @@ async def poll_artifacts(task: Task, session_factory) -> None:
                 if len(last) >= 3:
                     try:
                         iter_num = int(last[0])
-                        tflops = float(last[2])
-                        update.setdefault("current_iteration", iter_num)
-                        if update.get("current_iteration", 0) < iter_num:
+                        if iter_num > update.get("current_iteration", 0):
                             update["current_iteration"] = iter_num
                     except ValueError:
                         pass
@@ -263,8 +245,13 @@ async def poll_artifacts(task: Task, session_factory) -> None:
             t = await session.get(Task, task.id)
             if t:
                 changed = False
-                for attr, val in update.items():
+                for attr in ("current_iteration", "best_tflops", "baseline_tflops", "best_kernel"):
+                    val = update.get(attr)
+                    if val is None:
+                        continue
                     old = getattr(t, attr, None)
+                    if attr == "current_iteration":
+                        val = max(val, old or 0)
                     if old != val:
                         setattr(t, attr, val)
                         changed = True

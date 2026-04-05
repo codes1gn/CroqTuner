@@ -28,6 +28,7 @@ class Task(Base):
     baseline_tflops = Column(Float, nullable=True)
     best_kernel = Column(String(512), nullable=True)
     model = Column(String(128), nullable=True)
+    variant = Column(String(32), nullable=True, default="")
     opencode_session_id = Column(String(128), nullable=True)
     error_message = Column(Text, nullable=True)
     created_at = Column(DateTime, nullable=False, default=_utcnow)
@@ -54,6 +55,7 @@ class Task(Base):
             "baseline_tflops": self.baseline_tflops,
             "best_kernel": self.best_kernel,
             "model": self.model,
+            "variant": self.variant or "",
             "opencode_session_id": self.opencode_session_id,
             "error_message": self.error_message,
             "created_at": self.created_at.isoformat() if self.created_at else None,

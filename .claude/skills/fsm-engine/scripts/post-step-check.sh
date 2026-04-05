@@ -170,7 +170,7 @@ case "$STEP" in
 
         # Check tuning/state.json shows done
         if [ -f "tuning/state.json" ]; then
-            STATUS=$(jq -r ".[\"$SHAPE_KEY\"].status // \"missing\"" "tuning/state.json")
+            STATUS=$(jq -r ".shapes[\"$SHAPE_KEY\"].status // .[\"$SHAPE_KEY\"].status // \"missing\"" "tuning/state.json")
             if [ "$STATUS" != "done" ]; then
                 err "tuning/state.json does not show status=done for $SHAPE_KEY (got: $STATUS)"
             fi

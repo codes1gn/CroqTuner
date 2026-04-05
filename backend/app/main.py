@@ -17,7 +17,13 @@ from .events import event_bus
 from .iteration_history import read_iteration_history
 from .models import AgentLog, IterationLog, Task
 from .opencode_sessions import read_session_history
-from .runtime_settings import available_models, get_default_model, set_default_model
+from .runtime_settings import (
+    available_models,
+    available_variants,
+    get_default_model,
+    get_default_variant,
+    set_default_model,
+)
 from .scheduler import scheduler
 from .schemas import (
     AgentLogResponse,
@@ -25,6 +31,7 @@ from .schemas import (
     IterationLogResponse,
     ModelSettingsResponse,
     ModelSettingsUpdate,
+    ResumeRequest,
     SessionHistoryResponse,
     TaskCreate,
     TaskResponse,
@@ -85,6 +92,7 @@ async def create_task(
         k=body.k,
         mode=body.mode,
         model=body.model or await get_default_model(session),
+        variant=body.variant if body.variant is not None else await get_default_variant(session),
         max_iterations=max_iter,
         status="pending",
         current_iteration=0,
@@ -116,8 +124,8 @@ async def update_task(
         raise HTTPException(404, "Task not found")
 
     if body.status == "cancelled":
-        if task.status not in ("pending", "running", "waiting"):
-            raise HTTPException(400, "Can only cancel pending, running, or waiting tasks")
+        if task.status not in ("pending", "running", "waiting", "stopped"):
+            raise HTTPException(400, "Can only cancel pending, running, waiting, or stopped tasks")
         task.status = "cancelled"
         task.updated_at = datetime.now(timezone.utc)
         await session.commit()
@@ -159,8 +167,8 @@ async def retry_task(task_id: int, session: AsyncSession = Depends(get_session))
     task = await session.get(Task, task_id)
     if not task:
         raise HTTPException(404, "Task not found")
-    if task.status not in ("failed", "completed", "cancelled"):
-        raise HTTPException(400, "Can only retry failed, completed, or cancelled tasks")
+    if task.status not in ("failed", "completed", "cancelled", "stopped"):
+        raise HTTPException(400, "Can only retry failed, completed, cancelled, or stopped tasks")
 
     retry = Task(
         shape_key=task.shape_key,
@@ -169,7 +177,8 @@ async def retry_task(task_id: int, session: AsyncSession = Depends(get_session))
         n=task.n,
         k=task.k,
         mode=task.mode,
-        model=task.model or await get_default_model(session),
+        model=await get_default_model(session),
+        variant=await get_default_variant(session),
         max_iterations=task.max_iterations,
         status="pending",
         current_iteration=0,
@@ -182,6 +191,44 @@ async def retry_task(task_id: int, session: AsyncSession = Depends(get_session))
 
     await event_bus.publish("task_update", retry.to_dict())
     return TaskResponse(**retry.to_dict())
+
+
+@app.post("/api/tasks/{task_id}/resume", response_model=TaskResponse, status_code=201)
+async def resume_task(
+    task_id: int,
+    body: ResumeRequest,
+    session: AsyncSession = Depends(get_session),
+):
+    task = await session.get(Task, task_id)
+    if not task:
+        raise HTTPException(404, "Task not found")
+    if task.status in ("running", "pending"):
+        raise HTTPException(400, f"Cannot resume a {task.status} task")
+
+    from_iter = min(body.from_iteration, task.current_iteration, task.max_iterations)
+
+    resumed = Task(
+        shape_key=task.shape_key,
+        dtype=task.dtype,
+        m=task.m,
+        n=task.n,
+        k=task.k,
+        mode=task.mode,
+        model=await get_default_model(session),
+        variant=await get_default_variant(session),
+        max_iterations=task.max_iterations,
+        status="pending",
+        current_iteration=from_iter,
+        best_tflops=task.best_tflops,
+        baseline_tflops=task.baseline_tflops,
+        best_kernel=task.best_kernel,
+    )
+    session.add(resumed)
+    await session.commit()
+    await session.refresh(resumed)
+
+    await event_bus.publish("task_update", resumed.to_dict())
+    return TaskResponse(**resumed.to_dict())
 
 
 @app.get("/api/tasks/{task_id}/logs", response_model=list[IterationLogResponse])
@@ -244,7 +291,9 @@ async def get_session_history(
 async def get_model_settings(session: AsyncSession = Depends(get_session)):
     return ModelSettingsResponse(
         default_model=await get_default_model(session),
+        default_variant=await get_default_variant(session),
         available_models=available_models(),
+        available_variants=available_variants(),
     )
 
 
@@ -253,9 +302,14 @@ async def update_model_settings(
     body: ModelSettingsUpdate,
     session: AsyncSession = Depends(get_session),
 ):
-    model = await set_default_model(session, body.default_model)
+    model, variant = await set_default_model(session, body.default_model, body.default_variant)
     await session.commit()
-    return ModelSettingsResponse(default_model=model, available_models=available_models())
+    return ModelSettingsResponse(
+        default_model=model,
+        default_variant=variant,
+        available_models=available_models(),
+        available_variants=available_variants(),
+    )
 
 
 @app.get("/api/events")
@@ -286,7 +340,7 @@ async def health(session: AsyncSession = Depends(get_session)):
         select(Task.status, func.count(Task.id)).group_by(Task.status)
     )
     task_counts = {status: count for status, count in counts_result.all()}
-    for status in ("waiting", "pending", "running", "completed", "failed", "cancelled"):
+    for status in ("waiting", "pending", "running", "stopped", "completed", "failed", "cancelled"):
         task_counts.setdefault(status, 0)
 
     return HealthResponse(
@@ -295,6 +349,8 @@ async def health(session: AsyncSession = Depends(get_session)):
         active_task_id=scheduler.active_task_id,
         gpu_info=gpu_info,
         default_model=await get_default_model(session),
+        default_variant=await get_default_variant(session),
         available_models=available_models(),
+        available_variants=available_variants(),
         task_counts=task_counts,
     )

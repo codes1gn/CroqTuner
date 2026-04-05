@@ -4,7 +4,9 @@ import { AddTaskForm } from "../AddTaskForm";
 
 const defaultProps = {
   availableModels: ["opencode/qwen3.6-plus-free", "opencode/minimax-m2.5-free"],
+  availableVariants: ["", "minimal", "low", "medium", "high", "xhigh", "max"],
   defaultModel: "opencode/qwen3.6-plus-free",
+  defaultVariant: "",
   onCreated: vi.fn(),
   onCancel: vi.fn(),
 };
